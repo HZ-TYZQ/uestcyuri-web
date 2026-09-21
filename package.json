@@ -1,5 +1,5 @@
 {
-  "name": "uestc-web",
+  "name": "uestcyuri-web",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -8,13 +8,17 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "preview": "npm run build && wrangler dev",
+    "astro": "astro",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "astro": "^7.3.3"
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "wrangler": "^4.135.0"
   }
 }
