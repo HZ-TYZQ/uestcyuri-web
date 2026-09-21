@@ -1,0 +1,29 @@
+---
+import type { ClubImage } from '../data/club';
+
+interface Props {
+  image?: ClubImage;
+  label: string;
+  description?: string;
+  detail?: string;
+  class?: string;
+  hero?: boolean;
+}
+
+const { image, label, description = label, detail = '图片待补充', class: className, hero = false } = Astro.props;
+const hasImage = Boolean(image?.src);
+---
+
+<div
+  class:list={[hero ? 'cover-placeholder' : 'image-placeholder', className, { 'has-image': hasImage }]}
+  role={hasImage ? undefined : 'img'}
+  aria-label={hasImage ? undefined : `${description}，图片待补充`}
+>
+  {hasImage && image ? (
+    <img src={image.src} alt={image.alt} loading={hero ? 'eager' : 'lazy'} decoding="async" />
+  ) : hero ? (
+    <><span class="cover-label">{label}</span><span class="cover-detail">{detail}</span></>
+  ) : (
+    <><span>{label}</span><small>{detail}</small></>
+  )}
+</div>

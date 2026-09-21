@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#faf8f3">
+<title>花间来信 · 电子科技大学百合社</title>
+<style>
+:root{--paper:#faf8f3;--ink:#662e40;--text:#422d33;--muted:#70535a;--line:#cbb8b8;--rose:#eadbdd;--light:#f0e9e4;--serif:"Noto Serif CJK SC","Songti SC",SimSun,serif;--sans:"Noto Sans CJK SC","PingFang SC","Microsoft YaHei",sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:28px}body{margin:0;background:var(--paper);color:var(--text);font:16px/1.8 var(--sans);-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}button{font:inherit}button,a{-webkit-tap-highlight-color:transparent}a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:6px}button{color:inherit}::selection{background:var(--ink);color:var(--paper)}[hidden]{display:none!important}.wrap{width:min(1200px,calc(100% - 112px));margin-inline:auto}.serif{font-family:var(--serif)}.caps{font-size:12px;letter-spacing:.12em;text-transform:uppercase}.skip{position:absolute;left:20px;top:-80px;padding:12px;background:var(--paper);z-index:10}.skip:focus{top:10px}.site-header{height:91px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink);gap:24px}.brand{display:flex;flex-direction:column;line-height:1.6}.brand-name{font-family:var(--serif);font-size:19px;font-weight:600;letter-spacing:.06em}.brand-sub{font-size:12px;letter-spacing:.18em}.header-note{font-family:var(--serif);font-size:14px;letter-spacing:.14em}.nav{display:flex;gap:32px}.nav a{font-size:14px;position:relative}.nav a:after{position:absolute;content:"";bottom:-5px;left:0;width:0;height:1px;background:var(--ink);transition:width .2s}.nav a:hover:after{width:100%}.menu-toggle{display:none;border:0;border-bottom:1px solid var(--ink);background:none;padding:5px 0}.journal-masthead{padding:34px 0 24px;display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid var(--line);gap:30px}.journal-name{margin:0;color:var(--ink);font:500 clamp(80px,9.1vw,132px)/1.1 var(--serif);letter-spacing:.06em}.masthead-note{font:14px/2 var(--serif);padding:0 3px 7px;max-width:280px}.masthead-note p{margin:0}.masthead-note .caps{display:block;margin-top:14px;font-family:var(--sans);font-size:12px;letter-spacing:.15em}.hero{display:grid;grid-template-columns:1.04fr 1fr;gap:70px;padding:52px 0 63px}.eyebrow{display:flex;align-items:center;gap:15px;color:var(--ink);font-size:12px;letter-spacing:.14em}.eyebrow:before{content:"";width:30px;height:1px;background:currentColor}.hero h1{font:500 clamp(40px,4.65vw,67px)/1.5 var(--serif);letter-spacing:.035em;margin:23px 0 17px;color:var(--ink)}.hero-intro{max-width:365px;margin:0;font:17px/2 var(--serif)}.hero-links{display:flex;gap:28px;align-items:center;margin-top:31px}.text-link{font-size:14px;border-bottom:1px solid var(--ink);padding-bottom:7px;display:inline-flex;gap:36px;align-items:center}.text-link.primary{color:var(--ink)}.text-link span{display:inline-block;transition:transform .2s}.text-link:hover span{transform:translateX(4px)}.hero-art{position:relative;min-height:390px;margin:0;display:flex;align-items:center;justify-content:center;padding:14px 22px 31px}.paper-back{position:absolute;width:72%;height:82%;background:#eee6df;border:1px solid #d7c9bf;transform:rotate(-7deg);top:17px;left:12%}.cover-placeholder{position:relative;aspect-ratio:4/5;width:280px;max-width:75%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--rose);border:1px solid #bda0a7;box-shadow:8px 13px 24px #4424330d}.cover-placeholder:before{content:"";position:absolute;inset:14px;border:1px solid #bca0a8}.cover-placeholder .cover-label{font:20px/1.7 var(--serif);letter-spacing:.15em;writing-mode:vertical-rl;text-orientation:upright}.cover-placeholder .cover-detail{position:absolute;bottom:35px;font-size:12px;color:var(--ink);letter-spacing:.06em}.art-annotation{position:absolute;right:-6px;top:80px;writing-mode:vertical-rl;font-size:12px;letter-spacing:.14em}.hero-art figcaption{position:absolute;bottom:-3px;left:0;width:100%;text-align:center;font:12px/1.8 var(--serif);color:var(--muted)}.hero-caption{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:17px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--ink);font-size:12px;letter-spacing:.02em;color:var(--muted)}.hero-caption p{margin:0}.section{padding-top:84px}.section-heading{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:32px}.section-heading h2{font:500 35px/1.5 var(--serif);margin:0;color:var(--ink);letter-spacing:.03em}.section-index{font:italic 14px/1.5 Georgia,serif;color:var(--muted)}.section-intro{font-size:12px;color:var(--muted);margin:7px 0 0}.activity-feature{display:grid;grid-template-columns:.83fr 1.17fr;border-top:1px solid var(--ink);border-bottom:1px solid var(--line);padding:28px 0 30px;gap:54px}.feature-body{display:flex;flex-direction:column;justify-content:center;align-items:start;padding:8px 0}.small-label{font-size:12px;letter-spacing:.08em;color:var(--muted)}.feature-body h3{font:500 32px/1.5 var(--serif);color:var(--ink);margin:15px 0}.feature-body p{font-size:15px;margin:0;max-width:330px;line-height:2}.article-mark{font:italic 42px/1.2 Georgia,serif;color:var(--ink);margin-bottom:20px}.image-placeholder{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;border:1px solid var(--line);color:var(--muted);background:var(--light);position:relative;overflow:hidden}.image-placeholder:before,.image-placeholder:after{content:"";position:absolute;width:15px;height:15px;pointer-events:none}.image-placeholder:before{left:12px;top:12px;border-top:1px solid var(--line);border-left:1px solid var(--line)}.image-placeholder:after{right:12px;bottom:12px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.image-placeholder span{font:16px/1.5 var(--serif);letter-spacing:.13em}.image-placeholder small{font-size:12px;letter-spacing:.05em}.poster{aspect-ratio:16/9;width:100%}.minor-activities{display:grid;grid-template-columns:1fr 1fr;gap:48px;border-bottom:1px solid var(--ink)}.minor-activity{display:grid;grid-template-columns:26px 1fr;column-gap:17px;padding:29px 0 34px}.minor-activity+.minor-activity{border-left:1px solid var(--line);padding-left:40px}.minor-activity .article-mark{font-size:25px;grid-row:1/4;margin:0}.minor-activity h3{font:500 23px/1.6 var(--serif);margin:9px 0;color:var(--ink)}.minor-activity p{font-size:14px;margin:0;line-height:1.9}.work-toolbar{border-top:1px solid var(--ink);border-bottom:1px solid var(--line);padding:16px 0;display:flex;justify-content:space-between;align-items:center;gap:20px}.filters{display:flex;gap:24px;flex-wrap:wrap}.filter{padding:4px 0;line-height:1.6;border:0;border-bottom:1px solid transparent;background:none;cursor:pointer;font-size:14px;color:var(--muted)}.filter[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--ink);font-weight:600}.filter:hover{color:var(--ink)}.result-status{font-size:12px;color:var(--muted);margin:0}.works-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:43px 36px;padding:34px 0 45px;border-bottom:1px solid var(--ink)}.work{min-width:0}.work-visual{aspect-ratio:4/5;width:100%;margin-bottom:18px}.work:nth-child(2) .work-visual{background:#f3eee7}.work:nth-child(3) .work-visual{background:#eadfe0}.work:nth-child(4) .work-visual{background:#eae5df}.work:nth-child(6) .work-visual{background:#e6d5d9}.work-meta{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:var(--muted)}.work h3{font:500 23px/1.6 var(--serif);margin:7px 0;color:var(--ink)}.work p{font-size:14px;line-height:1.9;margin:0;color:var(--muted)}.manuscript{padding:31px 27px;background:#f1e8e3;border:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;position:relative}.manuscript:after{position:absolute;content:"";inset:14px;border:1px solid var(--line);pointer-events:none}.manuscript .manuscript-label{font-size:12px;letter-spacing:.08em;color:var(--muted)}.manuscript blockquote{margin:15px 0;font:20px/2.1 var(--serif);color:var(--ink)}.manuscript .manuscript-end{font:italic 12px/1.5 Georgia,serif;align-self:flex-end}.empty-state{padding:36px 0;text-align:center;color:var(--muted)}.about{margin-top:85px;background:var(--ink);color:var(--paper);padding:62px 0 68px}.about-inner{display:grid;grid-template-columns:1.2fr 1fr;gap:95px}.about-label{font-size:12px;letter-spacing:.14em;color:#e9cdd5}.about h2{font:400 38px/1.7 var(--serif);margin:22px 0 0;letter-spacing:.025em}.about-copy{padding-top:48px;font:16px/2.15 var(--serif)}.about-copy p{margin:0}.about-copy .contact{font:13px/1.8 var(--sans);margin-top:24px;border-top:1px solid #ad7c8b;padding-top:18px;color:#f2dce2}.site-footer{padding:30px 0 34px;display:flex;justify-content:space-between;gap:30px;align-items:center}.footer-name{font:500 15px/1.6 var(--serif);margin:0 0 5px}.footer-note{font-size:12px;color:var(--muted);margin:0}.footer-end{font:italic 16px/1.5 Georgia,serif;color:var(--ink);white-space:nowrap}
+@media(min-width:1100px){.work:nth-child(2),.work:nth-child(5){padding-top:36px}.work:nth-child(2) .work-visual,.work:nth-child(5) .work-visual{aspect-ratio:4/4.58}}
+@media(max-width:1000px){.wrap{width:calc(100% - 64px)}.header-note{display:none}.journal-name{font-size:100px}.masthead-note{max-width:230px;font-size:13px}.hero{gap:30px;padding-top:40px}.hero h1{font-size:47px}.hero-art{min-height:355px;padding-inline:10px}.cover-placeholder{width:250px;max-width:83%}.art-annotation{right:-12px}.hero-intro{font-size:15px}.hero-links{gap:20px}.text-link{gap:16px}.section-heading h2{font-size:29px}.activity-feature{gap:30px}.feature-body h3{font-size:27px}.minor-activities{gap:25px}.minor-activity+.minor-activity{padding-left:24px}.minor-activity h3{font-size:21px}.works-grid{gap:34px 24px;grid-template-columns:repeat(2,minmax(0,1fr))}.about-inner{gap:45px}.about h2{font-size:30px}.about-copy{padding-top:42px}.manuscript blockquote{font-size:22px}}
+@media(max-width:600px){.wrap{width:calc(100% - 40px)}.site-header{height:81px;position:relative}.brand-name{font-size:16px;letter-spacing:.03em}.brand-sub{font-size:12px;letter-spacing:.13em}.menu-toggle{display:block;font-size:13px}.nav{display:none;position:absolute;z-index:5;top:80px;left:-20px;right:-20px;background:var(--paper);padding:21px 25px;border-bottom:1px solid var(--ink);justify-content:space-between}.nav.is-open{display:flex}.journal-masthead{padding:24px 0 17px;display:block}.journal-name{font-size:clamp(62px,19vw,94px);letter-spacing:.035em;line-height:1.2}.masthead-note{max-width:none;padding:0;margin-top:14px;font-size:12px;line-height:1.8}.masthead-note p{display:inline}.masthead-note p+p:before{content:" ";white-space:pre}.masthead-note .caps{display:none}.hero{display:block;padding:30px 0 31px}.eyebrow{font-size:12px;gap:11px;letter-spacing:.1em}.eyebrow:before{width:24px}.hero h1{font-size:43px;line-height:1.5;letter-spacing:.02em;margin:16px 0}.hero-intro{font-size:15px;line-height:1.95;max-width:310px}.hero-links{margin-top:24px;gap:28px}.text-link{font-size:13px;gap:23px;padding-bottom:5px}.hero-art{height:338px;min-height:0;margin-top:39px;padding-bottom:33px}.cover-placeholder{width:215px}.paper-back{height:79%;width:65%;left:16%;top:9px}.art-annotation{right:0;top:66px;font-size:12px}.hero-art figcaption{font-size:12px}.hero-caption{font-size:12px;line-height:1.9;padding:15px 0}.hero-caption .caps{display:none}.section{padding-top:55px}.section-heading{display:block;margin-bottom:23px}.section-heading h2{font-size:27px;line-height:1.7}.section-index{font-size:12px;display:block;margin-top:8px}.activity-feature{grid-template-columns:1fr;gap:23px;padding:24px 0}.feature-body{padding:0}.article-mark{font-size:30px;margin-bottom:15px}.feature-body h3{font-size:27px;margin:11px 0}.feature-body p{font-size:14px}.minor-activities{display:block}.minor-activity{padding:24px 0;grid-template-columns:25px 1fr;column-gap:15px}.minor-activity+.minor-activity{padding-left:0;border-left:0;border-top:1px solid var(--line)}.minor-activity h3{font-size:22px;margin:8px 0}.minor-activity p{font-size:14px}.work-toolbar{align-items:start;gap:12px;flex-direction:column;padding:13px 0}.filters{gap:25px}.filter{font-size:14px}.result-status{font-size:12px}.works-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:31px 16px;padding:25px 0 30px}.work-visual{margin-bottom:12px}.work-meta{display:block;font-size:12px;line-height:1.8}.work-meta span+span:before{content:" · "}.work h3{font-size:19px;line-height:1.6;margin:8px 0}.work p{font-size:14px}.image-placeholder span{font-size:14px;letter-spacing:.03em}.image-placeholder small{font-size:12px}.manuscript{padding:18px 15px;min-height:0}.manuscript:after{inset:7px}.manuscript .manuscript-label{font-size:12px;letter-spacing:0}.manuscript blockquote{font-size:14px;line-height:1.8;margin:8px 0}.manuscript .manuscript-end{display:none}.about{margin-top:55px;padding:36px 0 41px}.about-inner{display:block}.about h2{font-size:29px;margin-top:19px;line-height:1.65}.about-copy{padding-top:25px;font-size:15px;line-height:2.1}.about-copy .contact{margin-top:24px}.site-footer{padding:25px 0 29px;display:block}.footer-note{font-size:12px;line-height:1.9}.footer-end{margin-top:18px;display:block;font-size:14px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header wrap">
+  <a class="brand" href="#main" aria-label="电子科技大学百合社，回到首页"><span class="brand-name">电子科技大学百合社</span><span class="brand-sub">UESTC YURI CLUB</span></a>
+  <span class="header-note">关于喜欢的，种种。</span>
+  <button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false">目录 <span aria-hidden="true">＋</span></button>
+  <nav class="nav" id="primary-nav" aria-label="主导航"><a href="#activities">活动</a><a href="#works">作品</a><a href="#about">关于</a></nav>
+</header>
+<main id="main">
+<div class="wrap">
+  <div class="journal-masthead">
+    <p class="journal-name">花间来信</p>
+    <div class="masthead-note"><p>给故事留一页，</p><p>也给相同的喜欢留一个位置。</p><span class="caps">Stories of her, letters to us.</span></div>
+  </div>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <div class="eyebrow">一封写给同好的信</div>
+      <h1 id="hero-title">让喜欢，<br>在这里相遇。</h1>
+      <p class="hero-intro">关于她与她的故事，<br>也关于每一个喜欢这些故事的我们。</p>
+      <div class="hero-links"><a class="text-link primary" href="#works">浏览作品 <span aria-hidden="true">↗</span></a><a class="text-link" href="#activities">看看活动 <span aria-hidden="true">→</span></a></div>
+    </div>
+    <figure class="hero-art">
+      <div class="paper-back" aria-hidden="true"></div>
+      <!-- 社刊主视觉占位，替换为 4:5 图片时保留 cover-placeholder 的尺寸。 -->
+      <div class="cover-placeholder" role="img" aria-label="社刊封面图片占位，待补充"><span class="cover-label">社刊封面预留</span><span class="cover-detail">图片待补充 · 4:5</span></div>
+      <span class="art-annotation">在字里行间，遇见彼此。</span>
+      <figcaption>留白的这一页，等待我们的故事。</figcaption>
+    </figure>
+  </section>
+  <div class="hero-caption"><p>电子科技大学百合社，属于百合文化爱好者的交流与创作空间。</p><span class="caps">Animation · Comics · Fiction</span></div>
+  <section class="section" id="activities" aria-labelledby="activities-title">
+    <div class="section-heading"><div><h2 id="activities-title">一起，把故事延续</h2><p class="section-intro">从一段故事开始，让交流慢慢发生。</p></div><span class="section-index">I. Gatherings / 相聚</span></div>
+    <article class="activity-feature">
+      <div class="feature-body"><span class="article-mark" aria-hidden="true">01</span><span class="small-label">活动示例 · 百合动画交流</span><h3>放映室里的共鸣</h3><p>一起聊聊那些打动我们的角色与片段。</p></div>
+      <!-- 活动海报图片占位，保持 16:9 比例。 -->
+      <div class="image-placeholder poster" role="img" aria-label="放映室里的共鸣活动海报占位"><span>活动海报预留</span><small>图片待补充 · 16:9</small></div>
+    </article>
+    <div class="minor-activities">
+      <article class="minor-activity"><span class="article-mark" aria-hidden="true">02</span><span class="small-label">活动示例 · 同人创作交流</span><h3>把喜欢写进故事</h3><p>分享灵感、片段与创作中的小发现。</p></article>
+      <article class="minor-activity"><span class="article-mark" aria-hidden="true">03</span><span class="small-label">活动示例 · 漫画与小说共读</span><h3>翻开下一页</h3><p>交换书单，也交换不一样的理解。</p></article>
+    </div>
+  </section>
+  <section class="section" id="works" aria-labelledby="works-title">
+    <div class="section-heading"><div><h2 id="works-title">喜欢，也可以成为作品</h2><p class="section-intro">画下的、写下的，都是想和你分享的。</p></div><span class="section-index">II. Creations / 创作</span></div>
+    <div class="work-toolbar">
+      <div class="filters" role="group" aria-label="按作品类型筛选">
+        <button class="filter" type="button" data-filter="all" aria-pressed="true">全部</button>
+        <button class="filter" type="button" data-filter="illustration" aria-pressed="false">插画</button>
+        <button class="filter" type="button" data-filter="comic" aria-pressed="false">漫画</button>
+        <button class="filter" type="button" data-filter="writing" aria-pressed="false">文字</button>
+        <button class="filter" type="button" data-filter="journal" aria-pressed="false">社刊</button>
+      </div>
+      <p class="result-status" role="status" aria-live="polite" aria-atomic="true">正在展示全部 6 件示例作品</p>
+    </div>
+    <div class="works-grid">
+      <article class="work" data-category="illustration">
+        <!-- 作品封面占位，图片替换时沿用 work-visual 比例。 -->
+        <div class="image-placeholder work-visual" role="img" aria-label="晴天，与你插画图片占位"><span>插画图片预留</span><small>图片待补充</small></div>
+        <div class="work-meta"><span>插画</span><span>示例作品</span></div><h3>晴天，与你</h3><p>把晴朗的心情，留在与你并肩的午后。</p>
+      </article>
+      <article class="work" data-category="comic">
+        <div class="image-placeholder work-visual" role="img" aria-label="放学之后漫画封面占位"><span>漫画封面预留</span><small>图片待补充</small></div>
+        <div class="work-meta"><span>漫画</span><span>示例作品</span></div><h3>放学之后</h3><p>回家的路绕远一点，话就能多说一点。</p>
+      </article>
+      <article class="work" data-category="writing">
+        <div class="manuscript work-visual"><span class="manuscript-label">文字摘录 · 设计示例</span><blockquote>“夏天的风<br>翻过书页。<br>我没说完的话，<br>刚好停在<br>有你的那一行。”</blockquote><span class="manuscript-end">A letter, unfinished.</span></div>
+        <div class="work-meta"><span>文字</span><span>示例作品</span></div><h3>写给夏天的信</h3><p>有些心事，适合让一封信慢慢说完。</p>
+      </article>
+      <article class="work" data-category="illustration">
+        <div class="image-placeholder work-visual" role="img" aria-label="窗边的片刻插画图片占位"><span>插画图片预留</span><small>图片待补充</small></div>
+        <div class="work-meta"><span>插画</span><span>示例作品</span></div><h3>窗边的片刻</h3><p>光落在肩上，平常的一刻也值得珍藏。</p>
+      </article>
+      <article class="work" data-category="comic">
+        <div class="image-placeholder work-visual" role="img" aria-label="两个人的日常漫画封面占位"><span>漫画封面预留</span><small>图片待补充</small></div>
+        <div class="work-meta"><span>漫画</span><span>示例作品</span></div><h3>两个人的日常</h3><p>从一杯热茶，到那些只有彼此懂的小事。</p>
+      </article>
+      <article class="work" data-category="journal">
+        <div class="image-placeholder work-visual" role="img" aria-label="花开时，我们相遇社刊封面占位"><span>社刊封面预留</span><small>图片待补充</small></div>
+        <div class="work-meta"><span>社刊</span><span>示例作品</span></div><h3>花开时，我们相遇</h3><p>把分散的喜欢装订在一起，成为共同的一页。</p>
+      </article>
+    </div>
+    <p class="empty-state" hidden>这个分类还没有作品，试试其他分类吧。</p>
+  </section>
+</div>
+<section class="about" id="about" aria-labelledby="about-title">
+  <div class="wrap about-inner"><div><div class="about-label">III. About us / 关于我们</div><h2 id="about-title">因为同一种喜欢，<br>相聚在这里。</h2></div><div class="about-copy"><p>从一部动画、一页漫画，到一段写下的故事，我们希望给每一种喜欢留一个位置。在这里交流作品、分享灵感，也认识愿意倾听的同好。</p><p class="contact">联系方式待补充</p></div></div>
+</section>
+</main>
+<footer class="site-footer wrap"><div><p class="footer-name">电子科技大学百合社</p><p class="footer-note">花间来信 · 设计方向 C<br>活动与作品均为展示示例，图片及联系方式待补充。</p></div><span class="footer-end">Until the next page.</span></footer>
+<script>
+(function(){
+  const toggle=document.querySelector('.menu-toggle');
+  const nav=document.querySelector('#primary-nav');
+  function setMenu(open){
+    toggle.setAttribute('aria-expanded',String(open));
+    toggle.querySelector('span').textContent=open?'−':'＋';
+    nav.classList.toggle('is-open',open);
+  }
+  toggle.addEventListener('click',function(){setMenu(toggle.getAttribute('aria-expanded')!=='true')});
+  nav.querySelectorAll('a').forEach(function(link){link.addEventListener('click',function(){setMenu(false)})});
+  document.addEventListener('keydown',function(event){if(event.key==='Escape'&&toggle.getAttribute('aria-expanded')==='true'){setMenu(false);toggle.focus()}});
+  const mobile=window.matchMedia('(max-width:600px)');
+  mobile.addEventListener('change',function(){setMenu(false)});
+  const filters=document.querySelectorAll('[data-filter]');
+  const works=document.querySelectorAll('[data-category]');
+  const status=document.querySelector('.result-status');
+  const empty=document.querySelector('.empty-state');
+  filters.forEach(function(button){
+    button.addEventListener('click',function(){
+      const category=button.dataset.filter;
+      let count=0;
+      filters.forEach(function(filter){filter.setAttribute('aria-pressed',String(filter===button))});
+      works.forEach(function(work){const visible=category==='all'||work.dataset.category===category;work.hidden=!visible;if(visible)count++});
+      status.textContent='正在展示'+(category==='all'?'全部 ':button.textContent+'类 ')+count+' 件示例作品';
+      empty.hidden=count!==0;
+    });
+  });
+})();
+</script>
+</body>
+</html>

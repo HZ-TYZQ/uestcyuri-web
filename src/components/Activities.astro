@@ -1,0 +1,35 @@
+---
+import { activities } from '../data/club';
+import ClubImage from './ClubImage.astro';
+
+const [featured, ...remaining] = activities;
+---
+
+<section class="section" id="activities" aria-labelledby="activities-title">
+  <div class="section-heading">
+    <div><h2 id="activities-title">一起，把故事延续</h2><p class="section-intro">从一段故事开始，让交流慢慢发生。</p></div>
+    <span class="section-index">I. Gatherings / 相聚</span>
+  </div>
+  {featured ? (
+    <>
+      <article class="activity-feature">
+        <div class="feature-body">
+          <span class="article-mark" aria-hidden="true">01</span>
+          <span class="small-label">{featured.isExample && '活动示例 · '}{featured.category}</span>
+          <h3>{featured.title}</h3><p>{featured.description}</p>
+        </div>
+        <ClubImage image={featured.image} class="poster" label="活动海报预留" description={`${featured.title}活动海报`} detail="图片待补充 · 16:9" />
+      </article>
+      <div class="minor-activities">
+        {remaining.map((activity, index) => (
+          <article class="minor-activity">
+            <span class="article-mark" aria-hidden="true">{String(index + 2).padStart(2, '0')}</span>
+            <span class="small-label">{activity.isExample && '活动示例 · '}{activity.category}</span>
+            <h3>{activity.title}</h3><p>{activity.description}</p>
+            {activity.image?.src && <ClubImage image={activity.image} class="poster minor-poster" label="活动海报预留" description={`${activity.title}活动海报`} />}
+          </article>
+        ))}
+      </div>
+    </>
+  ) : <p class="empty-state">新的相聚，正在酝酿中。</p>}
+</section>

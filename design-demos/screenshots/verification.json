@@ -1,0 +1,62 @@
+[
+  {
+    "name": "star-atlas",
+    "status": "passed",
+    "checks": [
+      "all five filters",
+      "empty results",
+      "long headings at three widths",
+      "no horizontal overflow",
+      "mobile menu and Escape",
+      "anchor navigation",
+      "standalone file",
+      "no runtime errors"
+    ],
+    "screenshots": [
+      "desktop",
+      "tablet",
+      "mobile",
+      "hero"
+    ]
+  },
+  {
+    "name": "creative-journal",
+    "status": "passed",
+    "checks": [
+      "all five filters",
+      "empty results",
+      "long headings at three widths",
+      "no horizontal overflow",
+      "mobile menu and Escape",
+      "anchor navigation",
+      "standalone file",
+      "no runtime errors"
+    ],
+    "screenshots": [
+      "desktop",
+      "tablet",
+      "mobile",
+      "hero"
+    ]
+  },
+  {
+    "name": "flower-letters",
+    "status": "passed",
+    "checks": [
+      "all five filters",
+      "empty results",
+      "long headings at three widths",
+      "no horizontal overflow",
+      "mobile menu and Escape",
+      "anchor navigation",
+      "standalone file",
+      "no runtime errors"
+    ],
+    "screenshots": [
+      "desktop",
+      "tablet",
+      "mobile",
+      "hero"
+    ]
+  }
+]
