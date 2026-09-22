@@ -26,3 +26,6 @@ pnpm-debug.log*
 # Cloudflare Wrangler
 .wrangler/
 .dev.vars*
+
+#Raw Image materials
+Raw_image_materials/
