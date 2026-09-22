@@ -1,52 +1,58 @@
----
-import Layout from '../layouts/Layout.astro';
-import Activities from '../components/Activities.astro';
-import Works from '../components/Works.astro';
-import ClubImage from '../components/ClubImage.astro';
-import { club, activities, works } from '../data/club';
-
-const hasExamples = [...activities, ...works].some(item => item.isExample);
----
-
-<Layout title={`${club.journalName} · ${club.name}`} description={club.introduction}>
-<a class="skip" href="#main">跳到主要内容</a>
-<header class="site-header wrap">
-  <a class="brand" href="#main" aria-label={`${club.name}，回到首页`}><span class="brand-name">{club.name}</span><span class="brand-sub">{club.englishName}</span></a>
-  <span class="header-note">关于喜欢的，种种。</span>
-  <button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false">目录 <span aria-hidden="true">＋</span></button>
-  <nav class="nav" id="primary-nav" aria-label="主导航"><a href="#activities">活动</a><a href="#works">作品</a><a href="#about">关于</a></nav>
-</header>
-<main id="main">
-<div class="wrap">
-  <div class="journal-masthead">
-    <p class="journal-name">{club.journalName}</p>
-    <div class="masthead-note"><p>给故事留一页，</p><p>也给相同的喜欢留一个位置。</p><span class="caps">Stories of her, letters to us.</span></div>
-  </div>
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="hero-copy">
-      <div class="eyebrow">一封写给同好的信</div>
-      <h1 id="hero-title">让喜欢，<br>在这里相遇。</h1>
-      <p class="hero-intro">关于她与她的故事，<br>也关于每一个喜欢这些故事的我们。</p>
-      <div class="hero-links"><a class="text-link primary" href="#works">浏览作品 <span aria-hidden="true">↗</span></a><a class="text-link" href="#activities">看看活动 <span aria-hidden="true">→</span></a></div>
-    </div>
-    <figure class="hero-art">
-      <div class="paper-back" aria-hidden="true"></div>
-      <!-- 社刊主视觉占位，替换为 4:5 图片时保留 cover-placeholder 的尺寸。 -->
-      <ClubImage image={club.heroImage} hero label="社刊封面预留" description="社刊封面" detail="图片待补充 · 4:5" />
-      <span class="art-annotation">在字里行间，遇见彼此。</span>
-      <figcaption>留白的这一页，等待我们的故事。</figcaption>
-    </figure>
-  </section>
-  <div class="hero-caption"><p>{club.introduction}</p><span class="caps">Animation · Comics · Fiction</span></div>
-  <Activities />
-  <Works />
-</div>
-<section class="about" id="about" aria-labelledby="about-title">
-  <div class="wrap about-inner"><div><div class="about-label">III. About us / 关于我们</div><h2 id="about-title">因为同一种喜欢，<br>相聚在这里。</h2></div><div class="about-copy"><p>{club.about}</p><p class="contact">{club.contact}</p></div></div>
-</section>
-</main>
-<footer class="site-footer wrap"><div><p class="footer-name">{club.name}</p><p class="footer-note">{club.journalName}{hasExamples && <><br />部分活动与作品为展示示例，内容将陆续更新。</>}</p></div><span class="footer-end">Until the next page.</span></footer>
-<script>
-  import '../scripts/home';
-</script>
-</Layout>
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="theme-color" content="#faf8f3" />
+		<meta name="generator" content={Astro.generator} />
+		<title>施工中</title>
+		<style>
+			:root {
+				color-scheme: light dark;
+				--bg: #faf8f3;
+				--fg: #2b2a28;
+				--muted: #8a867e;
+			}
+			@media (prefers-color-scheme: dark) {
+				:root {
+					--bg: #1c1b19;
+					--fg: #ece8e0;
+					--muted: #8f8a80;
+				}
+			}
+			html,
+			body {
+				margin: 0;
+				height: 100%;
+			}
+			body {
+				display: grid;
+				place-items: center;
+				background: var(--bg);
+				color: var(--fg);
+				font-family: system-ui, -apple-system, 'PingFang SC', 'Noto Sans CJK SC', sans-serif;
+				text-align: center;
+				padding: 0 16px;
+			}
+			h1 {
+				font-size: clamp(1.5rem, 5vw, 2.25rem);
+				font-weight: 500;
+				letter-spacing: 0.08em;
+				margin: 0 0 0.5em;
+			}
+			p {
+				margin: 0;
+				color: var(--muted);
+				font-size: 0.9rem;
+				letter-spacing: 0.1em;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<h1>当前页面正在施工</h1>
+			<p>Under construction</p>
+		</main>
+	</body>
+</html>
