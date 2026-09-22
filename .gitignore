@@ -29,3 +29,6 @@ pnpm-debug.log*
 
 #Raw Image materials
 Raw_image_materials/
+
+# Image materials
+Pictures/
