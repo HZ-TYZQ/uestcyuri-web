@@ -31,4 +31,5 @@ materials:
     - { name: Aurora,  avatar: head/Portrait(Aurora).jpg }
     - { name: 冬之雪,  avatar: head/Portrait(冬之雪).jpg }
     - { name: 柴猫猫,  avatar: head/Portrait(柴猫猫).jpg }
+    - { name: 古明地道战, avatar: head/Portrait(古明地道战).jpg }
     - { name: HZ-TYZQ, avatar: head/Portrait(HZ-TYZQ).jpg }
