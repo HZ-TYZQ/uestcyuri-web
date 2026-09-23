@@ -39,7 +39,9 @@
 
 图片放在根目录的 `Pictures/` 里，YAML 里写相对路径即可，例如 `works/Aurora/OC3.jpg`。构建时会自动压缩成 webp。
 
-完整说明、常见操作和 YAML 注意事项见 **[docs/editing.md](docs/editing.md)**。
+仓库不开放直接推送，所有改动都通过 **Pull Request** 提交，由维护者审核合并后再上线。只改几个字的话，可以直接在 GitHub 网页上编辑文件，GitHub 会自动帮你提 PR。
+
+想参与的话先看 **[运维指南](docs/maintenance.md)**，里面有从素材到上线的完整流程；每个 YAML 字段怎么写、常见操作和注意事项见 **[docs/editing.md](docs/editing.md)**。
 
 ### 几条规矩
 
@@ -95,14 +97,15 @@ npm run astro -- dev stop
 | `src/scripts/site.ts` | 页面交互 |
 | `Pictures/` | 已确认公开的图片 |
 | `public/` | 原样发布的文件：`robots.txt`、`favicon.svg` |
+| `.github/pull_request_template.md` | 提 PR 时自动带出的说明模板和检查清单 |
 | `docs/` | 维护说明、许可、资料整理、已知问题 |
 | `demo_claude/` | 静态设计示例，直接双击打开 |
-| `design-demos/` | 早期的三版设计稿和选择记录 |
 
 ### 文档
 
 | 文件 | 内容 |
 |---|---|
+| [`docs/maintenance.md`](docs/maintenance.md) | 运维指南：从素材到上线的流程、检查清单、出错怎么办、定期维护 |
 | [`docs/editing.md`](docs/editing.md) | 怎么改网页内容 |
 | [`docs/claude_recommendation.md`](docs/claude_recommendation.md) | 页面结构和文案的设计决定 |
 | [`docs/artwork_license.md`](docs/artwork_license.md) | 群友原创图片的许可 |

@@ -29,3 +29,6 @@ pnpm-debug.log*
 
 # Local-only image materials
 Raw_image_materials/
+
+# AI 工具的本地技能包（不属于网站）
+.agents/
