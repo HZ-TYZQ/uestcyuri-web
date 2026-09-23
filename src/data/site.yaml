@@ -12,8 +12,8 @@ hero:
   eyebrow: STORIES OF HER, AND OF US
   title: [让喜欢，, 被看见]         # 每项一行，最后自动加粉色句号
   intro: 关于她与她的故事，也关于喜欢这些故事的我们留下的作品。
-  primary: { label: 看看群友作品, href: "#works" }
-  secondary: { label: 找点百合看, href: "#recommend" }
+  primary: { label: 看看群友作品, href: "/creations/" }
+  secondary: { label: 找点百合看, href: "/recommendations/" }
   image: works/Aurora/OC3.jpg
   imageAlt: Aurora 的原创角色插画：两个女孩比心
   imageAuthor: Aurora
@@ -25,15 +25,48 @@ strip:
   left: 电子科技大学百合 ACG 交流群 · 作品展示页
   right: Illustration · Translation · Reading list
 
-# 板块按这里的顺序排列，罗马数字序号和导航自动生成。
-# id 不要改（页面靠它找到对应的板块）；其余文字随便改。
+# 栏目按这里的顺序显示在导航与首页，id 对应 /id/ 网址。
+# sections 决定该页面内的板块及顺序；将来可继续加入游戏、小说等板块。
+pages:
+  - id: creations
+    title: 群友创作
+    en: Creations
+    intro: 画下的、写下的、译下的，把喜欢变成自己的作品。
+    sections: [works, translations]
+  - id: activities
+    title: 活动记录
+    en: Moments
+    intro: 说过的话，一起玩过的时光，都在这里留下记录。
+    sections: [quotes, activities]
+  - id: recommendations
+    title: 百合推荐
+    en: Reading list
+    intro: 从漫画、小说到游戏，翻开下一段她与她的故事。
+    sections: [recommend]
+  - id: resources
+    title: 资源整理
+    en: Resources
+    intro: 收藏工具、资料和链接，留给同样喜欢的你。
+    sections: [resources]
+  - id: about
+    title: 关于我们
+    en: About us
+    intro: 因为同一种喜欢，才有了这里。
+    sections: [about]
+
+# 板块 id 不要改（页面靠它找到对应的组件）；标题和导语可以修改。
 sections:
-  - { id: works,        nav: 作品, title: 群友作品, tagline: 画下的、写下的，都是想和你分享的。, en: Works }
-  - { id: translations, nav: 汉化, title: 群友汉化, tagline: 把喜欢的故事，带给更多人。, en: Translations }
-  - { id: quotes,       nav: 金句, title: 群友金句, tagline: 群里说过的话，有些值得被记住。, en: Overheard, more: 更多金句收集中。 }
-  - { id: activities,   nav: 活动, title: 群友活动, tagline: 一起玩过的，也值得留下来。, en: Gatherings }
-  - { id: recommend,    nav: 推荐, title: 百合推荐, tagline: 不知道看什么？从这里翻开下一页。, en: Reading list }
-  - { id: about,        nav: 关于, title: 关于我们, en: About }
+  - { id: works,        title: 群友作品, tagline: 画下的、写下的，都是想和你分享的。, en: Works }
+  - { id: translations, title: 群友汉化, tagline: 把喜欢的故事，带给更多人。, en: Translations }
+  - { id: quotes,       title: 群友金句, tagline: 群里说过的话，有些值得被记住。, en: Overheard, more: 更多金句收集中。 }
+  - { id: activities,   title: 群友活动, tagline: 一起玩过的，也值得留下来。, en: Gatherings }
+  - { id: recommend,    title: 百合推荐, tagline: 不知道看什么？从这里翻开下一页。, en: Reading list }
+  - { id: resources, title: 资源整理, en: Resources }
+  - { id: about,        title: 关于我们, en: About }
+
+resources:
+  emptyTitle: 这里，留给下一份发现。
+  emptyNote: 暂时还没有整理好的资源，之后慢慢补上。
 
 about:
   title: [因为同一种喜欢，, 才有了这些作品。]

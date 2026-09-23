@@ -11,8 +11,8 @@ const covers = (c: string | string[] | undefined) => (c === undefined ? [] : Arr
 	<section class="section" id={section.id} aria-labelledby={`${section.id}-title`}>
 		<SectionHead section={section} num={num} />
 		{recommendationsData.groups.map((g, gi) => (
-			<div class:list={['rec-group', { games: gi > 0 }]}>
-				<div class="sub-head"><h3>{g.title}</h3><span class="latin">{g.en}</span></div>
+			<div class:list={['rec-group', { games: gi > 0 }]} id={`recommend-group-${gi + 1}`}>
+				<div class="sub-head"><h3 id={`recommend-group-${gi + 1}-title`}>{g.title}</h3><span class="latin">{g.en}</span></div>
 				{g.shelves.map((shelf) => (
 					<div class="shelf">
 						<div class="shelf-title"><h4>{shelf.title}</h4>{shelf.note && <span>{shelf.note}</span>}</div>
