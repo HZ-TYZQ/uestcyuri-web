@@ -1,0 +1,127 @@
+# 百合推荐。作品的完整资料和核实记录见 docs/yuri_artworks.md，这里只放页面上显示的内容。
+#
+# 结构：groups（漫画·小说 / 游戏）→ shelves（入坑必看……）→ items（每部作品）
+#
+# 每部作品：
+#   title    中文名
+#   type     类型，显示在书名上方
+#   cover    封面，放在 Pictures/manga_cover/ 或 Pictures/game_cover/ 下
+#            多张封面写成列表，会拼成 2×2（例如 Flowers 四部曲）
+#            没有封面就不写，会自动生成竖排文字封面
+#   coverText  文字封面上的书名（不写就用 title），可以用 \n 手动换行
+#   coverSub   文字封面上的小字，例如刊载杂志
+#   blurb    一句话简介
+#   tags     内容提示，例如 [战争, 致郁]
+#
+# 桌面端一排最多放 6 本，条目数在 4–6 之间时正好一排。
+
+groups:
+  - title: 漫画 · 小说
+    en: Manga & Fiction
+    shelves:
+      - title: 入坑必看
+        note: 门槛低、口碑稳
+        items:
+          - title: 我在意的对象并不是男人
+            type: 漫画
+            cover: manga_cover/我在意的对象并不是男人.jpg
+            blurb: 唱片店里神秘的“男店员”，其实是班上内向的女同学。
+          - title: 恋语轻唱
+            type: 漫画 / 动画
+            cover: manga_cover/恋语轻唱.jpg
+            blurb: 一句“喜欢”被误会成告白，两人由此认真面对彼此的心意。
+          - title: 志乃与恋
+            type: 漫画
+            cover: manga_cover/志乃与恋.jpg
+            blurb: 开局即交往，全篇是两人的甜蜜日常。
+          - title: 安达与岛村
+            type: 轻小说 / 漫画 / 动画
+            cover: manga_cover/安达与岛村.jpg
+            blurb: 体育馆二楼相识的两人，心理描写细腻的经典长篇。
+          - title: 里世界郊游
+            type: 轻小说 / 漫画 / 动画
+            cover: manga_cover/里世界郊游.jpg
+            blurb: 穿过通往“里世界”的门，和擅长用枪的鸟子一起探索网络怪谈。
+          - title: 儿时玩伴绝对会终成眷属 百合精选集
+            type: 漫画 · 短篇合集
+            cover: manga_cover/儿时玩伴绝对会终成眷属.jpg
+            blurb: “青梅竹马一定会在一起”，一本完结、结局有保证。
+
+      - title: 近期热门
+        note: 正在被讨论
+        items:
+          - title: 我们不可能成为恋人！绝对不行。
+            type: 轻小说 / 漫画 / 动画
+            cover: manga_cover/我们不可能成为恋人！绝对不行。.jpg
+            blurb: 社恐高中生被班上的超模同学告白，在“挚友”和“恋人”之间拉扯。
+          - title: 大小姐才不玩格斗游戏
+            type: 漫画 / 动画
+            cover: manga_cover/大小姐才不玩格斗游戏.jpg
+            blurb: 全校最完美的大小姐，其实是格斗游戏狂热玩家。
+          - title: 上伊那牡丹，醉姿如百合
+            type: 漫画 / 动画
+            cover: manga_cover/上伊那牡丹，醉姿如百合.jpg
+            blurb: 大学宿舍里第一次接触到酒，也遇见了特别的人。
+          - title: 与你相恋到生命尽头
+            type: 漫画 / 动画
+            cover: manga_cover/与你相恋到生命尽头.jpg
+            blurb: 把孤儿训练成魔法兵器的学校里，新室友拥有“不会死”的能力。
+            tags: [战争, 致郁]
+          - title: 淡岛百景
+            type: 漫画 / 动画
+            cover: manga_cover/淡岛百景.jpg
+            blurb: 以宝冢为原型的歌剧学校，每一话换一个时代、换一个主角。
+
+      - title: 新连载速递
+        note: 每季轮换
+        items:
+          - title: だって恋は月夜に灯るから
+            type: 漫画
+            coverText: "だって恋は月夜に\n灯るから"
+            coverSub: コミック百合姫
+            blurb: 宿舍深夜，金发碧眼的后辈和学姐共享只属于彼此的秘密时间。
+          - title: 我的推是坏人大小姐。续篇
+            type: 轻小说 · 续篇
+            cover: manga_cover/我的推是坏人大小姐.jpg
+            blurb: 原作主角的女儿成为主角，展开她自己的冒险与恋爱。
+
+      - title: 群友推荐
+        note: 群里安利过的
+        items:
+          - title: 少女星间漂流记
+            type: 轻小说 / 漫画
+            cover: manga_cover/少女星间漂流记.jpg
+            blurb: 乘着马车形状的宇宙船，在奇妙的星球之间寻找新的安居之地。
+          - title: 与你编缀的泡沫
+            type: 漫画
+            cover: manga_cover/与你编缀的泡沫.jpg
+            blurb: “来谈一场夏天的恋爱吧”，好让你写出恋爱小说。
+            tags: [疾病, 致郁]
+          - title: 青梅竹马在裙下喵喵叫
+            type: 轻小说 / 漫画
+            cover: manga_cover/青梅竹马在裙下喵喵叫.jpg
+            blurb: 疏远的青梅竹马突然长出猫耳，开始像猫一样黏着我。
+
+  - title: 游戏
+    en: Games
+    wide: true              # 游戏封面是横版，用 16:9
+    shelves:
+      - title: 视觉小说
+        note: 健全向 · 无雷
+        items:
+          - title: 无名者
+            type: 国产独立 · PC
+            cover: game_cover/无名者.jpg
+            blurb: “请告诉我，爱有意义吗？”少女们在失落之城中寻找神明的痕迹。
+          - title: SeaBed
+            type: PC / Switch
+            cover: game_cover/SeaBed.jpg
+            blurb: 关于失去与记忆的百合悬疑，适合静下心来读。
+          - title: Flowers 系列
+            type: 四部曲 · PC 等
+            cover:
+              - game_cover/Flowers春篇.jpg
+              - game_cover/Flowers夏篇.jpg
+              - game_cover/Flowers秋篇.jpg
+              - game_cover/Flowers冬篇.jpg
+            blurb: 天主教女子学院里的谜团与“Amitié”，随春夏秋冬推进。

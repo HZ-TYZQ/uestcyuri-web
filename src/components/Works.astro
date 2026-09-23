@@ -1,0 +1,81 @@
+---
+import { Image } from 'astro:assets';
+import SectionHead from './SectionHead.astro';
+import { worksData, workTypes, type Section } from '../lib/content';
+import { pic } from '../lib/images';
+import { fullSize } from '../lib/full';
+interface Props { section: Section; num: string }
+const { section, num } = Astro.props;
+
+const authors = await Promise.all(
+	worksData.map(async (a) => {
+		const items = await Promise.all(
+			a.works.map(async (w) => {
+				const img = pic(w.image);
+				const label = workTypes[w.type];
+				const lbNote = [label, w.note].filter(Boolean).join(' · ');
+				return { ...w, img, label, lbNote, full: await fullSize(img), caption: `${a.name} · ${lbNote}` };
+			}),
+		);
+		const counts = (Object.keys(workTypes) as (keyof typeof workTypes)[])
+			.map((t) => ({ label: workTypes[t], n: items.filter((w) => w.type === t).length }))
+			.filter((c) => c.n > 0);
+		return { ...a, items, counts };
+	}),
+);
+const total = authors.reduce((n, a) => n + a.items.length, 0);
+// 只列出有作品的分类；不足两类时不显示筛选
+const present = (Object.keys(workTypes) as (keyof typeof workTypes)[]).filter((t) =>
+	authors.some((a) => a.items.some((w) => w.type === t)),
+);
+---
+<div class="wrap">
+	<section class="section" id={section.id} aria-labelledby={`${section.id}-title`}>
+		<SectionHead section={section} num={num} />
+		<div class="filters">
+			{present.length > 1 && (
+				<div class="filter-group" role="group" aria-label="按类型筛选">
+					<button class="filter" type="button" data-filter="all" aria-pressed="true">全部</button>
+					{present.map((t) => <button class="filter" type="button" data-filter={t} aria-pressed="false">{workTypes[t]}</button>)}
+				</div>
+			)}
+			<span class="filter-status" aria-live="polite">共 {total} 件作品</span>
+		</div>
+		<aside class="license" aria-label="群友原创图片许可">
+			<span class="license-code">CC BY-NC-ND 4.0</span>
+			<ul class="license-terms">
+				<li><b>BY</b>转载请署名</li>
+				<li><b>NC</b>不可商用</li>
+				<li><b>ND</b>不可修改</li>
+				<li class="no-ai"><b>AI</b>禁止用于 AI 训练</li>
+			</ul>
+			<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans" target="_blank" rel="noopener license">许可详情 <span>↗</span></a>
+		</aside>
+		<div class="authors">
+			{authors.map((a) => (
+				<article class="author">
+					<div class="author-profile">
+						<Image class="avatar" src={pic(a.avatar)} alt={`${a.name} 的头像`} width={192} height={192} />
+						<span class="author-name">{a.name}</span>
+						<span class="author-meta">{a.counts.map((c) => c.label).join(' · ')}</span>
+						<dl class="author-count">
+							{a.counts.map((c) => <div><dt>{c.label}</dt><dd>{String(c.n).padStart(2, '0')}</dd></div>)}
+						</dl>
+						<p class="author-license"><span>© {a.name}</span><strong>{a.license}</strong></p>
+					</div>
+					<div class="gallery">
+						{a.items.map((w) => (
+							<figure class="work" data-type={w.type}>
+								<button class="work-open" type="button" data-gallery="works" data-caption={a.name} data-note={w.lbNote} data-full={w.full} aria-label={`查看大图：${w.caption}`}>
+									<Image src={w.img} alt={w.caption} widths={[360, 720]} sizes="(max-width: 720px) 50vw, 300px" />
+								</button>
+								<figcaption><b>{w.label}</b>{w.note && <span>{w.note}</span>}</figcaption>
+							</figure>
+						))}
+					</div>
+				</article>
+			))}
+		</div>
+		<p class="filter-empty empty-note" hidden>这个分类下暂时还没有作品。</p>
+	</section>
+</div>

@@ -1,0 +1,25 @@
+# 群友作品：一位作者一项，按这里的顺序展示。
+#
+# 新增作者：把图片放进 Pictures/works/<作者>/，头像放进 Pictures/head/，然后照下面的格式加一项。
+# 新增作品：在该作者的 works 里加一行。作品按列表顺序排进瀑布流。
+#
+# type 可选：
+#   illust  插画
+#   oc      原创角色
+#   text    文字
+# 只有一种类型时不显示筛选按钮；出现第二种类型后按钮自动出现。
+#
+# license 不写时默认「CC BY-NC-ND 4.0 · 禁止 AI 训练」（见 docs/artwork_license.md）。
+
+- name: Aurora
+  avatar: head/Portrait(Aurora).jpg
+  works:
+    - { image: works/Aurora/OC79_Birthday.jpg, type: oc, note: 生日贺图 }
+    - { image: works/Aurora/OC79_1.jpg,        type: oc }
+    - { image: works/Aurora/OC1_2.jpg,         type: oc }
+    - { image: works/Aurora/OC79_NewYear.jpg,  type: oc, note: 新年贺图 }
+    - { image: works/Aurora/OC79.jpg,          type: oc }
+    - { image: works/Aurora/OC.jpg,            type: oc }
+    - { image: works/Aurora/OC4.jpg,           type: oc }
+    - { image: works/Aurora/OC1_1.jpg,         type: oc }
+    - { image: works/Aurora/OC3.jpg,           type: oc }

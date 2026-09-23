@@ -1,0 +1,19 @@
+# 群友活动：每场一项，页面按日期自动倒序排列（最新的在前）。
+#
+# date     写成 2026-05-03 的格式
+# shots    截图，放在 Pictures/activities/<活动>/ 下；第一张是大图，其余是缩略图
+# details  左边是标签，右边是内容，想加几行加几行
+
+- title: 你画我猜 · 百合题库
+  date: 2026-05-03
+  intro: 题目全是百合作品和相关的词：有人画《安达与岛村》，有人画「温泉泡百合」，也有人把「恋人不行」画成了一排小人。
+  details:
+    - { label: 形式, value: 线上 · 语音 + 你画我猜 }
+    - { label: 出过的题, value: 需要吃掉我的非人少女、摇曳百合、安达与岛村、学园偶像大师…… }
+  shots:
+    - activities/draw&guess/draw&guess3.png
+    - activities/draw&guess/draw&guess1.png
+    - activities/draw&guess/draw&guess2.png
+    - activities/draw&guess/draw&guess4.png
+    - activities/draw&guess/draw&guess5.png
+    - activities/draw&guess/draw&guess6.png

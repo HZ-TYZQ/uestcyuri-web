@@ -1,0 +1,19 @@
+---
+import SectionHead from './SectionHead.astro';
+import { quotesData, type Section } from '../lib/content';
+interface Props { section: Section; num: string }
+const { section, num } = Astro.props;
+---
+<div class="wrap">
+	<section class="section" id={section.id} aria-labelledby={`${section.id}-title`}>
+		<SectionHead section={section} num={num} />
+		{quotesData.length === 0
+			? <p class="empty-note">金句收集中。</p>
+			: (
+				<div class:list={['quotes', { single: quotesData.length === 1 }]}>
+					{quotesData.map((q) => <figure class="quote"><blockquote>{q.text}</blockquote><figcaption>{q.author}</figcaption></figure>)}
+				</div>
+			)}
+		{section.more && quotesData.length > 0 && <p class="quotes-more">{section.more}</p>}
+	</section>
+</div>

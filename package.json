@@ -2,6 +2,7 @@
   "name": "uestcyuri-web",
   "type": "module",
   "version": "0.0.1",
+  "license": "MIT",
   "engines": {
     "node": ">=22.12.0"
   },
@@ -13,12 +14,16 @@
     "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
-    "astro": "^7.3.3"
+    "astro": "^7.3.3",
+    "js-yaml": "^5.4.2"
   },
   "allowScripts": {
     "esbuild": true
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/js-yaml": "^4.0.9",
+    "typescript": "^6.0.3",
     "wrangler": "^4.135.0"
   }
 }

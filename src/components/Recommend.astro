@@ -1,0 +1,58 @@
+---
+import { Image } from 'astro:assets';
+import SectionHead from './SectionHead.astro';
+import { recommendationsData, type Section } from '../lib/content';
+import { pic } from '../lib/images';
+interface Props { section: Section; num: string }
+const { section, num } = Astro.props;
+const covers = (c: string | string[] | undefined) => (c === undefined ? [] : Array.isArray(c) ? c : [c]);
+---
+<div class="wrap">
+	<section class="section" id={section.id} aria-labelledby={`${section.id}-title`}>
+		<SectionHead section={section} num={num} />
+		{recommendationsData.groups.map((g, gi) => (
+			<div class:list={['rec-group', { games: gi > 0 }]}>
+				<div class="sub-head"><h3>{g.title}</h3><span class="latin">{g.en}</span></div>
+				{g.shelves.map((shelf) => (
+					<div class="shelf">
+						<div class="shelf-title"><h4>{shelf.title}</h4>{shelf.note && <span>{shelf.note}</span>}</div>
+						<div
+							class:list={['books', { wide: g.wide, dense: shelf.items.length > 4 }]}
+							style={`--cols:${Math.min(6, Math.max(4, shelf.items.length))}`}
+						>
+							{shelf.items.map((b) => {
+								const list = covers(b.cover);
+								return (
+									<article class="book">
+										{list.length === 0 && (
+											<div class="cover ph type-cover">
+												<span>
+													<strong>{(b.coverText ?? b.title).split('\n').map((l, i) => <>{i > 0 && <br />}{l}</>)}</strong>
+													{b.coverSub && <span>{b.coverSub}</span>}
+												</span>
+											</div>
+										)}
+										{list.length === 1 && (
+											<div class="cover">
+												<Image src={pic(list[0])} alt={`《${b.title}》封面`} widths={g.wide ? [400, 800] : [300, 600]} sizes="(max-width: 720px) 50vw, 220px" />
+											</div>
+										)}
+										{list.length > 1 && (
+											<div class="cover quad">
+												{list.map((c) => <Image src={pic(c)} alt={`《${b.title}》封面`} width={400} />)}
+											</div>
+										)}
+										<span class="book-type">{b.type}</span>
+										<h5>{b.title}</h5>
+										<p>{b.blurb}</p>
+										{b.tags.length > 0 && <div class="tags">{b.tags.map((t) => <span class="tag warn">{t}</span>)}</div>}
+									</article>
+								);
+							})}
+						</div>
+					</div>
+				))}
+			</div>
+		))}
+	</section>
+</div>

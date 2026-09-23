@@ -1,0 +1,13 @@
+---
+import type { Section } from '../lib/content';
+interface Props { section: Section; num: string }
+const { section, num } = Astro.props;
+---
+<div class="section-head">
+	<span class="section-num">{num}</span>
+	<div>
+		<h2 id={`${section.id}-title`}>{section.title}</h2>
+		{section.tagline && <p>{section.tagline}</p>}
+	</div>
+	<span class="latin">{section.en}</span>
+</div>

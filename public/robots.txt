@@ -1,0 +1,70 @@
+# 电♥百 · 电子科技大学百合 ACG 交流群
+#
+# 群友原创图片采用 CC BY-NC-ND 4.0，并禁止用于 AI 训练。
+# 下列 AI 训练 / 数据采集爬虫禁止抓取全站；普通搜索引擎不受影响。
+
+# OpenAI
+User-agent: GPTBot
+Disallow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+# Google（仅 AI 训练用途，不影响 Google 搜索）
+User-agent: Google-Extended
+Disallow: /
+
+# Apple（仅 AI 训练用途，不影响 Apple 搜索）
+User-agent: Applebot-Extended
+Disallow: /
+
+# Common Crawl
+User-agent: CCBot
+Disallow: /
+
+# ByteDance
+User-agent: Bytespider
+Disallow: /
+
+# Meta
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+# Amazon
+User-agent: Amazonbot
+Disallow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Disallow: /
+
+# Cohere
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: cohere-training-data-crawler
+Disallow: /
+
+# 其他数据集 / 图片采集
+User-agent: Diffbot
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: Timpibot
+Disallow: /
+
+# 其余爬虫（搜索引擎等）
+User-agent: *
+Allow: /

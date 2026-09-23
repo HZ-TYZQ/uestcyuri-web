@@ -1,0 +1,18 @@
+---
+import { siteData, type Section } from '../lib/content';
+interface Props { section: Section; num: string }
+const { section, num } = Astro.props;
+const { about } = siteData;
+---
+<section class="about" id={section.id} aria-labelledby={`${section.id}-title`}>
+	<div class="wrap about-inner">
+		<div>
+			<span class="caps">{num}. {section.en} / {section.title}</span>
+			<h2 id={`${section.id}-title`}>{about.title.map((l) => <span class="line">{l}</span>)}</h2>
+		</div>
+		<div>
+			<p>{about.body}</p>
+			{about.note && <p class="note">{about.note}</p>}
+		</div>
+	</div>
+</section>

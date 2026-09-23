@@ -1,0 +1,7 @@
+---
+// 把文字里的 ♥ 换成 SVG 爱心。
+import Heart from './Heart.astro';
+interface Props { text: string }
+const parts = Astro.props.text.split('♥');
+---
+{parts.map((p, i) => (<>{p}{i < parts.length - 1 && <Heart />}</>))}

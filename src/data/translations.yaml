@@ -1,0 +1,14 @@
+# 群友汉化：每位译者一项，只放链接，不转载内容。
+#
+# url   有发布链接就填，页面显示「前往<平台> ↗」
+# note  没有链接时写一句怎么找，例如「站内搜索「柴猫猫」」
+
+- name: 冬之雪
+  avatar: head/Portrait(冬之雪).jpg
+  platform: 百合会
+  url: https://bbs.yamibo.com/thread-576844-1-1.html
+
+- name: 柴猫猫
+  avatar: head/Portrait(柴猫猫).jpg
+  platform: 哔咔
+  note: 站内搜索「柴猫猫」

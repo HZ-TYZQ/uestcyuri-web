@@ -1,0 +1,34 @@
+# 网页贡献者：页脚最底部的名单。只写群昵称，不放联系方式。
+#
+# roles 里每项是一种分工。names 里：
+#   普通名字直接写：        - HZ-TYZQ
+#   带公司名的写成：        - { org: Anthropic, name: Claude }
+#
+# materials 是「素材提供」的头像轮播：有新的群友提供素材，就在 people 里加一行。
+# 头像放在 Pictures/head/ 下。
+
+roles:
+  - role: 开发与设计
+    en: Development & Design
+    names:
+      - HZ-TYZQ
+      - { org: Anthropic, name: Claude }
+
+  - role: 内容整理
+    en: Curation
+    note: 推荐作品的挑选与核实
+    names:
+      - HZ-TYZQ
+      - { org: Anthropic, name: Claude }
+      - { org: OpenAI, name: ChatGPT }
+
+materials:
+  role: 素材提供
+  en: Materials
+  note: 作品、头像、Logo
+  caption: 头像与作品来自群友，排名不分先后
+  people:
+    - { name: Aurora,  avatar: head/Portrait(Aurora).jpg }
+    - { name: 冬之雪,  avatar: head/Portrait(冬之雪).jpg }
+    - { name: 柴猫猫,  avatar: head/Portrait(柴猫猫).jpg }
+    - { name: HZ-TYZQ, avatar: head/Portrait(HZ-TYZQ).jpg }

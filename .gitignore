@@ -27,8 +27,5 @@ pnpm-debug.log*
 .wrangler/
 .dev.vars*
 
-#Raw Image materials
+# Local-only image materials
 Raw_image_materials/
-
-# Image materials
-Pictures/

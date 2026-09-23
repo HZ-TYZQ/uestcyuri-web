@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+import SectionHead from './SectionHead.astro';
+import { translationsData, type Section } from '../lib/content';
+import { pic } from '../lib/images';
+interface Props { section: Section; num: string }
+const { section, num } = Astro.props;
+// 「站内搜索「柴猫猫」」里的引号部分加粗
+const note = (s: string) => s.split(/(「[^」]*」)/);
+---
+<div class="wrap">
+	<section class="section" id={section.id} aria-labelledby={`${section.id}-title`}>
+		<SectionHead section={section} num={num} />
+		<ul class="tl-list">
+			{translationsData.map((t, i) => (
+				<li>
+					<span class="n">{String(i + 1).padStart(2, '0')}</span>
+					{t.avatar ? <Image class="tl-avatar" src={pic(t.avatar)} alt={`${t.name}的头像`} width={104} height={104} /> : <span />}
+					<div><span class="who">{t.name}</span><span class="where">{t.platform}</span></div>
+					{t.url
+						? <a href={t.url} target="_blank" rel="noopener">前往{t.platform} <span>↗</span></a>
+						: <span class="plain">{t.note && note(t.note).map((p) => (p.startsWith('「') ? <b>{p}</b> : p))}</span>}
+				</li>
+			))}
+		</ul>
+	</section>
+</div>

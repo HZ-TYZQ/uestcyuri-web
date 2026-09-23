@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import { siteData } from '../lib/content';
+import { pic } from '../lib/images';
+const { hero, strip } = siteData;
+const last = hero.title.length - 1;
+---
+<div class="wrap" id="top">
+	<section class="hero">
+		<div>
+			<p class="eyebrow">{hero.eyebrow}</p>
+			<h1>
+				{hero.title.map((line, i) => (
+					<span class="line"><span>{line}{i === last && <span class="dot">。</span>}</span></span>
+				))}
+			</h1>
+			<p class="hero-intro">{hero.intro}</p>
+			<div class="hero-links">
+				<a class="btn solid" href={hero.primary.href}>{hero.primary.label} <span>↗</span></a>
+				<a class="btn ghost" href={hero.secondary.href}>{hero.secondary.label} <span>→</span></a>
+			</div>
+		</div>
+		<figure class="hero-art">
+			<div class="layer l1"><div class="back"></div></div>
+			<div class="layer l2">
+				<figure class="front">
+					<Image src={pic(hero.image)} alt={hero.imageAlt} widths={[360, 720]} sizes="340px" loading="eager" fetchpriority="high" />
+					<span><b>{hero.imageAuthor}</b><em>{hero.imageLabel}</em></span>
+				</figure>
+			</div>
+			<span class="vert">{hero.vertical}</span>
+			<figcaption>{hero.caption}</figcaption>
+		</figure>
+	</section>
+	<div class="strip">
+		<p>{strip.left}</p>
+		<p class="caps">{strip.right}</p>
+	</div>
+</div>

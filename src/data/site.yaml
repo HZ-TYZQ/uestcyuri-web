@@ -1,0 +1,45 @@
+# 站点文案：标题、首屏、各板块标题与导语、关于、页脚。
+# 图片路径一律相对于根目录的 Pictures/ 文件夹来写，例如 logo/yuristc.png。
+
+name: 电♥百                       # ♥ 会自动换成粉色 SVG 爱心
+subtitle: 电子科技大学百合 ACG 交流群展示页面
+groupName: 电子科技大学百合 ACG 交流群
+description: 电子科技大学百合 ACG 交流群的作品展示页：群友作品、汉化、金句、活动与百合推荐。
+logo: logo/yuristc.png
+repo: https://github.com/HZ-TYZQ/uestcyuri-web
+
+hero:
+  eyebrow: STORIES OF HER, AND OF US
+  title: [让喜欢，, 被看见]         # 每项一行，最后自动加粉色句号
+  intro: 关于她与她的故事，也关于喜欢这些故事的我们留下的作品。
+  primary: { label: 看看群友作品, href: "#works" }
+  secondary: { label: 找点百合看, href: "#recommend" }
+  image: works/Aurora/OC3.jpg
+  imageAlt: Aurora 的原创角色插画：两个女孩比心
+  imageAuthor: Aurora
+  imageLabel: 原创角色
+  vertical: 画下的 · 写下的 · 译下的
+  caption: 这一页，由群友的画开始。
+
+strip:
+  left: 电子科技大学百合 ACG 交流群 · 作品展示页
+  right: Illustration · Translation · Reading list
+
+# 板块按这里的顺序排列，罗马数字序号和导航自动生成。
+# id 不要改（页面靠它找到对应的板块）；其余文字随便改。
+sections:
+  - { id: works,        nav: 作品, title: 群友作品, tagline: 画下的、写下的，都是想和你分享的。, en: Works }
+  - { id: translations, nav: 汉化, title: 群友汉化, tagline: 把喜欢的故事，带给更多人。, en: Translations }
+  - { id: quotes,       nav: 金句, title: 群友金句, tagline: 群里说过的话，有些值得被记住。, en: Overheard, more: 更多金句收集中。 }
+  - { id: activities,   nav: 活动, title: 群友活动, tagline: 一起玩过的，也值得留下来。, en: Gatherings }
+  - { id: recommend,    nav: 推荐, title: 百合推荐, tagline: 不知道看什么？从这里翻开下一页。, en: Reading list }
+  - { id: about,        nav: 关于, title: 关于我们, en: About }
+
+about:
+  title: [因为同一种喜欢，, 才有了这些作品。]
+  body: 这里是电子科技大学百合 ACG 交流群的作品展示页。从一部动画、一页漫画，到一段写下的故事，群友们把喜欢画成了画、写成了字、译成了中文，也把自己喜欢的作品推荐给你。
+  note: 本站只做展示。
+
+footer:
+  copyright: 群友原创图片版权归各作者所有，采用 CC BY-NC-ND 4.0，禁止用于 AI 训练；推荐作品封面版权归原出版方，仅用于介绍。
+  signoff: Until the next page.

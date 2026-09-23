@@ -1,58 +1,28 @@
-<!doctype html>
-<html lang="zh-CN">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="theme-color" content="#faf8f3" />
-		<meta name="generator" content={Astro.generator} />
-		<title>施工中</title>
-		<style>
-			:root {
-				color-scheme: light dark;
-				--bg: #faf8f3;
-				--fg: #2b2a28;
-				--muted: #8a867e;
-			}
-			@media (prefers-color-scheme: dark) {
-				:root {
-					--bg: #1c1b19;
-					--fg: #ece8e0;
-					--muted: #8f8a80;
-				}
-			}
-			html,
-			body {
-				margin: 0;
-				height: 100%;
-			}
-			body {
-				display: grid;
-				place-items: center;
-				background: var(--bg);
-				color: var(--fg);
-				font-family: system-ui, -apple-system, 'PingFang SC', 'Noto Sans CJK SC', sans-serif;
-				text-align: center;
-				padding: 0 16px;
-			}
-			h1 {
-				font-size: clamp(1.5rem, 5vw, 2.25rem);
-				font-weight: 500;
-				letter-spacing: 0.08em;
-				margin: 0 0 0.5em;
-			}
-			p {
-				margin: 0;
-				color: var(--muted);
-				font-size: 0.9rem;
-				letter-spacing: 0.1em;
-			}
-		</style>
-	</head>
-	<body>
-		<main>
-			<h1>当前页面正在施工</h1>
-			<p>Under construction</p>
-		</main>
-	</body>
-</html>
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Works from '../components/Works.astro';
+import Translations from '../components/Translations.astro';
+import Quotes from '../components/Quotes.astro';
+import Activities from '../components/Activities.astro';
+import Recommend from '../components/Recommend.astro';
+import About from '../components/About.astro';
+import Footer from '../components/Footer.astro';
+import { siteData } from '../lib/content';
+
+// 板块顺序和序号来自 src/data/site.yaml 的 sections
+const components = { works: Works, translations: Translations, quotes: Quotes, activities: Activities, recommend: Recommend, about: About };
+const roman = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+---
+<Layout>
+	<Header />
+	<main id="main">
+		<Hero />
+		{siteData.sections.map((section, i) => {
+			const Section = components[section.id];
+			return <Section section={section} num={roman[i]} />;
+		})}
+	</main>
+	<Footer />
+</Layout>

@@ -1,0 +1,939 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<meta name="robots" content="noai, noimageai">
+<title>电♥百 · 电子科技大学百合 ACG 交流群</title>
+<script>
+  // 开启动效：减少动态效果偏好或 ?still 时不开（后者方便截图）
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches && !/[?&]still\b/.test(location.search)) {
+    document.documentElement.classList.add('motion');
+  }
+</script>
+<style>
+:root{
+  --paper:#ffffff;
+  --paper-2:#f6f5f2;
+  --paper-3:#eeece8;
+  --ink:#1c1b19;
+  --text:#3a3835;
+  --muted:#6f6b65;
+  --line:#e4e1dc;
+  --line-strong:#1c1b19;
+  --accent:#e3809c;
+  --accent-soft:#fce9ef;
+  --serif:"Noto Serif CJK SC","Noto Serif SC","Source Han Serif SC","Songti SC",SimSun,serif;
+  --sans:"Noto Sans CJK SC","Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --latin:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --gutter:56px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--paper);color:var(--text);font:16px/1.8 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+img{display:block;max-width:100%}
+::selection{background:var(--accent-soft);color:var(--ink)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:5px}
+[hidden]{display:none!important}
+.wrap{width:min(1200px,calc(100% - var(--gutter)*2));margin-inline:auto}
+.skip{position:absolute;left:16px;top:-80px;padding:10px 14px;background:var(--ink);color:var(--paper);z-index:20}
+.skip:focus{top:12px}
+.heart{display:inline-block;width:.78em;height:.78em;vertical-align:-.02em;margin:0 .06em;color:var(--accent)}
+.latin{font-family:var(--latin);font-style:italic;letter-spacing:.02em}
+.caps{font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+.tag{display:inline-block;font-size:12px;line-height:1;padding:5px 8px;border:1px solid var(--line);color:var(--muted);border-radius:999px}
+.tag.warn{border-color:#cfc9c0;color:var(--text)}
+.demo{font-size:12px;color:var(--muted);letter-spacing:.06em}
+
+/* Header */
+.site-header{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 0 20px;border-bottom:1px solid var(--line-strong)}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{width:46px;height:auto}
+.brand-name{font:600 24px/1.2 var(--serif);color:var(--ink);letter-spacing:.08em}
+.brand-sub{display:block;font-size:12px;color:var(--muted);letter-spacing:.08em;margin-top:3px}
+.nav{display:flex;gap:30px}
+.nav a{font-size:14px;color:var(--text);position:relative;padding:4px 0}
+.nav a::after{content:"";position:absolute;left:0;bottom:-2px;height:1px;width:0;background:var(--accent);transition:width .2s}
+.nav a:hover::after,.nav a[aria-current="true"]::after{width:100%}
+.menu-toggle{display:none;background:none;border:0;border-bottom:1px solid var(--ink);padding:4px 0;font-size:14px;cursor:pointer}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center;padding:88px 0 76px}
+.eyebrow{display:flex;align-items:center;gap:14px;font-size:12px;letter-spacing:.16em;color:var(--muted)}
+.eyebrow::before{content:"";width:32px;height:1px;background:var(--ink)}
+.hero h1{margin:26px 0 22px;font:500 clamp(44px,6vw,84px)/1.25 var(--serif);color:var(--ink);letter-spacing:.04em}
+.hero h1 .dot{color:var(--accent)}
+.hero-intro{max-width:30em;text-wrap:pretty;margin:0;font:18px/2 var(--serif);color:var(--text)}
+.hero-links{display:flex;flex-wrap:wrap;gap:16px;margin-top:40px}
+.btn{display:inline-flex;align-items:center;gap:28px;padding:13px 20px;font-size:14px;border:1px solid var(--ink);transition:background .2s,color .2s}
+.btn span{color:var(--accent);transition:transform .2s}
+.btn:hover span{transform:translateX(3px)}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn.solid:hover{background:#34322e}
+.btn.ghost:hover{background:var(--paper-2)}
+.hero-art{position:relative;margin:0;display:grid;place-items:center;padding:24px 0 48px}
+.hero-art .back{position:relative;width:min(62%,340px);aspect-ratio:4/5;background:var(--paper-3);transform:rotate(-6deg) translate(-28px,6px)}
+.hero-art .front{position:relative;width:min(62%,340px);aspect-ratio:4/5;margin:0;padding:10px 10px 34px;background:var(--paper);border:1px solid var(--line);box-shadow:0 18px 40px -18px rgba(28,27,25,.22);transform:rotate(3deg)}
+.hero-art .front img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.hero-art .front span{position:absolute;left:12px;right:12px;bottom:9px;display:flex;justify-content:space-between;font-size:11px;color:var(--muted);letter-spacing:.06em}
+.hero-art figcaption{position:absolute;bottom:0;left:0;right:0;text-align:center;font:13px/1.6 var(--serif);color:var(--muted)}
+.hero-art .vert{position:absolute;right:0;top:12%;writing-mode:vertical-rl;font:13px/1 var(--serif);letter-spacing:.3em;color:var(--muted)}
+.strip{display:flex;justify-content:space-between;gap:24px;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line-strong);font-size:12px;color:var(--muted)}
+.strip p{margin:0}
+
+/* Placeholder */
+.ph{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:var(--paper-2);border:1px solid var(--line);color:var(--muted);text-align:center;font-size:12px;letter-spacing:.06em;overflow:hidden}
+.ph::before,.ph::after{content:"";position:absolute;width:12px;height:12px;border:1px solid #cfcac2}
+.ph::before{top:10px;left:10px;border-right:0;border-bottom:0}
+.ph::after{bottom:10px;right:10px;border-left:0;border-top:0}
+.ph strong{font:500 15px/1.6 var(--serif);color:var(--text);letter-spacing:.1em}
+
+/* Sections */
+.section{padding-top:112px}
+.section-head{display:grid;grid-template-columns:auto 1fr auto;align-items:end;gap:28px;padding-bottom:22px;margin-bottom:40px;border-bottom:1px solid var(--line)}
+.section-num{font:italic 400 64px/0.9 var(--latin);color:var(--ink)}
+.section-head h2{margin:0;font:500 34px/1.4 var(--serif);color:var(--ink);letter-spacing:.04em}
+.section-head p{margin:6px 0 0;font-size:14px;color:var(--muted)}
+.section-head .latin{font-size:15px;color:var(--muted);padding-bottom:6px}
+
+/* Works */
+.filters{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+.filter-group{display:flex;gap:6px}
+.filter{background:none;border:1px solid transparent;padding:6px 14px;font-size:14px;color:var(--muted);cursor:pointer;border-radius:999px}
+.filter:hover{color:var(--ink)}
+.filter[aria-pressed="true"]{border-color:var(--ink);color:var(--ink)}
+.filter-status{font-size:12px;color:var(--muted)}
+.authors{display:grid;gap:64px}
+.author{display:grid;grid-template-columns:240px 1fr;gap:48px;border-top:1px solid var(--line-strong);padding-top:28px}
+.author-profile{position:sticky;top:32px;align-self:start}
+.avatar{display:block;width:96px;height:96px;border-radius:50%;object-fit:cover;border:1px solid var(--line);box-shadow:0 0 0 5px var(--paper),0 0 0 6px var(--line)}
+.author-name{display:block;margin-top:22px;font:500 30px/1.3 var(--serif);color:var(--ink);letter-spacing:.04em}
+.author-meta{display:block;margin-top:6px;font-size:13px;color:var(--muted)}
+.author-count{display:flex;gap:22px;margin:22px 0 0;padding:14px 0 0;border-top:1px solid var(--line)}
+.author-count div{display:flex;flex-direction:column}
+.author-count dt{order:2;font-size:12px;color:var(--muted)}
+.author-count dd{margin:0;font:italic 30px/1.1 var(--latin);color:var(--ink)}
+.gallery{columns:3 220px;column-gap:14px}
+.work{break-inside:avoid;margin:0 0 14px;position:relative}
+.work-open{display:block;width:100%;padding:0;border:0;background:var(--paper-2);cursor:zoom-in;overflow:hidden;position:relative}
+.work-open img{width:100%;height:auto;transition:transform .6s cubic-bezier(.2,.7,.2,1),filter .4s}
+.work-open::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(28,27,25,.06);pointer-events:none}
+.work:hover .work-open img{transform:scale(1.035)}
+.work figcaption{display:flex;justify-content:space-between;gap:10px;padding:8px 2px 0;font-size:12px;color:var(--muted)}
+.work figcaption b{font-weight:500;color:var(--text)}
+.work[hidden]{display:none!important}
+.license{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px;margin:0 0 32px;padding:14px 18px;border:1px solid var(--line);border-left:2px solid var(--ink);background:linear-gradient(90deg,var(--paper-2),var(--paper) 70%)}
+.license-code{font:600 13px/1 var(--sans);letter-spacing:.08em;color:var(--ink);white-space:nowrap}
+.license-terms{display:flex;flex-wrap:wrap;gap:6px 8px;margin:0;padding:0;list-style:none}
+.license-terms li{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text);padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:var(--paper)}
+.license-terms b{font:600 11px/1 var(--sans);letter-spacing:.06em;color:var(--muted)}
+.license-terms li.no-ai{border-color:var(--ink);color:var(--ink)}
+.license-terms li.no-ai b{color:var(--accent)}
+.license a{font-size:13px;border-bottom:1px solid var(--ink);padding-bottom:2px;white-space:nowrap}
+.license a span{color:var(--accent)}
+.author-license{display:flex;flex-direction:column;gap:2px;margin:18px 0 0;padding-top:12px;border-top:1px dashed var(--line);font-size:12px;letter-spacing:.04em;color:var(--muted)}
+.author-license strong{font-weight:600;color:var(--text)}
+.work-label{position:absolute;left:12px;bottom:10px;font-size:11px;color:var(--muted)}
+
+/* Translation */
+.tl-list{margin:0;padding:0;list-style:none;border-top:1px solid var(--line-strong)}
+.tl-list li{display:grid;grid-template-columns:3rem 1fr auto;gap:20px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--line)}
+.tl-list .n{font:italic 20px/1 var(--latin);color:var(--muted)}
+.tl-list .who{font:500 20px/1.4 var(--serif);color:var(--ink)}
+.tl-list .where{font-size:14px;color:var(--muted);margin-left:14px}
+.tl-list a{font-size:14px;border-bottom:1px solid var(--ink);padding-bottom:2px}
+.tl-list a span{color:var(--accent)}
+
+/* Quotes */
+.quotes{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:28px}
+.quote{position:relative;margin:0;padding:40px 28px 26px;background:var(--paper-2);border:1px solid var(--line)}
+.quote::before{content:"\201C";position:absolute;top:-6px;left:18px;font:90px/1 var(--latin);color:var(--ink)}
+.quote blockquote{margin:0;font:500 20px/1.9 var(--serif);color:var(--ink)}
+.quote:first-child blockquote{font-size:24px}
+.quote figcaption{margin-top:22px;font-size:13px;color:var(--muted)}
+.quote figcaption::before{content:"— "}
+
+/* Activities */
+.activity{display:grid;grid-template-columns:1.35fr 1fr;gap:40px;align-items:start}
+.shot{display:block;width:100%;padding:0;border:0;background:var(--paper-2);cursor:zoom-in;overflow:hidden;position:relative}
+.shot img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .3s}
+.shot:hover img{transform:scale(1.03)}
+.shot.main{box-shadow:0 24px 48px -30px rgba(28,27,25,.45)}
+.thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:8px}
+.thumbs .shot img{opacity:.82}
+.thumbs .shot:hover img{opacity:1}
+.shot-count{position:absolute;right:12px;bottom:12px;padding:4px 10px;background:rgba(255,255,255,.92);font-size:12px;color:var(--ink);border-radius:999px}
+.activity-body{border-top:1px solid var(--line-strong);padding-top:20px}
+.activity-body .when{font:italic 16px/1 var(--latin);color:var(--muted)}
+.activity-body h3{margin:14px 0 12px;font:500 28px/1.4 var(--serif);color:var(--ink)}
+.activity-body p{margin:0;color:var(--text)}
+.activity-body dl{margin:28px 0 0;display:grid;grid-template-columns:auto 1fr;gap:10px 20px;font-size:14px}
+.activity-body dt{color:var(--muted)}
+.activity-body dd{margin:0}
+
+/* Lightbox */
+.lightbox{width:100vw;height:100vh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:rgba(255,255,255,.97);color:var(--ink)}
+.lightbox::backdrop{background:transparent}
+.lightbox[open]{display:grid;grid-template-rows:auto 1fr auto}
+.lb-bar{display:flex;justify-content:space-between;align-items:center;padding:18px var(--gutter);font-size:13px;color:var(--muted)}
+.lb-bar .latin{font-size:16px;color:var(--ink)}
+.lb-stage{display:flex;align-items:center;justify-content:center;min-height:0;padding:0 72px;position:relative}
+.lb-stage img{max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 30px 70px -40px rgba(28,27,25,.5)}
+.lb-btn{background:none;border:1px solid var(--line);width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:18px;color:var(--ink);transition:border-color .2s,background .2s}
+.lb-btn:hover{border-color:var(--accent);background:var(--accent-soft)}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%)}
+.lb-prev{left:16px}.lb-next{right:16px}
+.lb-cap{padding:16px var(--gutter) 22px;text-align:center;font:14px/1.6 var(--serif);color:var(--text)}
+.lb-cap small{display:block;margin-top:2px;font:12px/1.6 var(--sans);color:var(--muted)}
+.motion .lightbox[open] img{animation:lb-in .45s cubic-bezier(.2,.7,.2,1)}
+@keyframes lb-in{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+
+/* Recommend */
+.sub-head{display:flex;align-items:baseline;gap:16px;margin:0 0 8px}
+.sub-head h3{margin:0;font:500 24px/1.4 var(--serif);color:var(--ink)}
+.sub-head .latin{color:var(--muted)}
+.shelf{margin-top:40px}
+.shelf-title{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding-bottom:12px;margin-bottom:24px;border-bottom:1px solid var(--line)}
+.shelf-title h4{margin:0;font:500 17px/1.4 var(--serif);color:var(--ink);letter-spacing:.06em}
+.shelf-title span{font-size:12px;color:var(--muted)}
+.books{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 24px}
+.book .cover{aspect-ratio:3/4;background:var(--paper-2);border:1px solid var(--line);overflow:hidden}
+.book .cover img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.book:hover .cover img{transform:scale(1.03)}
+.book .cover.ph{aspect-ratio:3/4}
+.book-type{display:block;margin-top:14px;font-size:12px;color:var(--muted);letter-spacing:.06em}
+.book h5{margin:4px 0 6px;font:500 17px/1.5 var(--serif);color:var(--ink)}
+.book p{margin:0;font-size:14px;line-height:1.75;color:var(--text)}
+.book .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.games{margin-top:88px}
+.games .books .cover{aspect-ratio:16/9}
+
+/* About */
+.about{margin-top:128px;background:var(--ink);color:#e9e6e0}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;padding:96px 0}
+.about .caps{color:#a8a39b}
+.about h2{margin:18px 0 0;font:500 clamp(32px,3.4vw,46px)/1.6 var(--serif);color:#fff;letter-spacing:.04em}
+.about p{margin:0;font:17px/2.1 var(--serif);color:#d9d5ce}
+.about .note{margin-top:28px;padding-top:18px;border-top:1px solid #3d3b37;font:13px/1.8 var(--sans);color:#a8a39b}
+
+/* Footer */
+.site-footer{padding:44px 0 0}
+.footer-main{display:flex;justify-content:space-between;align-items:end;gap:24px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.footer-name{font:500 17px/1.5 var(--serif);color:var(--ink)}
+.footer-main small{display:block;margin-top:6px;font-size:12px;color:var(--muted)}
+.footer-main small + small{margin-top:2px}
+.footer-main small a{color:var(--text);border-bottom:1px solid var(--line);transition:border-color .2s,color .2s}
+.footer-main small a:hover{color:var(--ink);border-color:var(--accent)}
+.footer-main .latin{font-size:20px;color:var(--ink)}
+.credits{padding:88px 0 72px;text-align:center}
+.credits-head{position:relative;margin-bottom:52px}
+.credits-fin{display:block;font-size:15px;color:var(--muted);letter-spacing:.3em;text-transform:uppercase;font-style:normal}
+.credits-fin::before,.credits-fin::after{content:"";display:inline-block;width:40px;height:1px;background:var(--line-strong);vertical-align:middle;margin:0 18px}
+.credits h2{margin:18px 0 10px;font:500 clamp(30px,3.2vw,40px)/1.4 var(--serif);color:var(--ink);letter-spacing:.24em;text-indent:.24em}
+.credits-head p{margin:0;font:14px/1.8 var(--serif);color:var(--muted)}
+.credits-roll{margin:0 auto;max-width:760px;border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);padding:10px 0;position:relative}
+.credits-roll::before{content:"";position:absolute;top:10px;bottom:10px;left:50%;width:1px;background:var(--line)}
+.credit{display:grid;grid-template-columns:1fr 56px 1fr;align-items:center;padding:22px 0;position:relative}
+.credit + .credit{border-top:1px dashed var(--line)}
+.credit dt{text-align:right}
+.credit .role{display:block;font:500 16px/1.5 var(--serif);color:var(--text);letter-spacing:.16em}
+.credit .role-en{display:block;margin-top:2px;font:italic 14px/1.4 var(--latin);color:var(--muted)}
+.credit .role-note{display:block;margin-top:4px;font-size:12px;color:var(--muted)}
+.credit .mark{justify-self:center;width:9px;height:9px;border-radius:50%;background:var(--paper);border:1px solid var(--ink);position:relative;z-index:1;transition:transform .35s cubic-bezier(.3,1.6,.5,1),background .3s,border-color .3s}
+.credit dd{margin:0;text-align:left;display:flex;flex-wrap:wrap;gap:4px 14px}
+.credit .name{font:500 22px/1.5 var(--serif);color:var(--ink);letter-spacing:.06em;background:linear-gradient(var(--accent),var(--accent)) 0 100%/0 1px no-repeat;transition:background-size .4s}
+.credit .name.pending{font-size:17px;color:var(--muted);letter-spacing:.14em;background:none;border-bottom:1px dashed #cfcac2;padding-bottom:1px}
+.credit:hover .mark{transform:scale(1.6);background:var(--accent);border-color:var(--accent)}
+.credit:hover .name:not(.pending){background-size:100% 1px}
+.credits-end{margin:44px 0 0;display:flex;flex-direction:column;align-items:center;gap:10px}
+.credits-end .heart{width:18px;height:18px;margin:0}
+.credits-end:hover .heart{animation:beat .9s ease-in-out}
+.credits-end .latin{font-size:14px;color:var(--muted)}
+.credits-end small{font-size:12px;color:var(--muted);letter-spacing:.08em}
+
+/* Motion */
+.progress{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--accent);transform-origin:0 50%;transform:scaleX(var(--p,0));z-index:30;pointer-events:none}
+.site-header{position:relative}
+.heart{transform-origin:50% 60%}
+.brand:hover .heart,.footer-name:hover .heart{animation:beat .9s ease-in-out}
+@keyframes beat{0%,100%{transform:scale(1)}20%{transform:scale(1.28)}40%{transform:scale(.94)}60%{transform:scale(1.12)}}
+
+/* Hero entrance */
+.motion .hero .eyebrow{animation:fade-up .8s .05s both}
+.motion .hero .eyebrow::before{animation:grow-x .9s .2s cubic-bezier(.2,.7,.2,1) both;transform-origin:0 50%}
+.hero h1 .line{display:block}
+.motion .hero h1 .line{overflow:hidden;padding-bottom:.08em}
+.motion .hero h1 .line > span{display:inline-block;animation:line-up 1s cubic-bezier(.2,.7,.2,1) both}
+.motion .hero h1 .line:nth-child(2) > span{animation-delay:.14s}
+.motion .hero h1 .dot{display:inline-block;animation:dot-pop .6s .9s cubic-bezier(.3,1.6,.5,1) both}
+.motion .hero-intro{animation:fade-up .8s .45s both}
+.motion .hero-links{animation:fade-up .8s .6s both}
+.motion .hero-art .back{animation:card-back 1.1s .35s cubic-bezier(.2,.7,.2,1) both}
+.motion .hero-art .front{animation:card-front 1.1s .5s cubic-bezier(.2,.7,.2,1) both}
+.motion .hero-art .vert,.motion .hero-art figcaption{animation:fade-in 1s 1.1s both}
+.motion .strip{animation:fade-in 1s .9s both}
+@keyframes fade-up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes fade-in{from{opacity:0}to{opacity:1}}
+@keyframes grow-x{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes line-up{from{transform:translateY(105%)}to{transform:none}}
+@keyframes dot-pop{from{opacity:0;transform:scale(0)}to{opacity:1;transform:none}}
+@keyframes card-back{from{opacity:0;transform:rotate(0) translate(0,40px)}to{opacity:1;transform:rotate(-6deg) translate(-28px,6px)}}
+@keyframes card-front{from{opacity:0;transform:rotate(0) translateY(60px)}to{opacity:1;transform:rotate(3deg)}}
+
+/* Hero parallax: layers follow the pointer */
+.hero-art .layer{grid-area:1/1;position:relative;width:100%;display:flex;align-items:center;justify-content:center;transition:transform .5s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+.hero-art .layer.l1{transform:translate(calc(var(--mx,0)*-10px),calc(var(--my,0)*-8px))}
+.hero-art .layer.l2{transform:translate(calc(var(--mx,0)*16px),calc(var(--my,0)*12px))}
+.hero-art .front{transition:box-shadow .4s}
+.hero-art:hover .front{box-shadow:0 30px 60px -22px rgba(28,27,25,.3)}
+
+/* Scroll reveal */
+.motion .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0)*90ms)}
+.motion .reveal.in{opacity:1;transform:none}
+.motion .section-head{position:relative;border-bottom-color:transparent}
+.motion .section-head::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--line);transform:scaleX(0);transform-origin:0 50%;transition:transform 1.2s cubic-bezier(.2,.7,.2,1) .15s}
+.motion .section-head.in::after{transform:scaleX(1)}
+.motion .section-num{display:inline-block;opacity:0;transform:translateX(-18px) skewX(-8deg);transition:opacity .8s,transform 1s cubic-bezier(.2,.7,.2,1)}
+.motion .section-head.in .section-num{opacity:1;transform:none}
+.motion .tl-list li{position:relative}
+.motion .author{border-top-color:transparent;position:relative}
+.motion .author::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;background:var(--line-strong);transform:scaleX(0);transform-origin:0 50%;transition:transform 1s cubic-bezier(.2,.7,.2,1) calc(var(--i,0)*90ms + .2s)}
+.motion .author.in::before{transform:scaleX(1)}
+
+/* Placeholder shimmer */
+.ph{isolation:isolate}
+.ph > .shine{position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.75) 50%,transparent 65%);background-size:250% 100%;animation:shine 3.6s ease-in-out infinite;pointer-events:none}
+@keyframes shine{0%{background-position:130% 0}60%,100%{background-position:-30% 0}}
+
+/* Hover */
+.quote,.book .cover{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
+.quote{transform:perspective(900px) rotateX(var(--ry,0deg)) rotateY(var(--rx,0deg))}
+.quote:hover{box-shadow:0 22px 40px -26px rgba(28,27,25,.35)}
+.quote::before{transition:transform .5s cubic-bezier(.3,1.6,.5,1)}
+.quote:hover::before{transform:translateY(-6px) rotate(-6deg)}
+.book .cover{position:relative}
+.book:hover .cover{transform:translateY(-6px);box-shadow:0 20px 32px -20px rgba(28,27,25,.45)}
+.book h5{background:linear-gradient(var(--accent),var(--accent)) 0 100%/0 1px no-repeat;transition:background-size .4s;display:inline}
+.book:hover h5{background-size:100% 1px}
+.book h5 + p{margin-top:6px}
+.tl-list li{transition:padding .35s cubic-bezier(.2,.7,.2,1),background .35s}
+.tl-list li:hover{padding-left:12px;background:linear-gradient(90deg,var(--paper-2),transparent 70%)}
+.tl-list a span{display:inline-block;transition:transform .3s}
+.tl-list li:hover a span{transform:translate(3px,-3px)}
+.filter{transition:color .2s,border-color .25s,background .25s}
+.author[hidden]{display:none!important}
+.work.pop{animation:fade-up .5s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0)*50ms)}
+.about h2 .line{display:block}
+.motion .about .reveal{transform:translateY(40px)}
+.nav a[aria-current="true"]{color:var(--ink)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1!important;transform:none!important}
+  .ph > .shine{display:none}
+  html{scroll-behavior:auto}
+}
+
+/* Responsive */
+@media (max-width:1024px){
+  :root{--gutter:36px}
+  .hero{grid-template-columns:1fr;gap:40px;padding:64px 0 56px}
+  .author{grid-template-columns:1fr;gap:28px}
+  .author-profile{position:static;display:grid;grid-template-columns:auto 1fr;column-gap:22px;align-items:center}
+  .author-profile .avatar{grid-row:span 2}
+  .author-name{margin-top:0}
+  .author-count,.author-license{grid-column:1/-1}
+  .quotes{grid-template-columns:1fr 1fr}
+  .quotes .quote:first-child{grid-column:1/-1}
+  .activity{grid-template-columns:1fr}
+  .books{grid-template-columns:repeat(3,1fr)}
+  .about-inner{grid-template-columns:1fr;gap:32px}
+}
+@media (max-width:720px){
+  :root{--gutter:16px}
+  .site-header{flex-wrap:wrap}
+  .brand img{width:38px}
+  .brand-name{font-size:21px}
+  .menu-toggle{display:block}
+  .nav{display:none;width:100%;flex-direction:column;gap:0;border-top:1px solid var(--line);margin-top:6px}
+  .nav.open{display:flex}
+  .nav a{padding:12px 0;border-bottom:1px solid var(--line)}
+  .nav a::after{display:none}
+  .hero{padding:44px 0 40px}
+  .hero-intro{font-size:16px}
+  .hero-art .back,.hero-art .front{width:min(72%,300px)}
+  .strip{flex-direction:column;gap:4px}
+  .section{padding-top:80px}
+  .section-head{grid-template-columns:auto 1fr;gap:16px}
+  .section-head .latin{display:none}
+  .section-num{font-size:48px}
+  .section-head h2{font-size:26px}
+  .quotes{grid-template-columns:1fr}
+  .gallery{columns:2;column-gap:10px}
+  .work{margin-bottom:10px}
+  .avatar{width:72px;height:72px}
+  .author-name{font-size:24px}
+  .thumbs{grid-template-columns:repeat(3,1fr)}
+  .lb-stage{padding:0 8px}
+  .lb-prev,.lb-next{top:auto;bottom:-58px;transform:none}
+  .lb-cap{padding-left:64px;padding-right:64px}
+  .license{grid-template-columns:1fr;gap:10px}
+  .license a{justify-self:start}
+  .tl-list li{grid-template-columns:2rem 1fr;row-gap:8px}
+  .tl-list li a{grid-column:2}
+  .tl-list .where{display:block;margin:0}
+  .books{grid-template-columns:1fr 1fr;gap:24px 14px}
+  .book h5{font-size:15px}
+  .book p{font-size:13px}
+  .about{margin-top:96px}
+  .about-inner{padding:64px 0}
+  .footer-main{flex-direction:column;align-items:start}
+  .credits{padding:64px 0 56px}
+  .credits-fin::before,.credits-fin::after{width:22px;margin:0 10px}
+  .credits h2{letter-spacing:.16em;text-indent:.16em}
+  .credits-roll::before{display:none}
+  .credit{grid-template-columns:1fr;gap:10px;padding:20px 0}
+  .credit dt{text-align:center}
+  .credit .mark{order:0}
+  .credit dd{justify-content:center}
+}
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">跳到正文</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="heart" viewBox="0 0 24 22"><path fill="currentColor" d="M12 21.3 10.5 20C5.3 15.3 2 12.3 2 8.6 2 5.5 4.4 3 7.5 3c1.7 0 3.4.8 4.5 2.1C13.1 3.8 14.8 3 16.5 3 19.6 3 22 5.5 22 8.6c0 3.7-3.3 6.7-8.5 11.4Z"/></symbol>
+</svg>
+
+<div class="wrap">
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="电百 首页">
+      <img src="../Pictures/logo/yuristc.png" alt="" width="46" height="49">
+      <span>
+        <span class="brand-name">电<svg class="heart" aria-hidden="true"><use href="#heart"/></svg>百</span>
+        <span class="brand-sub">电子科技大学百合 ACG 交流群展示页面</span>
+      </span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">目录</button>
+    <nav class="nav" id="site-nav" aria-label="页面板块">
+      <a href="#works">作品</a>
+      <a href="#translations">汉化</a>
+      <a href="#quotes">金句</a>
+      <a href="#activities">活动</a>
+      <a href="#recommend">推荐</a>
+      <a href="#about">关于</a>
+    </nav>
+  </header>
+</div>
+
+<main id="main">
+  <div class="wrap" id="top">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">STORIES OF HER, AND OF US</p>
+        <h1><span class="line"><span>让喜欢，</span></span><span class="line"><span>被看见<span class="dot">。</span></span></span></h1>
+        <p class="hero-intro">关于她与她的故事，也关于喜欢这些故事的我们留下的作品。</p>
+        <div class="hero-links">
+          <a class="btn solid" href="#works">看看群友作品 <span>↗</span></a>
+          <a class="btn ghost" href="#recommend">找点百合看 <span>→</span></a>
+        </div>
+      </div>
+      <figure class="hero-art">
+        <div class="layer l1"><div class="back"></div></div>
+        <div class="layer l2"><figure class="front"><img src="../Pictures/works/Aurora/OC3.jpg" alt="Aurora 的原创角色插画：两个女孩比心"><span><b>Aurora</b><em>原创角色</em></span></figure></div>
+        <span class="vert">画下的 · 写下的 · 译下的</span>
+        <figcaption>这一页，由群友的画开始。</figcaption>
+      </figure>
+    </section>
+    <div class="strip">
+      <p>电子科技大学百合 ACG 交流群 · 作品展示页</p>
+      <p class="caps">Illustration · Translation · Reading list</p>
+    </div>
+
+    <!-- I · 群友作品 -->
+    <section class="section" id="works" aria-labelledby="works-title">
+      <div class="section-head">
+        <span class="section-num">I</span>
+        <div><h2 id="works-title">群友作品</h2><p>画下的、写下的，都是想和你分享的。</p></div>
+        <span class="latin">Works</span>
+      </div>
+      <div class="filters">
+        <div class="filter-group" role="group" aria-label="按类型筛选">
+          <button class="filter" type="button" data-filter="all" aria-pressed="true">全部</button>
+          <button class="filter" type="button" data-filter="illust" aria-pressed="false">插画</button>
+          <button class="filter" type="button" data-filter="oc" aria-pressed="false">原创角色</button>
+        </div>
+        <span class="filter-status" aria-live="polite">共 9 件作品</span>
+      </div>
+      <aside class="license" aria-label="群友原创图片许可">
+        <span class="license-code">CC BY-NC-ND 4.0</span>
+        <ul class="license-terms">
+          <li><b>BY</b>转载请署名</li>
+          <li><b>NC</b>不可商用</li>
+          <li><b>ND</b>不可修改</li>
+          <li class="no-ai"><b>AI</b>禁止用于 AI 训练</li>
+        </ul>
+        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans" target="_blank" rel="noopener license">许可详情 <span>↗</span></a>
+      </aside>
+      <div class="authors">
+        <article class="author">
+          <div class="author-profile">
+            <img class="avatar" src="../Pictures/head/Portrait(Aurora).jpg" alt="Aurora 的头像" width="96" height="96">
+            <span class="author-name">Aurora</span>
+            <span class="author-meta">原创角色</span>
+            <dl class="author-count">
+              <div><dt>原创角色</dt><dd>09</dd></div>
+            </dl>
+            <p class="author-license"><span>© Aurora</span><strong>CC BY-NC-ND 4.0 · 禁止 AI 训练</strong></p>
+          </div>
+          <div class="gallery">
+            <figure class="work" data-type="oc">
+              <button class="work-open" type="button" data-gallery="works" data-caption="Aurora · 原创角色 · 生日贺图" data-full="../Pictures/works/Aurora/OC79_Birthday.jpg" aria-label="查看大图：Aurora · 原创角色 · 生日贺图"><img src="../Pictures/works/Aurora/OC79_Birthday.jpg" alt="Aurora · 原创角色 · 生日贺图" width="1080" height="1440" loading="lazy"></button>
+              <figcaption><b>原创角色</b><span>生日贺图</span></figcaption>
+            </figure>
+            <figure class="work" data-type="oc">
+              <button class="work-open" type="button" data-gallery="works" data-caption="Aurora · 原创角色" data-full="../Pictures/works/Aurora/OC79_1.jpg" aria-label="查看大图：Aurora · 原创角色"><img src="../Pictures/works/Aurora/OC79_1.jpg" alt="Aurora · 原创角色" width="1536" height="2048" loading="lazy"></button>
+              <figcaption><b>原创角色</b></figcaption>
+            </figure>
+            <figure class="work" data-type="oc">
+              <button class="work-open" type="button" data-gallery="works" data-caption="Aurora · 原创角色" data-full="../Pictures/works/Aurora/OC1_2.jpg" aria-label="查看大图：Aurora · 原创角色"><img src="../Pictures/works/Aurora/OC1_2.jpg" alt="Aurora · 原创角色" width="1440" height="1920" loading="lazy"></button>
+              <figcaption><b>原创角色</b></figcaption>
+            </figure>
+            <figure class="work" data-type="oc">
+              <button class="work-open" type="button" data-gallery="works" data-caption="Aurora · 原创角色 · 新年贺图" data-full="../Pictures/works/Aurora/OC79_NewYear.jpg" aria-label="查看大图：Aurora · 原创角色 · 新年贺图"><img src="../Pictures/works/Aurora/OC79_NewYear.jpg" alt="Aurora · 原创角色 · 新年贺图" width="1536" height="2048" loading="lazy"></button>
+              <figcaption><b>原创角色</b><span>新年贺图</span></figcaption>
+            </figure>
+            <figure class="work" data-type="oc">
+              <button class="work-open" type="button" data-gallery="works" data-caption="Aurora · 原创角色" data-full="../Pictures/works/Aurora/OC79.jpg" aria-label="查看大图：Aurora · 原创角色"><img src="../Pictures/works/Aurora/OC79.jpg" alt="Aurora · 原创角色" width="1600" height="1600" loading="lazy"></button>
+              <figcaption><b>原创角色</b></figcaption>
+            </figure>
+            <figure class="work" data-type="oc">
+              <button class="work-open" type="button" data-gallery="works" data-caption="Aurora · 原创角色" data-full="../Pictures/works/Aurora/OC.jpg" aria-label="查看大图：Aurora · 原创角色"><img src="../Pictures/works/Aurora/OC.jpg" alt="Aurora · 原创角色" width="1440" height="1080" loading="lazy"></button>
+              <figcaption><b>原创角色</b></figcaption>
+            </figure>
+            <figure class="work" data-type="oc">
+              <button class="work-open" type="button" data-gallery="works" data-caption="Aurora · 原创角色" data-full="../Pictures/works/Aurora/OC4.jpg" aria-label="查看大图：Aurora · 原创角色"><img src="../Pictures/works/Aurora/OC4.jpg" alt="Aurora · 原创角色" width="1840" height="2454" loading="lazy"></button>
+              <figcaption><b>原创角色</b></figcaption>
+            </figure>
+            <figure class="work" data-type="oc">
+              <button class="work-open" type="button" data-gallery="works" data-caption="Aurora · 原创角色" data-full="../Pictures/works/Aurora/OC1_1.jpg" aria-label="查看大图：Aurora · 原创角色"><img src="../Pictures/works/Aurora/OC1_1.jpg" alt="Aurora · 原创角色" width="1364" height="1024" loading="lazy"></button>
+              <figcaption><b>原创角色</b></figcaption>
+            </figure>
+            <figure class="work" data-type="oc">
+              <button class="work-open" type="button" data-gallery="works" data-caption="Aurora · 原创角色" data-full="../Pictures/works/Aurora/OC3.jpg" aria-label="查看大图：Aurora · 原创角色"><img src="../Pictures/works/Aurora/OC3.jpg" alt="Aurora · 原创角色" width="1080" height="1440" loading="lazy"></button>
+              <figcaption><b>原创角色</b></figcaption>
+            </figure>
+          </div>
+        </article>
+      </div>
+      <p class="filter-empty demo" hidden>这个分类下暂时还没有作品。</p>
+    </section>
+
+    <!-- II · 群友汉化 -->
+    <section class="section" id="translations" aria-labelledby="tl-title">
+      <div class="section-head">
+        <span class="section-num">II</span>
+        <div><h2 id="tl-title">群友汉化</h2><p>把喜欢的故事，带给更多人。</p></div>
+        <span class="latin">Translations</span>
+      </div>
+      <ul class="tl-list">
+        <li><span class="n">01</span><div><span class="who">译者名</span><span class="where">发布位置 · 示例</span></div><a href="#translations">前往 <span>↗</span></a></li>
+        <li><span class="n">02</span><div><span class="who">译者名</span><span class="where">发布位置 · 示例</span></div><a href="#translations">前往 <span>↗</span></a></li>
+      </ul>
+    </section>
+
+    <!-- III · 群友金句 -->
+    <section class="section" id="quotes" aria-labelledby="quotes-title">
+      <div class="section-head">
+        <span class="section-num">III</span>
+        <div><h2 id="quotes-title">群友金句</h2><p>群里说过的话，有些值得被记住。</p></div>
+        <span class="latin">Overheard</span>
+      </div>
+      <div class="quotes">
+        <figure class="quote"><blockquote>这里放一句金句。可以长一点，占两三行，是这一组里最显眼的那一条。</blockquote><figcaption>群昵称 · 示例</figcaption></figure>
+        <figure class="quote"><blockquote>这里放一句金句。</blockquote><figcaption>群昵称 · 示例</figcaption></figure>
+        <figure class="quote"><blockquote>这里也放一句，短短的就好。</blockquote><figcaption>群昵称 · 示例</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- IV · 群友活动 -->
+    <section class="section" id="activities" aria-labelledby="act-title">
+      <div class="section-head">
+        <span class="section-num">IV</span>
+        <div><h2 id="act-title">群友活动</h2><p>一起玩过的，也值得留下来。</p></div>
+        <span class="latin">Gatherings</span>
+      </div>
+      <article class="activity">
+        <div>
+          <button class="shot main" type="button" data-gallery="activity" data-caption="你画我猜 · 百合题库 · 1 / 6" data-full="../Pictures/activities/draw&amp;guess/draw&amp;guess3.png" aria-label="查看大图：截图 1 / 6"><img src="../Pictures/activities/draw&amp;guess/draw&amp;guess3.png" alt="你画我猜截图 1 / 6" width="2560" height="1440" loading="lazy"><span class="shot-count">6 张截图</span></button>
+          <div class="thumbs"><button class="shot" type="button" data-gallery="activity" data-caption="你画我猜 · 百合题库 · 2 / 6" data-full="../Pictures/activities/draw&amp;guess/draw&amp;guess1.png" aria-label="查看大图：截图 2 / 6"><img src="../Pictures/activities/draw&amp;guess/draw&amp;guess1.png" alt="你画我猜截图 2 / 6" width="2560" height="1440" loading="lazy"></button><button class="shot" type="button" data-gallery="activity" data-caption="你画我猜 · 百合题库 · 3 / 6" data-full="../Pictures/activities/draw&amp;guess/draw&amp;guess2.png" aria-label="查看大图：截图 3 / 6"><img src="../Pictures/activities/draw&amp;guess/draw&amp;guess2.png" alt="你画我猜截图 3 / 6" width="2560" height="1440" loading="lazy"></button><button class="shot" type="button" data-gallery="activity" data-caption="你画我猜 · 百合题库 · 4 / 6" data-full="../Pictures/activities/draw&amp;guess/draw&amp;guess4.png" aria-label="查看大图：截图 4 / 6"><img src="../Pictures/activities/draw&amp;guess/draw&amp;guess4.png" alt="你画我猜截图 4 / 6" width="2560" height="1440" loading="lazy"></button><button class="shot" type="button" data-gallery="activity" data-caption="你画我猜 · 百合题库 · 5 / 6" data-full="../Pictures/activities/draw&amp;guess/draw&amp;guess5.png" aria-label="查看大图：截图 5 / 6"><img src="../Pictures/activities/draw&amp;guess/draw&amp;guess5.png" alt="你画我猜截图 5 / 6" width="2560" height="1440" loading="lazy"></button><button class="shot" type="button" data-gallery="activity" data-caption="你画我猜 · 百合题库 · 6 / 6" data-full="../Pictures/activities/draw&amp;guess/draw&amp;guess6.png" aria-label="查看大图：截图 6 / 6"><img src="../Pictures/activities/draw&amp;guess/draw&amp;guess6.png" alt="你画我猜截图 6 / 6" width="2560" height="1440" loading="lazy"></button></div>
+        </div>
+        <div class="activity-body">
+          <span class="when">Date · 待补充</span>
+          <h3>你画我猜 · 百合题库</h3>
+          <p>题目全是百合作品和相关的词：有人画《安达与岛村》，有人画「温泉泡百合」，也有人把「恋人不行」画成了一排小人。</p>
+          <dl>
+            <dt>形式</dt><dd>线上 · 语音 + 你画我猜</dd>
+            <dt>出过的题</dt><dd>需要吃掉我的非人少女、摇曳百合、安达与岛村、学园偶像大师……</dd>
+            <dt>截图</dt><dd>共 6 张 · 点开可看大图</dd>
+          </dl>
+        </div>
+      </article>
+    </section>
+
+    <!-- V · 百合推荐 -->
+    <section class="section" id="recommend" aria-labelledby="rec-title">
+      <div class="section-head">
+        <span class="section-num">V</span>
+        <div><h2 id="rec-title">百合推荐</h2><p>不知道看什么？从这里翻开下一页。</p></div>
+        <span class="latin">Reading list</span>
+      </div>
+
+      <div class="sub-head"><h3>漫画 · 小说</h3><span class="latin">Manga &amp; Fiction</span></div>
+
+      <div class="shelf">
+        <div class="shelf-title"><h4>入坑必看</h4><span>门槛低、口碑稳</span></div>
+        <div class="books">
+          <article class="book">
+            <div class="cover"><img src="../Pictures/manga_cover/我在意的对象并不是男人.jpg" alt="《我在意的对象并不是男人》封面" loading="lazy"></div>
+            <span class="book-type">漫画</span><h5>我在意的对象并不是男人</h5>
+            <p>唱片店里神秘的“男店员”，其实是班上内向的女同学。</p>
+          </article>
+          <article class="book">
+            <div class="cover"><img src="../Pictures/manga_cover/恋语轻唱.jpg" alt="《恋语轻唱》封面" loading="lazy"></div>
+            <span class="book-type">漫画 / 动画</span><h5>恋语轻唱</h5>
+            <p>一句“喜欢”被误会成告白，两人由此认真面对彼此的心意。</p>
+          </article>
+          <article class="book">
+            <div class="cover"><img src="../Pictures/manga_cover/志乃与恋.jpg" alt="《志乃与恋》封面" loading="lazy"></div>
+            <span class="book-type">漫画</span><h5>志乃与恋</h5>
+            <p>开局即交往，全篇是两人的甜蜜日常。</p>
+          </article>
+          <article class="book">
+            <div class="cover"><img src="../Pictures/manga_cover/安达与岛村.jpg" alt="《安达与岛村》封面" loading="lazy"></div>
+            <span class="book-type">轻小说 / 漫画 / 动画</span><h5>安达与岛村</h5>
+            <p>体育馆二楼相识的两人，心理描写细腻的经典长篇。</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="shelf">
+        <div class="shelf-title"><h4>近期热门</h4><span>正在被讨论</span></div>
+        <div class="books">
+          <article class="book">
+            <div class="cover"><img src="../Pictures/manga_cover/我们不可能成为恋人！绝对不行。.jpg" alt="《我们不可能成为恋人！绝对不行。》封面" loading="lazy"></div>
+            <span class="book-type">轻小说 / 漫画 / 动画</span><h5>我们不可能成为恋人！绝对不行。</h5>
+            <p>社恐高中生被班上的超模同学告白，在“挚友”和“恋人”之间拉扯。</p>
+          </article>
+          <article class="book">
+            <div class="cover"><img src="../Pictures/manga_cover/大小姐才不玩格斗游戏.jpg" alt="《大小姐才不玩格斗游戏》封面" loading="lazy"></div>
+            <span class="book-type">漫画 / 动画</span><h5>大小姐才不玩格斗游戏</h5>
+            <p>全校最完美的大小姐，其实是格斗游戏狂热玩家。</p>
+          </article>
+          <article class="book">
+            <div class="cover"><img src="../Pictures/manga_cover/上伊那牡丹，醉姿如百合.jpg" alt="《上伊那牡丹，醉姿如百合》封面" loading="lazy"></div>
+            <span class="book-type">漫画 / 动画</span><h5>上伊那牡丹，醉姿如百合</h5>
+            <p>大学宿舍里第一次接触到酒，也遇见了特别的人。</p>
+          </article>
+          <article class="book">
+            <div class="cover"><img src="../Pictures/manga_cover/与你相恋到生命尽头.jpg" alt="《与你相恋到生命尽头》封面" loading="lazy"></div>
+            <span class="book-type">漫画 / 动画</span><h5>与你相恋到生命尽头</h5>
+            <p>把孤儿训练成魔法兵器的学校里，新室友拥有“不会死”的能力。</p>
+            <div class="tags"><span class="tag warn">战争</span><span class="tag warn">致郁</span></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="shelf">
+        <div class="shelf-title"><h4>新连载速递</h4><span>每季轮换</span></div>
+        <div class="books">
+          <article class="book">
+            <div class="cover ph"><strong>封面预留</strong>待补充 · 3:4</div>
+            <span class="book-type">漫画</span><h5>だって恋は月夜に灯るから</h5>
+            <p>宿舍深夜，金发碧眼的后辈和学姐共享只属于彼此的秘密时间。</p>
+          </article>
+          <article class="book">
+            <div class="cover"><img src="../Pictures/manga_cover/我的推是坏人大小姐.jpg" alt="《我的推是坏人大小姐》封面" loading="lazy"></div>
+            <span class="book-type">轻小说 · 续篇</span><h5>我的推是坏人大小姐。续篇</h5>
+            <p>原作主角的女儿成为主角，展开她自己的冒险与恋爱。</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="shelf">
+        <div class="shelf-title"><h4>群友推荐</h4><span>群里安利过的</span></div>
+        <div class="books">
+          <article class="book">
+            <div class="cover"><img src="../Pictures/manga_cover/少女星间漂流记.jpg" alt="《少女星间漂流记》封面" loading="lazy"></div>
+            <span class="book-type">轻小说 / 漫画</span><h5>少女星间漂流记</h5>
+            <p>乘着马车形状的宇宙船，在奇妙的星球之间寻找新的安居之地。</p>
+          </article>
+          <article class="book">
+            <div class="cover"><img src="../Pictures/manga_cover/与你编缀的泡沫.jpg" alt="《与你编缀的泡沫》封面" loading="lazy"></div>
+            <span class="book-type">漫画</span><h5>与你编缀的泡沫</h5>
+            <p>“来谈一场夏天的恋爱吧”，好让你写出恋爱小说。</p>
+            <div class="tags"><span class="tag warn">疾病</span><span class="tag warn">致郁</span></div>
+          </article>
+          <article class="book">
+            <div class="cover"><img src="../Pictures/manga_cover/青梅竹马在裙下喵喵叫.jpg" alt="《青梅竹马在裙下喵喵叫》封面" loading="lazy"></div>
+            <span class="book-type">轻小说 / 漫画</span><h5>青梅竹马在裙下喵喵叫</h5>
+            <p>疏远的青梅竹马突然长出猫耳，开始像猫一样黏着我。</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="games">
+        <div class="sub-head"><h3>游戏</h3><span class="latin">Games</span></div>
+        <div class="shelf">
+          <div class="shelf-title"><h4>视觉小说</h4><span>健全向 · 无雷</span></div>
+          <div class="books">
+            <article class="book">
+              <div class="cover"><img src="../Pictures/game_cover/无名者.jpg" alt="《无名者》封面" loading="lazy"></div>
+              <span class="book-type">国产独立 · PC</span><h5>无名者</h5>
+              <p>“请告诉我，爱有意义吗？”少女们在失落之城中寻找神明的痕迹。</p>
+            </article>
+            <article class="book">
+              <div class="cover"><img src="../Pictures/game_cover/SeaBed.jpg" alt="《SeaBed》封面" loading="lazy"></div>
+              <span class="book-type">PC / Switch</span><h5>SeaBed</h5>
+              <p>关于失去与记忆的百合悬疑，适合静下心来读。</p>
+            </article>
+            <article class="book">
+              <div class="cover"><img src="../Pictures/game_cover/Flowers春篇.jpg" alt="《Flowers 春篇》封面" loading="lazy"></div>
+              <span class="book-type">四部曲 · PC 等</span><h5>Flowers 系列</h5>
+              <p>天主教女子学院里的谜团与“Amitié”，随春夏秋冬推进。</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VI · 关于我们 -->
+  <section class="about" id="about" aria-labelledby="about-title">
+    <div class="wrap about-inner">
+      <div>
+        <span class="caps">VI. About / 关于我们</span>
+        <h2 id="about-title">因为同一种喜欢，<br>才有了这些作品。</h2>
+      </div>
+      <div>
+        <p>这里是电子科技大学百合 ACG 交流群的作品展示页。从一部动画、一页漫画，到一段写下的故事，群友们把喜欢画成了画、写成了字、译成了中文，也把自己喜欢的作品推荐给你。</p>
+        <p class="note">本站只做展示。</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap site-footer">
+  <div class="footer-main">
+    <div>
+      <span class="footer-name">电<svg class="heart" aria-hidden="true"><use href="#heart"/></svg>百 · 电子科技大学百合 ACG 交流群</span>
+      <small>群友原创图片版权归各作者所有，采用 CC BY-NC-ND 4.0，禁止用于 AI 训练；推荐作品封面版权归原出版方，仅用于介绍。</small>
+      <small>网页源码以 <a href="https://github.com/HZ-TYZQ/uestcyuri-web/blob/main/LICENSE" target="_blank" rel="noopener license">MIT 协议</a>开源 · <a href="https://github.com/HZ-TYZQ/uestcyuri-web" target="_blank" rel="noopener">GitHub</a></small>
+    </div>
+    <span class="latin">Until the next page.</span>
+  </div>
+  <section class="credits" aria-labelledby="credits-title">
+    <header class="credits-head">
+      <span class="credits-fin latin">Colophon</span>
+      <h2 id="credits-title">网页贡献者</h2>
+      <p>这一页，也是大家一起做出来的。</p>
+    </header>
+    <dl class="credits-roll">
+      <div class="credit">
+        <dt><span class="role">开发与设计</span><span class="role-en">Development &amp; Design</span></dt>
+        <span class="mark" aria-hidden="true"></span>
+        <dd><span class="name pending">待补充</span></dd>
+      </div>
+      <div class="credit">
+        <dt><span class="role">内容整理</span><span class="role-en">Curation</span><span class="role-note">推荐作品的挑选与核实</span></dt>
+        <span class="mark" aria-hidden="true"></span>
+        <dd><span class="name pending">待补充</span></dd>
+      </div>
+      <div class="credit">
+        <dt><span class="role">素材提供</span><span class="role-en">Materials</span><span class="role-note">作品、头像、Logo</span></dt>
+        <span class="mark" aria-hidden="true"></span>
+        <dd><span class="name pending">待补充</span></dd>
+      </div>
+    </dl>
+    <p class="credits-end">
+      <svg class="heart" aria-hidden="true"><use href="#heart"/></svg>
+      <span class="latin">fin.</span>
+      <small>名单按群昵称记录</small>
+    </p>
+  </section>
+</footer>
+
+<dialog class="lightbox" aria-label="查看大图">
+  <div class="lb-bar"><span class="latin lb-count">1 / 1</span><button class="lb-btn lb-close" type="button" aria-label="关闭">✕</button></div>
+  <div class="lb-stage">
+    <button class="lb-btn lb-prev" type="button" aria-label="上一张">←</button>
+    <img alt="">
+    <button class="lb-btn lb-next" type="button" aria-label="下一张">→</button>
+  </div>
+  <p class="lb-cap"><span class="lb-title"></span><small class="lb-note"></small></p>
+</dialog>
+
+<script>
+(() => {
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.getElementById('site-nav');
+  const setOpen = (open) => {
+    nav.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? '关闭' : '目录';
+  };
+  toggle.addEventListener('click', () => setOpen(!nav.classList.contains('open')));
+  nav.addEventListener('click', (e) => { if (e.target.closest('a')) setOpen(false); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('open')) { setOpen(false); toggle.focus(); }
+  });
+
+  const filters = document.querySelectorAll('.filter');
+  const works = document.querySelectorAll('.work');
+  // 只显示有作品的分类；少于两类时筛选没有意义，整组隐藏
+  const cats = new Set([...works].map((w) => w.dataset.type));
+  filters.forEach((b) => { if (b.dataset.filter !== 'all' && !cats.has(b.dataset.filter)) b.hidden = true; });
+  if (cats.size < 2) document.querySelector('.filter-group').hidden = true;
+  const status = document.querySelector('.filter-status');
+  const empty = document.querySelector('.filter-empty');
+  filters.forEach((btn) => btn.addEventListener('click', () => {
+    const f = btn.dataset.filter;
+    filters.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+    let shown = 0;
+    works.forEach((w) => {
+      const ok = f === 'all' || w.dataset.type === f;
+      w.hidden = !ok;
+      w.classList.remove('pop');
+      if (ok) { w.style.setProperty('--i', shown++); void w.offsetWidth; w.classList.add('pop'); }
+    });
+    document.querySelectorAll('.author').forEach((a) => { a.hidden = !a.querySelector('.work:not([hidden])'); });
+    empty.hidden = shown > 0;
+    status.textContent = `共 ${shown} 件作品`;
+  }));
+
+  // 大图浏览
+  const lb = document.querySelector('.lightbox');
+  const lbImg = lb.querySelector('img');
+  let group = [], idx = 0;
+  const show = (i) => {
+    idx = (i + group.length) % group.length;
+    const b = group[idx];
+    lbImg.src = b.dataset.full;
+    lbImg.alt = b.querySelector('img').alt;
+    lb.querySelector('.lb-count').textContent = `${idx + 1} / ${group.length}`;
+    const [title, ...rest] = b.dataset.caption.split(' · ');
+    lb.querySelector('.lb-title').textContent = title;
+    lb.querySelector('.lb-note').textContent = rest.join(' · ');
+    lbImg.style.animation = 'none'; void lbImg.offsetWidth; lbImg.style.animation = '';
+  };
+  document.querySelectorAll('[data-gallery]').forEach((b) => b.addEventListener('click', () => {
+    group = [...document.querySelectorAll(`[data-gallery="${b.dataset.gallery}"]`)].filter((x) => !x.closest('[hidden]'));
+    show(group.indexOf(b));
+    lb.showModal();
+  }));
+  lb.querySelector('.lb-prev').addEventListener('click', () => show(idx - 1));
+  lb.querySelector('.lb-next').addEventListener('click', () => show(idx + 1));
+  lb.querySelector('.lb-close').addEventListener('click', () => lb.close());
+  lb.addEventListener('click', (e) => { if (e.target === lb || e.target.classList.contains('lb-stage')) lb.close(); });
+  lb.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') show(idx - 1);
+    if (e.key === 'ArrowRight') show(idx + 1);
+  });
+  // 原创图片不提供右键另存与拖拽（只是提醒，不是保护）
+  document.querySelectorAll('.work img, .hero-art img, .lightbox img').forEach((img) => {
+    img.draggable = false;
+    img.addEventListener('contextmenu', (e) => e.preventDefault());
+  });
+
+  // 占位块的流光
+  document.querySelectorAll('.ph').forEach((el) => {
+    const s = document.createElement('span');
+    s.className = 'shine';
+    s.style.animationDelay = `${(Math.random() * 3).toFixed(2)}s`;
+    el.prepend(s);
+  });
+
+  // ?still 用于截图：图片立即加载
+  if (/[?&]still\b/.test(location.search)) document.querySelectorAll('img[loading="lazy"]').forEach((img) => { img.loading = 'eager'; });
+
+  const motion = document.documentElement.classList.contains('motion');
+
+  // 滚动进度条 + 当前板块高亮
+  const bar = document.querySelector('.progress');
+  const links = [...nav.querySelectorAll('a')];
+  const sections = links.map((a) => document.querySelector(a.getAttribute('href')));
+  let ticking = false;
+  const onScroll = () => {
+    ticking = false;
+    const max = document.documentElement.scrollHeight - innerHeight;
+    bar.style.setProperty('--p', max > 0 ? (scrollY / max).toFixed(4) : 0);
+    let current = -1;
+    sections.forEach((sec, i) => { if (sec.getBoundingClientRect().top < innerHeight * 0.35) current = i; });
+    links.forEach((a, i) => (i === current ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current')));
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+
+  if (!motion) return;
+
+  // 滚动出现：同组元素依次错开
+  const groups = [
+    '.section-head', '.sub-head', '.shelf-title', '.filters', '.license',
+    '.authors > .author', '.gallery > .work', '.tl-list > li', '.quotes > .quote',
+    '.activity > *', '.books > .book', '.about-inner > *', '.footer-main', '.credits-head', '.credits-roll > .credit', '.credits-end',
+  ];
+  groups.forEach((sel) => {
+    document.querySelectorAll(sel).forEach((el) => {
+      el.classList.add('reveal');
+      const sibs = [...el.parentElement.children].filter((c) => c.matches(sel));
+      el.style.setProperty('--i', sibs.indexOf(el) % 4);
+    });
+  });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      el.classList.add('in');
+      io.unobserve(el);
+      // 出现后撤掉 reveal，让元素回到自己的 hover 过渡
+      if (!el.matches('.section-head, .authors > .author, .gallery > .work')) {
+        el.addEventListener('transitionend', function done(ev) {
+          if (ev.target !== el || ev.propertyName !== 'transform') return;
+          el.classList.remove('reveal', 'in');
+          el.removeEventListener('transitionend', done);
+        });
+      }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // 首屏卡片跟随指针
+  const hero = document.querySelector('.hero');
+  const art = document.querySelector('.hero-art');
+  if (matchMedia('(pointer: fine)').matches) {
+    hero.addEventListener('pointermove', (e) => {
+      const r = art.getBoundingClientRect();
+      art.style.setProperty('--mx', ((e.clientX - (r.left + r.width / 2)) / r.width).toFixed(3));
+      art.style.setProperty('--my', ((e.clientY - (r.top + r.height / 2)) / r.height).toFixed(3));
+    });
+    hero.addEventListener('pointerleave', () => { art.style.setProperty('--mx', 0); art.style.setProperty('--my', 0); });
+
+    // 金句卡片轻微倾斜
+    document.querySelectorAll('.quote').forEach((q) => {
+      q.addEventListener('pointermove', (e) => {
+        const r = q.getBoundingClientRect();
+        q.style.setProperty('--rx', `${(((e.clientX - r.left) / r.width) - 0.5) * 6}deg`);
+        q.style.setProperty('--ry', `${(0.5 - ((e.clientY - r.top) / r.height)) * 6}deg`);
+      });
+      q.addEventListener('pointerleave', () => { q.style.setProperty('--rx', '0deg'); q.style.setProperty('--ry', '0deg'); });
+    });
+  }
+})();
+</script>
+</body>
+</html>

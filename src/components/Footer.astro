@@ -1,0 +1,70 @@
+---
+import { Image } from 'astro:assets';
+import BrandName from './BrandName.astro';
+import Heart from './Heart.astro';
+import { siteData, contributorsData } from '../lib/content';
+import { pic } from '../lib/images';
+const { roles, materials } = contributorsData;
+---
+<footer class="wrap site-footer">
+	<div class="footer-main">
+		<div>
+			<span class="footer-name"><BrandName text={siteData.name} /> · {siteData.groupName}</span>
+			<small>{siteData.footer.copyright}</small>
+			<small>
+				网页源码以 <a href={`${siteData.repo}/blob/main/LICENSE`} target="_blank" rel="noopener license">MIT 协议</a>开源 ·
+				<a href={siteData.repo} target="_blank" rel="noopener">GitHub</a>
+			</small>
+		</div>
+		<span class="latin">{siteData.footer.signoff}</span>
+	</div>
+
+	<section class="credits" aria-labelledby="credits-title">
+		<header class="credits-head">
+			<span class="credits-fin latin">Colophon</span>
+			<h2 id="credits-title">网页贡献者</h2>
+			<p>这一页，也是大家一起做出来的。</p>
+		</header>
+		<dl class="credits-roll">
+			{roles.map((r) => (
+				<div class="credit">
+					<dt>
+						<span class="role">{r.role}</span>
+						<span class="role-en">{r.en}</span>
+						{r.note && <span class="role-note">{r.note}</span>}
+					</dt>
+					<span class="mark" aria-hidden="true"></span>
+					<dd>
+						{r.names.map((n, i) => {
+							const name = <span class="name">{n.org && <span class="org">{n.org}</span>}{n.name}</span>;
+							return i === 0 ? name : <span class="pair"><span class="amp">&amp;</span>{name}</span>;
+						})}
+					</dd>
+				</div>
+			))}
+			<div class="credit">
+				<dt>
+					<span class="role">{materials.role}</span>
+					<span class="role-en">{materials.en}</span>
+					{materials.note && <span class="role-note">{materials.note}</span>}
+				</dt>
+				<span class="mark" aria-hidden="true"></span>
+				<dd class="reel-wrap">
+					<div class="reel" aria-label={materials.role}>
+						<ul class="reel-track">
+							{materials.people.map((p) => (
+								<li><Image src={pic(p.avatar)} alt="" width={96} height={96} /><span>{p.name}</span></li>
+							))}
+						</ul>
+					</div>
+					{materials.caption && <span class="reel-note">{materials.caption}</span>}
+				</dd>
+			</div>
+		</dl>
+		<p class="credits-end">
+			<Heart />
+			<span class="latin">fin.</span>
+			<small>名单按群昵称记录</small>
+		</p>
+	</section>
+</footer>

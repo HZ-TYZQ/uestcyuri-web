@@ -1,0 +1,21 @@
+---
+import { Image } from 'astro:assets';
+import BrandName from './BrandName.astro';
+import { siteData } from '../lib/content';
+import { pic } from '../lib/images';
+---
+<div class="wrap">
+	<header class="site-header">
+		<a class="brand" href="#top" aria-label={`${siteData.name.replace('♥', '')} 首页`}>
+			<Image src={pic(siteData.logo)} alt="" width={92} loading="eager" />
+			<span>
+				<span class="brand-name"><BrandName text={siteData.name} /></span>
+				<span class="brand-sub">{siteData.subtitle}</span>
+			</span>
+		</a>
+		<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">目录</button>
+		<nav class="nav" id="site-nav" aria-label="页面板块">
+			{siteData.sections.map((s) => <a href={`#${s.id}`}>{s.nav}</a>)}
+		</nav>
+	</header>
+</div>

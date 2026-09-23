@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets';
+import SectionHead from './SectionHead.astro';
+import { activitiesData, type Section } from '../lib/content';
+import { pic } from '../lib/images';
+import { fullSize } from '../lib/full';
+interface Props { section: Section; num: string }
+const { section, num } = Astro.props;
+
+const pad = (n: number) => String(n).padStart(2, '0');
+const list = await Promise.all(
+	activitiesData.map(async (a, ai) => {
+		const d = a.date;
+		const shots = await Promise.all(
+			a.shots.map(async (s, i) => {
+				const img = pic(s);
+				return { img, full: await fullSize(img), note: `${i + 1} / ${a.shots.length}`, caption: `${a.title} · ${i + 1} / ${a.shots.length}` };
+			}),
+		);
+		return {
+			...a,
+			shots,
+			gallery: `activity-${ai}`,
+			iso: `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}-${pad(d.getUTCDate())}`,
+			label: `${d.getUTCFullYear()} · ${pad(d.getUTCMonth() + 1)} · ${pad(d.getUTCDate())}`,
+		};
+	}),
+);
+---
+<div class="wrap">
+	<section class="section" id={section.id} aria-labelledby={`${section.id}-title`}>
+		<SectionHead section={section} num={num} />
+		{list.length === 0 && <p class="empty-note">活动记录整理中。</p>}
+		{list.map((a) => {
+			const [main, ...rest] = a.shots;
+			return (
+				<article class="activity">
+					<div>
+						<button class="shot main" type="button" data-gallery={a.gallery} data-caption={a.title} data-note={main.note} data-full={main.full} aria-label={`查看大图：${main.caption}`}>
+							<Image src={main.img} alt={`${a.title} 截图 1`} widths={[800, 1400]} sizes="(max-width: 1024px) 100vw, 680px" />
+							{a.shots.length > 1 && <span class="shot-count">{a.shots.length} 张截图</span>}
+						</button>
+						{rest.length > 0 && (
+							<div class="thumbs">
+								{rest.map((s, i) => (
+									<button class="shot" type="button" data-gallery={a.gallery} data-caption={a.title} data-note={s.note} data-full={s.full} aria-label={`查看大图：${s.caption}`}>
+										<Image src={s.img} alt={`${a.title} 截图 ${i + 2}`} width={320} />
+									</button>
+								))}
+							</div>
+						)}
+					</div>
+					<div class="activity-body">
+						<time class="when" datetime={a.iso}>{a.label}</time>
+						<h3>{a.title}</h3>
+						<p>{a.intro}</p>
+						<dl>
+							{a.details.map((d) => <><dt>{d.label}</dt><dd>{d.value}</dd></>)}
+							<dt>截图</dt><dd>共 {a.shots.length} 张 · 点开可看大图</dd>
+						</dl>
+					</div>
+				</article>
+			);
+		})}
+	</section>
+</div>
