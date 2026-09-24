@@ -23,3 +23,13 @@
     - { image: works/Aurora/OC4.jpg,           type: oc }
     - { image: works/Aurora/OC1_1.jpg,         type: oc }
     - { image: works/Aurora/OC3.jpg,           type: oc }
+
+- name: 千秋
+  avatar: head/Portrait(千秋).jpg
+  works:
+    - { image: works/千秋/辉夜姬1.jpg,            type: illust, note: 超时空辉夜姬 }
+    - { image: works/千秋/辉夜姬2.jpg,            type: illust, note: 超时空辉夜姬 }
+    - { image: works/千秋/与你相恋到生命尽头1.jpg, type: illust, note: 与你相恋到生命尽头 }
+    - { image: works/千秋/与你相恋到生命尽头2.jpg, type: illust, note: 与你相恋到生命尽头 }
+    - { image: works/千秋/与你相恋到生命尽头3.jpg, type: illust, note: 与你相恋到生命尽头 }
+    - { image: works/千秋/OC1.jpg,               type: oc }
