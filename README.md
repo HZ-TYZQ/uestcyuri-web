@@ -10,14 +10,14 @@
 
 ## 页面上有什么
 
-| 页面 | 地址 | 内容 |
-|---|---|---|
-| 首页 | `/` | 原有首屏与五个栏目入口 |
-| 群友创作 | `/creations/` | 群友作品、汉化资源；后续可扩展游戏、小说等板块 |
-| 活动记录 | `/activities/` | 群友金句、线上线下活动记录 |
-| 百合推荐 | `/recommendations/` | 漫画、小说和游戏推荐 |
-| 资源整理 | `/resources/` | 暂无内容，显示空状态 |
-| 关于我们 | `/about/` | 群介绍与网页贡献者名单 |
+| 页面     | 地址                | 内容                                           |
+| -------- | ------------------- | ---------------------------------------------- |
+| 首页     | `/`                 | 原有首屏与五个栏目入口                         |
+| 群友创作 | `/creations/`       | 群友作品、汉化资源；后续可扩展游戏、小说等板块 |
+| 活动记录 | `/activities/`      | 群友金句、线上线下活动记录                     |
+| 百合推荐 | `/recommendations/` | 漫画、小说和游戏推荐                           |
+| 资源整理 | `/resources/`       | 暂无内容，显示空状态                           |
+| 关于我们 | `/about/`           | 群介绍与网页贡献者名单                         |
 
 各页面内部仍然垂直滚动，共用导航、页脚与原有视觉样式。旧首页的 `#works`、`#quotes` 等锚点链接会在浏览器中转到对应新页面。
 
@@ -27,15 +27,15 @@
 
 页面上所有会变的内容都写在 `src/data/` 下的 YAML 文件里，一个板块一个文件，文件开头有注释说明怎么写。改文字、加作品、加活动都**不用碰代码**。
 
-| 想改什么 | 改哪个文件 |
-|---|---|
-| 标题、首屏、栏目导航与板块归属、资源空状态、关于我们、页脚 | `src/data/site.yaml` |
-| 群友作品 | `src/data/works.yaml` |
-| 群友汉化 | `src/data/translations.yaml` |
-| 群友金句 | `src/data/quotes.yaml` |
-| 群友活动 | `src/data/activities.yaml` |
-| 百合推荐 | `src/data/recommendations.yaml` |
-| 网页贡献者 | `src/data/contributors.yaml` |
+| 想改什么                                                   | 改哪个文件                      |
+| ---------------------------------------------------------- | ------------------------------- |
+| 标题、首屏、栏目导航与板块归属、资源空状态、关于我们、页脚 | `src/data/site.yaml`            |
+| 群友作品                                                   | `src/data/works.yaml`           |
+| 群友汉化                                                   | `src/data/translations.yaml`    |
+| 群友金句                                                   | `src/data/quotes.yaml`          |
+| 群友活动                                                   | `src/data/activities.yaml`      |
+| 百合推荐                                                   | `src/data/recommendations.yaml` |
+| 网页贡献者                                                 | `src/data/contributors.yaml`    |
 
 图片放在根目录的 `Pictures/` 里，YAML 里写相对路径即可，例如 `works/Aurora/OC3.jpg`。构建时会自动压缩成 webp。
 
@@ -68,12 +68,12 @@ npm run astro -- dev stop
 
 其他命令：
 
-| 命令 | 作用 |
-|---|---|
-| `npm run build` | 构建到 `dist/`。YAML 写错会在这一步报错，并指出哪个文件、第几项、错在哪 |
-| `npm run preview` | 构建后用 Wrangler 在本地预览 |
-| `npm run deploy` | 手动构建并部署到 Cloudflare（平时不需要，合并进 `main` 会自动部署） |
-| `npx astro check` | 类型检查 |
+| 命令              | 作用                                                                    |
+| ----------------- | ----------------------------------------------------------------------- |
+| `npm run build`   | 构建到 `dist/`。YAML 写错会在这一步报错，并指出哪个文件、第几项、错在哪 |
+| `npm run preview` | 构建后用 Wrangler 在本地预览                                            |
+| `npm run deploy`  | 手动构建并部署到 Cloudflare（平时不需要，合并进 `main` 会自动部署）     |
+| `npx astro check` | 类型检查                                                                |
 
 ## 技术说明
 
@@ -85,46 +85,46 @@ npm run astro -- dev stop
 
 ### 目录
 
-| 路径 | 内容 |
-|---|---|
-| `src/data/` | 页面内容（YAML） |
-| `src/pages/index.astro` | 首页首屏与栏目入口 |
-| `src/pages/[page].astro` | 按 `site.yaml` 的 `pages` 生成栏目页面，按各栏目的 `sections` 拼装内容 |
-| `src/layouts/Layout.astro` | 页面外壳：`<head>`、爱心图标、大图浏览层 |
-| `src/components/` | 各板块组件 |
-| `src/lib/` | 读取和校验数据、图片解析 |
-| `src/integrations/pictures.mjs` | 图片白名单插件 |
-| `src/styles/global.css` | 全站样式，配色和字体在开头的 `:root` 里 |
-| `src/scripts/site.ts` | 页面交互 |
-| `Pictures/` | 已确认公开的图片 |
-| `public/` | 原样发布的文件：`robots.txt`、`favicon.svg` |
-| `.github/pull_request_template.md` | 提 PR 时自动带出的说明模板和检查清单 |
-| `docs/` | 维护说明、许可、资料整理、已知问题 |
-| `demo_claude/` | 静态设计示例，直接双击打开 |
+| 路径                               | 内容                                                                   |
+| ---------------------------------- | ---------------------------------------------------------------------- |
+| `src/data/`                        | 页面内容（YAML）                                                       |
+| `src/pages/index.astro`            | 首页首屏与栏目入口                                                     |
+| `src/pages/[page].astro`           | 按 `site.yaml` 的 `pages` 生成栏目页面，按各栏目的 `sections` 拼装内容 |
+| `src/layouts/Layout.astro`         | 页面外壳：`<head>`、爱心图标、大图浏览层                               |
+| `src/components/`                  | 各板块组件                                                             |
+| `src/lib/`                         | 读取和校验数据、图片解析                                               |
+| `src/integrations/pictures.mjs`    | 图片白名单插件                                                         |
+| `src/styles/global.css`            | 全站样式，配色和字体在开头的 `:root` 里                                |
+| `src/scripts/site.ts`              | 页面交互                                                               |
+| `Pictures/`                        | 已确认公开的图片                                                       |
+| `public/`                          | 原样发布的文件：`robots.txt`、`favicon.svg`                            |
+| `.github/pull_request_template.md` | 提 PR 时自动带出的说明模板和检查清单                                   |
+| `docs/`                            | 维护说明、许可、资料整理、已知问题                                     |
+| `demo_claude/`                     | 静态设计示例，直接双击打开                                             |
 
 ### 文档
 
-| 文件 | 内容 |
-|---|---|
-| [`docs/maintenance.md`](docs/maintenance.md) | 运维指南：从素材到上线的流程、检查清单、出错怎么办、定期维护 |
-| [`docs/editing.md`](docs/editing.md) | 怎么改网页内容 |
-| [`docs/claude_recommendation.md`](docs/claude_recommendation.md) | 页面结构和文案的设计决定 |
-| [`docs/artwork_license.md`](docs/artwork_license.md) | 群友原创图片的许可 |
-| [`docs/yuri_artworks.md`](docs/yuri_artworks.md) | 推荐作品的完整资料和核实记录 |
-| [`docs/translation_works.md`](docs/translation_works.md) | 群友汉化记录 |
-| [`docs/group_quotes.md`](docs/group_quotes.md) | 金句征集与同意记录 |
-| [`docs/known_issues.md`](docs/known_issues.md) | 已知但暂时不修的问题 |
+| 文件                                                             | 内容                                                         |
+| ---------------------------------------------------------------- | ------------------------------------------------------------ |
+| [`docs/maintenance.md`](docs/maintenance.md)                     | 运维指南：从素材到上线的流程、检查清单、出错怎么办、定期维护 |
+| [`docs/editing.md`](docs/editing.md)                             | 怎么改网页内容                                               |
+| [`docs/claude_recommendation.md`](docs/claude_recommendation.md) | 页面结构和文案的设计决定                                     |
+| [`docs/artwork_license.md`](docs/artwork_license.md)             | 群友原创图片的许可                                           |
+| [`docs/yuri_artworks.md`](docs/yuri_artworks.md)                 | 推荐作品的完整资料和核实记录                                 |
+| [`docs/translation_works.md`](docs/translation_works.md)         | 群友汉化记录                                                 |
+| [`docs/group_quotes.md`](docs/group_quotes.md)                   | 金句征集与同意记录                                           |
+| [`docs/known_issues.md`](docs/known_issues.md)                   | 已知但暂时不修的问题                                         |
 
 ## 许可
 
 这个仓库里的内容分几种许可，请注意区分：
 
-| 内容 | 许可 |
-|---|---|
-| 网页源码（HTML、CSS、JS、Astro 组件和配置） | [MIT](LICENSE) |
-| 群友原创图片（`Pictures/works/`） | [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans)，另外**禁止用于 AI 训练**，详见 [`docs/artwork_license.md`](docs/artwork_license.md) |
-| 推荐作品的封面（`Pictures/manga_cover/`、`Pictures/game_cover/`） | 版权归原出版方，仅用于介绍 |
-| Logo 和群友头像 | 不在 MIT 许可范围内，版权归各自所有者 |
+| 内容                                                              | 许可                                                                                                                                                                   |
+| ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 网页源码（HTML、CSS、JS、Astro 组件和配置）                       | [MIT](LICENSE)                                                                                                                                                         |
+| 群友原创图片（`Pictures/works/`）                                 | [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans)，另外**禁止用于 AI 训练**，详见 [`docs/artwork_license.md`](docs/artwork_license.md) |
+| 推荐作品的封面（`Pictures/manga_cover/`、`Pictures/game_cover/`） | 版权归原出版方，仅用于介绍                                                                                                                                             |
+| Logo 和群友头像                                                   | 不在 MIT 许可范围内，版权归各自所有者                                                                                                                                  |
 
 MIT 许可**只覆盖源码**。群友的画可以署名后原样转发，但不能修改、不能商用、不能拿去训练 AI。
 
@@ -133,5 +133,6 @@ MIT 许可**只覆盖源码**。群友的画可以署名后原样转发，但不
 - **开发与设计**：HZ-TYZQ & Anthropic Claude
 - **内容整理**：HZ-TYZQ & Anthropic Claude & OpenAI ChatGPT
 - **素材提供**：Aurora、冬之雪、柴猫猫、古明地道战、HZ-TYZQ
+- **网页维护**：HZ-TYZQ、柚子
 
 名单以页面页脚和 `src/data/contributors.yaml` 为准。

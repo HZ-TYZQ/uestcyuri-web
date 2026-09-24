@@ -32,3 +32,6 @@ Raw_image_materials/
 
 # AI 工具的本地技能包（不属于网站）
 .agents/
+
+# demo后续不再跟踪, 仅用于本地测试
+demo_claude/
