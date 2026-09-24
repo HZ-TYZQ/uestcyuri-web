@@ -18,7 +18,7 @@ const picture = z.string().superRefine((path, ctx) => {
 const text = z.string({ error: '这里需要填写文字' }).min(1, { error: '不能为空' });
 const link = z.object({ label: text, href: text });
 
-const sectionIds = ['works', 'translations', 'quotes', 'activities', 'recommend', 'about'] as const;
+const sectionIds = ['works', 'translations', 'quotes', 'activities', 'recommend', 'resources', 'about'] as const;
 
 const site = z.object({
 	name: text,
@@ -41,18 +41,41 @@ const site = z.object({
 		caption: text,
 	}),
 	strip: z.object({ left: text, right: text }),
+	pages: z.array(z.object({
+		id: text.regex(/^[a-z][a-z0-9-]*$/, '网址只能使用小写字母、数字和连字符'),
+		title: text,
+		en: text,
+		intro: text,
+		sections: z.array(z.enum(sectionIds)).min(1),
+	})).min(1),
 	sections: z.array(
 		z.object({
 			id: z.enum(sectionIds),
-			nav: text,
 			title: text,
 			tagline: text.optional(),
 			en: text,
 			more: text.optional(),
 		}),
 	),
+	resources: z.object({ emptyTitle: text, emptyNote: text }),
 	about: z.object({ title: z.array(text).min(1), body: text, note: text.optional() }),
 	footer: z.object({ copyright: text, signoff: text }),
+}).superRefine((data, ctx) => {
+	const pageIds = new Set<string>();
+	const configuredSections = new Set<string>();
+	data.sections.forEach((section, i) => {
+		if (configuredSections.has(section.id)) ctx.addIssue({ code: 'custom', path: ['sections', i, 'id'], message: '板块 id 不能重复' });
+		configuredSections.add(section.id);
+	});
+	data.pages.forEach((page, i) => {
+		if (pageIds.has(page.id)) ctx.addIssue({ code: 'custom', path: ['pages', i, 'id'], message: '页面 id 不能重复' });
+		pageIds.add(page.id);
+		const seen = new Set<string>();
+		page.sections.forEach((id, j) => {
+			if (!configuredSections.has(id) || seen.has(id)) ctx.addIssue({ code: 'custom', path: ['pages', i, 'sections', j], message: '板块需要在 sections 中配置，且同一页面内不能重复' });
+			seen.add(id);
+		});
+	});
 });
 
 export const workTypes = { illust: '插画', oc: '原创角色', text: '文字' } as const;
@@ -171,3 +194,5 @@ export const recommendationsData = load('recommendations.yaml', recommendationsR
 export const contributorsData = load('contributors.yaml', contributorsRaw, contributors);
 
 export type Section = z.output<typeof site>['sections'][number];
+
+export type Page = z.output<typeof site>['pages'][number];

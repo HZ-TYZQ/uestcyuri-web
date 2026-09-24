@@ -1,28 +1,31 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
-import Works from '../components/Works.astro';
-import Translations from '../components/Translations.astro';
-import Quotes from '../components/Quotes.astro';
-import Activities from '../components/Activities.astro';
-import Recommend from '../components/Recommend.astro';
-import About from '../components/About.astro';
-import Footer from '../components/Footer.astro';
 import { siteData } from '../lib/content';
-
-// 板块顺序和序号来自 src/data/site.yaml 的 sections
-const components = { works: Works, translations: Translations, quotes: Quotes, activities: Activities, recommend: Recommend, about: About };
-const roman = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+const roman = ['I', 'II', 'III', 'IV', 'V'];
+// 保留旧单页的分享链接，将锚点送到对应栏目。
+const legacySections = Object.fromEntries(siteData.pages.flatMap((page) =>
+	page.sections.map((id) => [`#${id}`, `/${page.id}/#${id}`]),
+));
 ---
 <Layout>
-	<Header />
-	<main id="main">
-		<Hero />
-		{siteData.sections.map((section, i) => {
-			const Section = components[section.id];
-			return <Section section={section} num={roman[i]} />;
-		})}
-	</main>
-	<Footer />
+	<script is:inline define:vars={{ legacySections }}>
+		const destination = legacySections[location.hash];
+		if (destination) {
+			const target = new URL(destination, location.origin);
+			target.search = location.search;
+			location.replace(target.href);
+		}
+	</script>
+	<Hero />
+	<nav class="wrap page-directory" aria-label="浏览栏目">
+		{siteData.pages.map((page, i) => (
+			<a class="directory-item" href={`/${page.id}/`}>
+				<span class="section-num" aria-hidden="true">{roman[i] ?? String(i + 1)}</span>
+				<div><h2>{page.title}</h2><p>{page.intro}</p></div>
+				<span class="latin">{page.en}</span>
+				<span class="directory-arrow" aria-hidden="true">↗</span>
+			</a>
+		))}
+	</nav>
 </Layout>

@@ -1,0 +1,12 @@
+---
+import { siteData, type Section } from '../lib/content';
+interface Props { section: Section; num: string }
+const { section } = Astro.props;
+---
+<div class="wrap">
+	<section class="resource-empty" id={section.id} aria-labelledby={`${section.id}-title`}>
+		<span class="latin" aria-hidden="true">To be continued.</span>
+		<h2 id={`${section.id}-title`}>{siteData.resources.emptyTitle}</h2>
+		<p>{siteData.resources.emptyNote}</p>
+	</section>
+</div>

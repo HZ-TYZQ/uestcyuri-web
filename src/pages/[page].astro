@@ -1,0 +1,37 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout from '../layouts/Layout.astro';
+import Works from '../components/Works.astro';
+import Translations from '../components/Translations.astro';
+import Quotes from '../components/Quotes.astro';
+import Activities from '../components/Activities.astro';
+import Recommend from '../components/Recommend.astro';
+import Resources from '../components/Resources.astro';
+import About from '../components/About.astro';
+import Credits from '../components/Credits.astro';
+import { siteData, type Page } from '../lib/content';
+
+export const getStaticPaths = (() => siteData.pages.map((page) => ({
+	params: { page: page.id }, props: { page },
+}))) satisfies GetStaticPaths;
+
+interface Props { page: Page }
+const { page } = Astro.props;
+const components = { works: Works, translations: Translations, quotes: Quotes, activities: Activities, recommend: Recommend, resources: Resources, about: About };
+const sections = page.sections.map((id) => siteData.sections.find((section) => section.id === id)!);
+const roman = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII'];
+---
+<Layout title={page.title} description={page.intro}>
+	<header class="wrap page-heading">
+		<p class="eyebrow">{page.en}</p>
+		<h1>{page.title}<span class="dot">。</span></h1>
+		<p class="page-intro">{page.intro}</p>
+	</header>
+	<div class="page-content">
+		{sections.map((section, i) => {
+			const Section = components[section.id];
+			return <Section section={section} num={roman[i]} />;
+		})}
+		{page.sections.includes('about') && <div class="wrap"><Credits /></div>}
+	</div>
+</Layout>

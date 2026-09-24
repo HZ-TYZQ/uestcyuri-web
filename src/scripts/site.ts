@@ -106,20 +106,13 @@ if (/[?&]still\b/.test(location.search)) {
 	$$<HTMLImageElement>('img[loading="lazy"]').forEach((img) => (img.loading = 'eager'));
 }
 
-// 滚动进度条 + 当前板块高亮
+// 滚动进度条；主导航的当前页面由服务端标记，不随页内滚动改变。
 const bar = $('.progress')!;
-const links = $$<HTMLAnchorElement>('a', nav);
-const sections = links.map((a) => $(a.getAttribute('href')!));
 let ticking = false;
 const onScroll = () => {
 	ticking = false;
 	const max = document.documentElement.scrollHeight - innerHeight;
 	bar.style.setProperty('--p', max > 0 ? (scrollY / max).toFixed(4) : '0');
-	let current = -1;
-	sections.forEach((sec, i) => {
-		if (sec && sec.getBoundingClientRect().top < innerHeight * 0.35) current = i;
-	});
-	links.forEach((a, i) => (i === current ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current')));
 };
 addEventListener(
 	'scroll',
@@ -132,6 +125,7 @@ addEventListener(
 	{ passive: true },
 );
 onScroll();
+addEventListener('resize', onScroll);
 
 // 头像轮播：复制一份接成无缝循环，时长随人数增加
 $$('.reel-track').forEach((track) => {
@@ -151,6 +145,7 @@ if (document.documentElement.classList.contains('motion')) {
 		'.authors > .author', '.gallery > .work', '.tl-list > li', '.quotes > .quote',
 		'.activity > *', '.books > .book', '.about-inner > *', '.footer-main',
 		'.credits-head', '.credits-roll > .credit', '.credits-end',
+		'.directory-item',
 	];
 	groups.forEach((sel) =>
 		$$(sel).forEach((el) => {
@@ -181,14 +176,16 @@ if (document.documentElement.classList.contains('motion')) {
 
 	if (matchMedia('(pointer: fine)').matches) {
 		// 首屏卡片跟随指针
-		const hero = $('.hero')!;
-		const art = $('.hero-art')!;
-		hero.addEventListener('pointermove', (e) => {
+		const hero = $('.hero');
+		const art = $('.hero-art');
+		hero?.addEventListener('pointermove', (e) => {
+			if (!art) return;
 			const r = art.getBoundingClientRect();
 			art.style.setProperty('--mx', ((e.clientX - (r.left + r.width / 2)) / r.width).toFixed(3));
 			art.style.setProperty('--my', ((e.clientY - (r.top + r.height / 2)) / r.height).toFixed(3));
 		});
-		hero.addEventListener('pointerleave', () => {
+		hero?.addEventListener('pointerleave', () => {
+			if (!art) return;
 			art.style.setProperty('--mx', '0');
 			art.style.setProperty('--my', '0');
 		});

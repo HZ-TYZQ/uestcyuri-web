@@ -6,7 +6,7 @@
 
 | 想改什么 | 改哪个文件 |
 |---|---|
-| 标题、首屏文案和图片、板块标题与导语、板块顺序、关于我们、页脚 | `src/data/site.yaml` |
+| 标题、首屏、栏目导航与板块归属、资源空状态、关于我们、页脚 | `src/data/site.yaml` |
 | 群友作品（作者、作品图、分类） | `src/data/works.yaml` |
 | 群友汉化 | `src/data/translations.yaml` |
 | 群友金句 | `src/data/quotes.yaml` |
@@ -46,7 +46,15 @@
 
 **加一位素材提供者**：头像放进 `Pictures/head/`，在 `contributors.yaml` 的 `materials.people` 里加一行，轮播会自动接上。
 
-**调整板块顺序或改板块标题**：改 `site.yaml` 的 `sections`，罗马数字序号和导航会跟着变。`id` 不要改。
+**调整栏目和板块**：`site.yaml` 的 `pages` 决定主导航和首页入口的顺序，每项的 `id` 对应 `/<id>/` 网址，`title`、`en`、`intro` 是栏目文案。每个栏目的 `sections` 列表决定页面内的板块和顺序，罗马数字在每页从 I 开始。板块标题与导语在顶层 `sections` 修改，板块 `id` 不要改。
+
+各栏目页按内容自然垂直滚动，通过顶部主导航切换栏目。页面不设置页内目录，也不为末节跳转补足视口高度。
+
+**资源整理**：目前没有资源条目，只显示空状态；文案在 `site.yaml` 的 `resources.emptyTitle` 和 `resources.emptyNote` 中修改。
+
+**新增创作类型**：已有的插画、原创角色和图片形式文字作品继续改 `works.yaml`；如果后续要展示可玩的游戏或小说正文，可添加专用数据文件与组件，在 `src/lib/content.ts` 注册板块 id 和校验，再在 `src/pages/[page].astro` 注册组件，最后加入 `pages` 中“群友创作”的 `sections`。无需改动其他页面。
+
+**贡献者名单**：仍在 `contributors.yaml` 修改，显示在“关于我们”页面。
 
 ### 改完之后
 
