@@ -127,15 +127,20 @@ addEventListener(
 onScroll();
 addEventListener('resize', onScroll);
 
-// 头像轮播：复制一份接成无缝循环，时长随人数增加
+// 头像轮播：人少时先重复到铺满窗口，再整体复制一份接成无缝循环，时长随头像数增加
 $$('.reel-track').forEach((track) => {
 	const items = [...track.children];
-	items.forEach((li) => {
+	const clone = (li: Element) => {
 		const c = li.cloneNode(true) as Element;
 		c.setAttribute('aria-hidden', 'true');
 		track.append(c);
-	});
-	track.style.setProperty('--reel-dur', `${Math.max(12, items.length * 4.5)}s`);
+	};
+	const view = (track.parentElement as HTMLElement).clientWidth;
+	// 减少动态效果时复制品被隐藏、宽度不会增长，用次数兜底
+	for (let n = 0; n < 8 && track.scrollWidth < view; n++) items.forEach(clone);
+	const half = [...track.children];
+	half.forEach(clone);
+	track.style.setProperty('--reel-dur', `${Math.max(12, half.length * 4.5)}s`);
 });
 
 if (document.documentElement.classList.contains('motion')) {

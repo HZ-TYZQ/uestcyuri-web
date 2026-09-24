@@ -160,13 +160,15 @@ const name = z.union([text, z.object({ org: text.optional(), name: text })]).tra
 
 const contributors = z.object({
 	roles: z.array(z.object({ role: text, en: text, note: text.optional(), names: z.array(name).min(1) })),
-	materials: z.object({
-		role: text,
-		en: text,
-		note: text.optional(),
-		caption: text.optional(),
-		people: z.array(z.object({ name: text, avatar: picture })),
-	}),
+	reels: z.array(
+		z.object({
+			role: text,
+			en: text,
+			note: text.optional(),
+			caption: text.optional(),
+			people: z.array(z.object({ name: text, avatar: picture })).min(1),
+		}),
+	),
 });
 
 function load<T extends z.ZodType>(file: string, raw: string, schema: T): z.output<T> {
