@@ -139,7 +139,12 @@ git branch -d add-aurora-works
 - 图片能点开看大图。
 - 手机上看也正常。
 
-没有更新的话，在 PR 或 `main` 的最新提交上点开 `Workers Builds` 检查，看看构建日志。自动部署出问题时，有 Cloudflare 权限的维护者也可以在本地手动部署：
+**页面显示异常或还是旧内容，多半是缓存。** 这种情况出现过好几次，先按顺序排查：
+
+1. 自己先强制刷新（`Ctrl + F5`，Mac 上 `Cmd + Shift + R`），或者用无痕窗口打开。
+2. 还是旧的，就提醒维护者去 Cloudflare 后台清除缓存（Purge Everything），清完再刷新。
+
+清完缓存还不对，在 PR 或 `main` 的最新提交上点开 `Workers Builds` 检查，看看构建日志。自动部署出问题时，有 Cloudflare 权限的维护者也可以在本地手动部署：
 
 ```sh
 npx wrangler login   # 第一次部署前登录一次
@@ -172,6 +177,7 @@ npm run deploy       # 构建并上线
 | PR 里的 `Workers Builds` 检查失败 | 点开检查看构建日志，报错和本地 `npm run build` 的一样，按上面几行排查 |
 | `npm run deploy` 提示没有登录 | 先运行 `npx wrangler login`；没有 Cloudflare 权限的话，找维护者部署 |
 | PR 里提示有冲突（conflict） | 先同步原仓库再推一次：`git pull upstream main`，按提示解决冲突后 `git push`。搞不定就在 PR 里留言请维护者处理 |
+| 网站上还是旧内容，或者样式错乱、图片缺失 | 多半是缓存。先强制刷新（`Ctrl + F5`）或换无痕窗口；还不行就提醒维护者在 Cloudflare 后台清除缓存 |
 | 上线后发现有问题，想撤回 | 告诉维护者。维护者用 `git revert` 撤回那次合并，推送到 `main` 后会自动重新部署 |
 
 实在搞不定，就把报错信息截图发到群里问维护者。
