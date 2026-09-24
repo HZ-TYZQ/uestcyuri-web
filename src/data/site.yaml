@@ -9,21 +9,21 @@ logo: logo/yuristc.png
 repo: https://github.com/HZ-TYZQ/uestcyuri-web
 
 hero:
-  eyebrow: STORIES OF HER, AND OF US
-  title: [让喜欢，, 被看见]         # 每项一行，最后自动加粉色句号
-  intro: 关于她与她的故事，也关于喜欢这些故事的我们留下的作品。
-  primary: { label: 看看群友作品, href: "/creations/" }
-  secondary: { label: 找点百合看, href: "/recommendations/" }
+  eyebrow: FOR ANYONE WHO LOVES HER STORIES
+  title: [喜欢百合的你，, 欢迎来看看]         # 每项一行，最后自动加粉色句号
+  intro: 我们是电子科大一群喜欢百合的人。这里摆着大家的画、译作和书单，随便看看，希望有一件你也喜欢。
+  primary: { label: 先看看大家的作品, href: "/creations/" }
+  secondary: { label: 给我推荐一部, href: "/recommendations/" }
   image: works/Aurora/OC3.jpg
   imageAlt: Aurora 的原创角色插画：两个女孩比心
   imageAuthor: Aurora
   imageLabel: 原创角色
-  vertical: 画下的 · 写下的 · 译下的
-  caption: 这一页，由群友的画开始。
+  vertical: 画下的 · 译过的 · 推荐的
+  caption: 进门第一眼，是群友的画。
 
 strip:
-  left: 电子科技大学百合 ACG 交流群 · 作品展示页
-  right: Illustration · Translation · Reading list
+  left: 电子科技大学百合 ACG 交流群 · 写给同好的展示页
+  right: Come for the art, stay for the yuri
 
 # 栏目按这里的顺序显示在导航与首页，id 对应 /id/ 网址。
 # sections 决定该页面内的板块及顺序；将来可继续加入游戏、小说等板块。
@@ -32,10 +32,13 @@ pages:
     title: 群友创作
     en: Creations
     intro: 画下的、写下的、译下的，把喜欢变成自己的作品。
+    quote:
+      text: 我们，早已站在舞台之上。
+      from: 少女☆歌剧 Revue Starlight 剧场版
     sections: [works, translations]
   - id: activities
-    title: 活动记录
-    en: Moments
+    title: 群友日常
+    en: Daily life
     intro: 说过的话，一起玩过的时光，都在这里留下记录。
     sections: [quotes, activities]
   - id: recommendations
@@ -56,23 +59,28 @@ pages:
 
 # 板块 id 不要改（页面靠它找到对应的组件）；标题和导语可以修改。
 sections:
-  - { id: works,        title: 群友作品, tagline: 画下的、写下的，都是想和你分享的。, en: Works }
-  - { id: translations, title: 群友汉化, tagline: 把喜欢的故事，带给更多人。, en: Translations }
-  - { id: quotes,       title: 群友金句, tagline: 群里说过的话，有些值得被记住。, en: Overheard, more: 更多金句收集中。 }
-  - { id: activities,   title: 群友活动, tagline: 一起玩过的，也值得留下来。, en: Gatherings }
-  - { id: recommend,    title: 百合推荐, tagline: 不知道看什么？从这里翻开下一页。, en: Reading list }
+  - { id: works,        title: 群友的作品, tagline: 这些是群友亲手做出来的，希望你也喜欢。, en: Works }
+  - { id: translations, title: 群友的汉化, tagline: 伟大的汉化组！欢迎品鉴。, en: Translations }
+  - { id: quotes,       title: 群聊金句, tagline: 欣赏群友们的"至理名言"。, en: Overheard, more: 更多金句还在整理。 }
+  - { id: activities,   title: 一起玩过, tagline: 群友一起玩过的游戏和活动，留个纪念。, en: Gatherings }
+  - { id: recommend,    title: 给你的推荐, tagline: “有哪些优秀的百合同人作品？” ——邓煜, en: For you }
   - { id: resources, title: 资源整理, en: Resources }
-  - { id: about,        title: 关于我们, en: About }
+  - { id: about,        title: 关于这里, en: About }
 
 resources:
   emptyTitle: 这里，留给下一份发现。
   emptyNote: 暂时还没有整理好的资源，之后慢慢补上。
 
 about:
-  title: [因为同一种喜欢，, 才有了这些作品。]
-  body: 这里是电子科技大学百合 ACG 交流群的作品展示页。从一部动画、一页漫画，到一段写下的故事，群友们把喜欢画成了画、写成了字、译成了中文，也把自己喜欢的作品推荐给你。
+  title: [致，同样喜爱百合的你。]
+  body: 这里是电子科技大学百合 ACG 交流群的展示页。群友们把喜欢画成了画、写成了字、译成了中文；如果你刚好也喜欢，这一页就是写给你的。
   note: 本站只做展示。
 
 footer:
   copyright: 群友原创图片版权归各作者所有，采用 CC BY-NC-ND 4.0，禁止用于 AI 训练；推荐作品封面版权归原出版方，仅用于介绍。
-  signoff: Until the next page.
+  signoff: 愿你安好。
+  signoffFrom: 玛莉亚的凝望
+
+creditsQuote:
+  text: 成为朋友很简单，叫我的名字就好。一开始，这样就够了。
+  from: 魔法少女奈叶

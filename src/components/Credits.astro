@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import Heart from './Heart.astro';
-import { contributorsData } from '../lib/content';
+import { contributorsData, siteData } from '../lib/content';
 import { pic } from '../lib/images';
 const { roles, materials } = contributorsData;
 ---
@@ -9,7 +9,7 @@ const { roles, materials } = contributorsData;
 	<header class="credits-head">
 		<span class="credits-fin latin">Colophon</span>
 		<h2 id="credits-title">网页贡献者</h2>
-		<p>这个网站，也是大家一起做出来的。</p>
+		<p>这个网站，是群友们一起为你准备的。</p>
 	</header>
 	<dl class="credits-roll">
 		{roles.map((r) => (
@@ -47,6 +47,12 @@ const { roles, materials } = contributorsData;
 			</dd>
 		</div>
 	</dl>
+	{siteData.creditsQuote && (
+		<blockquote class="credits-quote">
+			<p>{siteData.creditsQuote.text}</p>
+			<cite>——《{siteData.creditsQuote.from}》</cite>
+		</blockquote>
+	)}
 	<p class="credits-end">
 		<Heart />
 		<span class="latin">fin.</span>

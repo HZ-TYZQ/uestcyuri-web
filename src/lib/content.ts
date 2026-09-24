@@ -17,6 +17,8 @@ const picture = z.string().superRefine((path, ctx) => {
 
 const text = z.string({ error: '这里需要填写文字' }).min(1, { error: '不能为空' });
 const link = z.object({ label: text, href: text });
+// 作品台词引用：text 为中文译文，from 为出处作品名（不带书名号）
+const cite = z.object({ text, from: text });
 
 const sectionIds = ['works', 'translations', 'quotes', 'activities', 'recommend', 'resources', 'about'] as const;
 
@@ -46,6 +48,7 @@ const site = z.object({
 		title: text,
 		en: text,
 		intro: text,
+		quote: cite.optional(),
 		sections: z.array(z.enum(sectionIds)).min(1),
 	})).min(1),
 	sections: z.array(
@@ -59,7 +62,8 @@ const site = z.object({
 	),
 	resources: z.object({ emptyTitle: text, emptyNote: text }),
 	about: z.object({ title: z.array(text).min(1), body: text, note: text.optional() }),
-	footer: z.object({ copyright: text, signoff: text }),
+	footer: z.object({ copyright: text, signoff: text, signoffFrom: text.optional() }),
+	creditsQuote: cite.optional(),
 }).superRefine((data, ctx) => {
 	const pageIds = new Set<string>();
 	const configuredSections = new Set<string>();
