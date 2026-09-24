@@ -39,7 +39,7 @@
 
 图片放在根目录的 `Pictures/` 里，YAML 里写相对路径即可，例如 `works/Aurora/OC3.jpg`。构建时会自动压缩成 webp。
 
-仓库不开放直接推送，所有改动都通过 **Pull Request** 提交，由维护者审核合并后再上线。只改几个字的话，可以直接在 GitHub 网页上编辑文件，GitHub 会自动帮你提 PR。
+仓库不开放直接推送，所有改动都通过 **Pull Request** 提交，由维护者审核合并进 `main` 后自动上线。只改几个字的话，可以直接在 GitHub 网页上编辑文件，GitHub 会自动帮你提 PR。
 
 想参与的话先看 **[运维指南](docs/maintenance.md)**，里面有从素材到上线的完整流程；每个 YAML 字段怎么写、常见操作和注意事项见 **[docs/editing.md](docs/editing.md)**。
 
@@ -72,12 +72,12 @@ npm run astro -- dev stop
 |---|---|
 | `npm run build` | 构建到 `dist/`。YAML 写错会在这一步报错，并指出哪个文件、第几项、错在哪 |
 | `npm run preview` | 构建后用 Wrangler 在本地预览 |
-| `npm run deploy` | 构建并部署到 Cloudflare |
+| `npm run deploy` | 手动构建并部署到 Cloudflare（平时不需要，合并进 `main` 会自动部署） |
 | `npx astro check` | 类型检查 |
 
 ## 技术说明
 
-- **[Astro](https://astro.build) 静态站点**：构建产物是纯 HTML/CSS/JS 加压缩后的图片，通过 Wrangler 部署到 Cloudflare，配置见 `wrangler.jsonc`。
+- **[Astro](https://astro.build) 静态站点**：构建产物是纯 HTML/CSS/JS 加压缩后的图片，部署在 Cloudflare Workers：`main` 有新提交时由 Workers Builds 自动构建发布，配置见 `wrangler.jsonc`。
 - **内容与代码分离**：`src/lib/content.ts` 在构建时读取并校验 YAML，写错时给出中文报错。
 - **图片白名单**：`src/integrations/pictures.mjs` 只导入 YAML 里实际引用到的图片，`Pictures/` 里没被引用的图不会进入构建产物。页面只使用压缩后的版本。
 - **没有框架和追踪**：页面交互（菜单、筛选、大图浏览、滚动动效）是一个很小的原生 TypeScript 脚本，不引入前端框架，也不做访问统计。

@@ -119,7 +119,7 @@ git push -u origin add-aurora-works
 
 ### 7. 合并之后
 
-维护者合并 PR 后会负责上线。你可以删掉这个分支，下次改东西时从第 1 步重新开始：
+维护者合并 PR 后，网站会自动更新。你可以删掉这个分支，下次改东西时从第 1 步重新开始：
 
 ```sh
 git switch main
@@ -131,18 +131,25 @@ git branch -d add-aurora-works
 
 ## 上线
 
-这一步由维护者来做。**PR 合并进 `main` 不等于上线**，网站不会自动更新，需要有 Cloudflare 权限的维护者手动部署。
+**PR 合并进 `main` 就会自动上线**，不需要手动部署。仓库接入了 Cloudflare Workers Builds：每次 `main` 有新提交，Cloudflare 都会自动构建并发布。PR 页面下方也会显示一项 `Workers Builds: uestcyuri-web` 检查，构建失败时这里会变红，合并前先看一眼。
+
+合并后等几分钟，打开网站检查一遍：
+
+- 新加的内容显示正常。
+- 图片能点开看大图。
+- 手机上看也正常。
+
+**页面显示异常或还是旧内容，多半是缓存。** 这种情况出现过好几次，先按顺序排查：
+
+1. 自己先强制刷新（`Ctrl + F5`，Mac 上 `Cmd + Shift + R`），或者用无痕窗口打开。
+2. 还是旧的，就提醒维护者去 Cloudflare 后台清除缓存（Purge Everything），清完再刷新。
+
+清完缓存还不对，在 PR 或 `main` 的最新提交上点开 `Workers Builds` 检查，看看构建日志。自动部署出问题时，有 Cloudflare 权限的维护者也可以在本地手动部署：
 
 ```sh
 npx wrangler login   # 第一次部署前登录一次
 npm run deploy       # 构建并上线
 ```
-
-部署成功后终端会打印网站地址。打开检查一遍：
-
-- 新加的内容显示正常。
-- 图片能点开看大图。
-- 手机上看也正常。
 
 ---
 
@@ -167,9 +174,11 @@ npm run deploy       # 构建并上线
 | 构建报 `找不到图片` | 检查路径和文件名是否一致，包括大小写和扩展名（`.jpg` 和 `.JPG` 算两个不同的名字）；图片是不是放进了 `Pictures/` |
 | 改了 YAML，页面上没变化 | 刷新页面；检查字段名有没有拼错；花括号 `{ }` 里有没有英文逗号。这两种错误构建时不会报，见 [known_issues.md](known_issues.md) |
 | 预览服务器起不来，提示端口被占用 | 运行 `npm run astro -- dev status` 看看是不是已经开着；不需要的话用 `npm run astro -- dev stop` 关掉 |
+| PR 里的 `Workers Builds` 检查失败 | 点开检查看构建日志，报错和本地 `npm run build` 的一样，按上面几行排查 |
 | `npm run deploy` 提示没有登录 | 先运行 `npx wrangler login`；没有 Cloudflare 权限的话，找维护者部署 |
 | PR 里提示有冲突（conflict） | 先同步原仓库再推一次：`git pull upstream main`，按提示解决冲突后 `git push`。搞不定就在 PR 里留言请维护者处理 |
-| 上线后发现有问题，想撤回 | 告诉维护者。维护者用 `git revert` 撤回那次合并，再运行一次 `npm run deploy` |
+| 网站上还是旧内容，或者样式错乱、图片缺失 | 多半是缓存。先强制刷新（`Ctrl + F5`）或换无痕窗口；还不行就提醒维护者在 Cloudflare 后台清除缓存 |
+| 上线后发现有问题，想撤回 | 告诉维护者。维护者用 `git revert` 撤回那次合并，推送到 `main` 后会自动重新部署 |
 
 实在搞不定，就把报错信息截图发到群里问维护者。
 
@@ -181,7 +190,7 @@ npm run deploy       # 构建并上线
 |---|---|
 | 每季度 | 更新百合推荐的「新连载速递」：改 `recommendations.yaml`，资料同步到 [yuri_artworks.md](yuri_artworks.md) |
 | 每学期 | 点一遍页面上的外链（主要是汉化链接），打不开的找本人要新地址 |
-| 有人提出时 | 撤下作品或金句：删掉 YAML 里的条目和 `Pictures/` 里的图片，然后重新部署 |
+| 有人提出时 | 撤下作品或金句：删掉 YAML 里的条目和 `Pictures/` 里的图片，合并进 `main` 后自动重新部署 |
 | 听说有新的 AI 爬虫时 | 加进 `public/robots.txt` |
 | 大约半年一次 | 升级依赖：运行 `npm update`，然后 `npm run build` 和 `npx astro check` 都要通过，再看一眼页面 |
 | 有空时 | 看看 [known_issues.md](known_issues.md) 里的问题要不要修 |
