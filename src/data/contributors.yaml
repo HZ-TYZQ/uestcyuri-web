@@ -4,7 +4,7 @@
 #   普通名字直接写：        - HZ-TYZQ
 #   带公司名的写成：        - { org: Anthropic, name: Claude }
 #
-# materials 是「素材提供」的头像轮播：有新的群友提供素材，就在 people 里加一行。
+# reels 里每项是一条头像轮播（素材提供、网页维护……）：有新的群友加入，就在对应的 people 里加一行。
 # 头像放在 Pictures/head/ 下。
 
 roles:
@@ -22,14 +22,20 @@ roles:
       - { org: Anthropic, name: Claude }
       - { org: OpenAI, name: ChatGPT }
 
-materials:
-  role: 素材提供
-  en: Materials
-  note: 作品、头像、Logo
-  caption: 头像与作品来自群友，排名不分先后
-  people:
-    - { name: Aurora,  avatar: head/Portrait(Aurora).jpg }
-    - { name: 冬之雪,  avatar: head/Portrait(冬之雪).jpg }
-    - { name: 柴猫猫,  avatar: head/Portrait(柴猫猫).jpg }
-    - { name: 古明地道战, avatar: head/Portrait(古明地道战).jpg }
-    - { name: HZ-TYZQ, avatar: head/Portrait(HZ-TYZQ).jpg }
+reels:
+  - role: 素材提供
+    en: Materials
+    note: 作品、头像、Logo
+    caption: 头像与作品来自群友，排名不分先后
+    people:
+      - { name: Aurora,  avatar: head/Portrait(Aurora).jpg }
+      - { name: 冬之雪,  avatar: head/Portrait(冬之雪).jpg }
+      - { name: 柴猫猫,  avatar: head/Portrait(柴猫猫).jpg }
+      - { name: 古明地道战, avatar: head/Portrait(古明地道战).jpg }
+      - { name: HZ-TYZQ, avatar: head/Portrait(HZ-TYZQ).jpg }
+
+  - role: 网页维护
+    en: Maintenance
+    people:
+      - { name: 柚子,    avatar: head/Portrait(柚子).jpg }
+      - { name: HZ-TYZQ, avatar: head/Portrait(HZ-TYZQ).jpg }

@@ -44,7 +44,7 @@
 
 **加一部推荐作品**：在 `recommendations.yaml` 对应的书架里加一项。没有封面就不写 `cover`，会自动生成竖排文字封面。
 
-**加一位素材提供者**：头像放进 `Pictures/head/`，在 `contributors.yaml` 的 `materials.people` 里加一行，轮播会自动接上。
+**加一位素材提供者**：头像放进 `Pictures/head/`，在 `contributors.yaml` 里「素材提供」那条 `reels` 的 `people` 里加一行，轮播会自动接上。网页维护同理，加在「网页维护」那条里。
 
 **调整栏目和板块**：`site.yaml` 的 `pages` 决定主导航和首页入口的顺序，每项的 `id` 对应 `/<id>/` 网址，`title`、`en`、`intro` 是栏目文案。每个栏目的 `sections` 列表决定页面内的板块和顺序，罗马数字在每页从 I 开始。板块标题与导语在顶层 `sections` 修改，板块 `id` 不要改。
 

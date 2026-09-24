@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import Heart from './Heart.astro';
 import { contributorsData, siteData } from '../lib/content';
 import { pic } from '../lib/images';
-const { roles, materials } = contributorsData;
+const { roles, reels } = contributorsData;
 ---
 <section class="credits" id="credits" aria-labelledby="credits-title">
 	<header class="credits-head">
@@ -28,24 +28,26 @@ const { roles, materials } = contributorsData;
 				</dd>
 			</div>
 		))}
-		<div class="credit">
-			<dt>
-				<span class="role">{materials.role}</span>
-				<span class="role-en">{materials.en}</span>
-				{materials.note && <span class="role-note">{materials.note}</span>}
-			</dt>
-			<span class="mark" aria-hidden="true"></span>
-			<dd class="reel-wrap">
-				<div class="reel" aria-label={materials.role}>
-					<ul class="reel-track">
-						{materials.people.map((p) => (
-							<li><Image src={pic(p.avatar)} alt="" width={96} height={96} /><span>{p.name}</span></li>
-						))}
-					</ul>
-				</div>
-				{materials.caption && <span class="reel-note">{materials.caption}</span>}
-			</dd>
-		</div>
+		{reels.map((r) => (
+			<div class="credit">
+				<dt>
+					<span class="role">{r.role}</span>
+					<span class="role-en">{r.en}</span>
+					{r.note && <span class="role-note">{r.note}</span>}
+				</dt>
+				<span class="mark" aria-hidden="true"></span>
+				<dd class="reel-wrap">
+					<div class="reel" aria-label={r.role}>
+						<ul class="reel-track">
+							{r.people.map((p) => (
+								<li><Image src={pic(p.avatar)} alt="" width={96} height={96} /><span>{p.name}</span></li>
+							))}
+						</ul>
+					</div>
+					{r.caption && <span class="reel-note">{r.caption}</span>}
+				</dd>
+			</div>
+		))}
 	</dl>
 	{siteData.creditsQuote && (
 		<blockquote class="credits-quote">
