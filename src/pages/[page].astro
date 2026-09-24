@@ -26,6 +26,12 @@ const roman = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII'];
 		<p class="eyebrow">{page.en}</p>
 		<h1>{page.title}<span class="dot">。</span></h1>
 		<p class="page-intro">{page.intro}</p>
+		{page.quote && (
+			<blockquote class="page-quote">
+				<p>{page.quote.text}</p>
+				<cite>——《{page.quote.from}》</cite>
+			</blockquote>
+		)}
 	</header>
 	<div class="page-content">
 		{sections.map((section, i) => {

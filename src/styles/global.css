@@ -102,6 +102,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 .page-heading h1{margin:20px 0 16px;font:500 clamp(36px,5vw,64px)/1.35 var(--serif);color:var(--ink);letter-spacing:.04em}
 .page-heading .dot{color:var(--accent)}
 .page-intro{margin:0;font:17px/2 var(--serif);color:var(--text)}
+/* 作品台词引用：粉色竖线 + 出处 */
+.page-quote{margin:22px 0 0;padding-left:18px;border-left:2px solid var(--accent)}
+.page-quote p,.credits-quote p{margin:0;font:16px/1.9 var(--serif);color:var(--ink);letter-spacing:.04em}
+.page-quote cite,.credits-quote cite,.footer-signoff cite{display:block;margin-top:4px;font-size:12px;font-style:normal;color:var(--muted);letter-spacing:.06em}
 .page-content > .wrap:first-child > .section{padding-top:64px}
 .page-content > .about:first-child{margin-top:64px}
 .resource-empty{margin-top:64px;padding:72px 24px;text-align:center;background:var(--paper-2);border:1px solid var(--line)}
@@ -257,6 +261,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 .footer-main small a{color:var(--text);border-bottom:1px solid var(--line);transition:border-color .2s,color .2s}
 .footer-main small a:hover{color:var(--ink);border-color:var(--accent)}
 .footer-main .latin{font-size:20px;color:var(--ink)}
+.footer-signoff{margin:0;text-align:right;font:500 18px/1.5 var(--serif);color:var(--ink);letter-spacing:.06em}
 .credits{padding:88px 0 72px;text-align:center}
 .credits-head{position:relative;margin-bottom:52px}
 .credits-fin{display:block;font-size:15px;color:var(--muted);letter-spacing:.3em;text-transform:uppercase;font-style:normal}
@@ -276,6 +281,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 .credit .name{font:500 22px/1.5 var(--serif);color:var(--ink);letter-spacing:.06em;background:linear-gradient(var(--accent),var(--accent)) 0 100%/0 1px no-repeat;transition:background-size .4s}
 .credit:hover .mark{transform:scale(1.6);background:var(--accent);border-color:var(--accent)}
 .credit:hover .name{background-size:100% 1px}
+.credits-quote{margin:44px auto 0;max-width:520px}
+.credits-quote + .credits-end{margin-top:28px}
 .credits-end{margin:44px 0 0;display:flex;flex-direction:column;align-items:center;gap:10px}
 .credits-end .heart{width:18px;height:18px;margin:0}
 .credits-end:hover .heart{animation:beat .9s ease-in-out}
@@ -325,7 +332,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 .motion .page-heading .eyebrow::before{animation:grow-x .9s .2s cubic-bezier(.2,.7,.2,1) both;transform-origin:0 50%}
 .motion .page-heading h1{animation:fade-up .9s .15s both}
 .motion .page-heading .page-intro{animation:fade-up .8s .3s both}
-.motion .page-content{animation:fade-up .9s .45s both}
+.motion .page-heading .page-quote{animation:fade-up .8s .42s both}
+.motion .page-content{animation:fade-up .9s .5s both}
 @keyframes fade-up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 @keyframes fade-in{from{opacity:0}to{opacity:1}}
 @keyframes grow-x{from{transform:scaleX(0)}to{transform:scaleX(1)}}
@@ -463,6 +471,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
   .about{margin-top:96px}
   .about-inner{padding:64px 0}
   .footer-main{flex-direction:column;align-items:start}
+  .footer-signoff{text-align:left}
   .credits{padding:64px 0 56px}
   .credits-fin::before,.credits-fin::after{width:22px;margin:0 10px}
   .credits h2{letter-spacing:.16em;text-indent:.16em}

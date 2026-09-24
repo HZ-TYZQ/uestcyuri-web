@@ -144,7 +144,7 @@ if (document.documentElement.classList.contains('motion')) {
 		'.section-head', '.sub-head', '.shelf-title', '.filters', '.license',
 		'.authors > .author', '.gallery > .work', '.tl-list > li', '.quotes > .quote',
 		'.activity > *', '.books > .book', '.about-inner > *', '.footer-main',
-		'.credits-head', '.credits-roll > .credit', '.credits-end',
+		'.credits-head', '.credits-roll > .credit', '.credits-quote', '.credits-end',
 		'.directory-item',
 	];
 	// 栏目页首屏里的内容已由 CSS 进场动画带出，这里不再重复

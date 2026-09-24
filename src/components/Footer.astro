@@ -12,6 +12,8 @@ import { siteData } from '../lib/content';
 				<a href={siteData.repo} target="_blank" rel="noopener">GitHub</a>
 			</small>
 		</div>
-		<span class="latin">{siteData.footer.signoff}</span>
+		{siteData.footer.signoffFrom ? (
+			<p class="footer-signoff">{siteData.footer.signoff}<cite>——《{siteData.footer.signoffFrom}》</cite></p>
+		) : <span class="latin">{siteData.footer.signoff}</span>}
 	</div>
 </footer>

@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import Heart from './Heart.astro';
-import { contributorsData } from '../lib/content';
+import { contributorsData, siteData } from '../lib/content';
 import { pic } from '../lib/images';
 const { roles, materials } = contributorsData;
 ---
@@ -47,6 +47,12 @@ const { roles, materials } = contributorsData;
 			</dd>
 		</div>
 	</dl>
+	{siteData.creditsQuote && (
+		<blockquote class="credits-quote">
+			<p>{siteData.creditsQuote.text}</p>
+			<cite>——《{siteData.creditsQuote.from}》</cite>
+		</blockquote>
+	)}
 	<p class="credits-end">
 		<Heart />
 		<span class="latin">fin.</span>
