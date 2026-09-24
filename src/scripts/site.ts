@@ -147,8 +147,12 @@ if (document.documentElement.classList.contains('motion')) {
 		'.credits-head', '.credits-roll > .credit', '.credits-end',
 		'.directory-item',
 	];
+	// 栏目页首屏里的内容已由 CSS 进场动画带出，这里不再重复
+	const onFirstScreen = (el: Element) => !!el.closest('.page-content') && el.getBoundingClientRect().top < innerHeight;
 	groups.forEach((sel) =>
 		$$(sel).forEach((el) => {
+			// 仍加上 in，让标题编号、分隔线这类挂在 in 上的细节照常出现
+			if (onFirstScreen(el)) return void el.classList.add('in');
 			el.classList.add('reveal');
 			const sibs = [...el.parentElement!.children].filter((c) => c.matches(sel));
 			el.style.setProperty('--i', String(sibs.indexOf(el) % 4));
