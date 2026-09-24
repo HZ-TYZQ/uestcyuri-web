@@ -63,8 +63,9 @@
 ```sh
 npm run astro -- dev --background   # 本地预览，改 YAML 后刷新即可看到
 npm run build                        # 构建，数据写错会在这一步报错
-npm run deploy                       # 部署到 Cloudflare
 ```
+
+不需要手动部署：PR 合并进 `main` 后，Cloudflare 会自动构建上线。
 
 YAML 的几个小坑：
 
