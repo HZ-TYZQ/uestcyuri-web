@@ -16,7 +16,7 @@
 | 群友创作 | `/creations/`       | 群友作品、汉化资源；后续可扩展游戏、小说等板块 |
 | 活动记录 | `/activities/`      | 群友金句、线上线下活动记录                     |
 | 百合推荐 | `/recommendations/` | 漫画、小说和游戏推荐                           |
-| 资源整理 | `/resources/`       | 暂无内容，显示空状态                           |
+| 资源整理 | `/resources/`       | 小工具列表；支持独立网址直接打开                           |
 | 关于我们 | `/about/`           | 群介绍与网页贡献者名单                         |
 
 各页面内部仍然垂直滚动，共用导航、页脚与原有视觉样式。旧首页的 `#works`、`#quotes` 等锚点链接会在浏览器中转到对应新页面。
@@ -34,8 +34,11 @@
 | 群友汉化                                                   | `src/data/translations.yaml`    |
 | 群友金句                                                   | `src/data/quotes.yaml`          |
 | 群友活动                                                   | `src/data/activities.yaml`      |
+| 小工具列表                                                 | `src/data/resources.yaml`       |
 | 百合推荐                                                   | `src/data/recommendations.yaml` |
 | 网页贡献者                                                 | `src/data/contributors.yaml`    |
+
+小工具的单文件 HTML 放在 `public/resources/tools/`，在 `src/data/resources.yaml` 添加列表条目即可。每个工具有独立网址，例如 `/resources/tools/quotes.html`，可以直接打开或分享。
 
 图片放在根目录的 `Pictures/` 里，YAML 里写相对路径即可，例如 `works/Aurora/OC3.jpg`。构建时会自动压缩成 webp。
 

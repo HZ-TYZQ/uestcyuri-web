@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>群友金句 · 把聊天变成名言</title>
+  <script src="../tool-navigation.js" defer></script>
+  <style>
+    :root { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; color: #302f29; background: #f3f2ed; --muted: #85847a; --line: #e2e0d7; --accent: #596849; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+    button:disabled { opacity: .5; cursor: wait; }
+    button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    header { height: 83px; padding: 0 36px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); background: #faf9f5; }
+    .brand { display: flex; align-items: center; gap: 13px; }
+    .brand-icon { font: bold 51px Georgia, serif; height: 40px; width: 40px; line-height: 61px; text-align: center; border-radius: 10px; color: #faf8ef; background: var(--accent); }
+    h1 { font-family: "Songti SC", "SimSun", serif; font-size: 22px; margin: 0; letter-spacing: 2px; }
+    .brand-sub { font-size: 9px; letter-spacing: 2.8px; margin-top: 5px; color: var(--muted); }
+    .header-note { font-size: 12px; color: var(--muted); }
+    .header-note::before { content: ""; width: 6px; height: 6px; border-radius: 50%; display: inline-block; background: #859373; margin-right: 8px; }
+    .app { display: grid; grid-template-columns: 352px minmax(0, 1fr); min-height: calc(100dvh - 83px - var(--tool-navigation-height, 0px)); }
+    aside { background: #faf9f5; border-right: 1px solid var(--line); padding: 27px 27px 30px; }
+    .section + .section { border-top: 1px solid var(--line); margin-top: 25px; padding-top: 24px; }
+    .section-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: 19px; }
+    h2 { font-size: 13px; font-weight: 650; margin: 0; }
+    .section-heading small { color: #a3a398; font-size: 10px; letter-spacing: 1px; }
+    .field { margin-bottom: 16px; }
+    .field-label { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 12px; margin-bottom: 9px; }
+    .field-label span { color: var(--muted); font-size: 10px; }
+    textarea, input[type="text"], select { width: 100%; border: 1px solid #deddd4; border-radius: 8px; padding: 11px 12px; background: #fffefb; color: #373a31; }
+    textarea { resize: vertical; min-height: 112px; line-height: 1.8; font-size: 13px; display: block; }
+    input[type="text"], select { font-size: 12px; }
+    input[type="text"]:disabled { background: #f0efe8; color: #787c70; }
+    #upload { width: 100%; border: 1px dashed #d1d4c5; border-radius: 9px; background: #f2f3eb; display: flex; align-items: center; gap: 14px; padding: 12px; text-align: left; color: inherit; }
+    #upload:hover, #upload.dragover { border-color: #778466; background: #e9edde; }
+    #avatar-preview { width: 54px; height: 54px; border-radius: 8px; flex-shrink: 0; }
+    .upload-copy { min-width: 0; }
+    .upload-copy strong { display: block; font-size: 12px; font-weight: 500; margin-bottom: 6px; }
+    #avatar-name { display: block; color: var(--muted); font-size: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 184px; }
+    .anonymity { display: flex; align-items: center; justify-content: space-between; gap: 15px; background: #efeee7; border-radius: 9px; padding: 13px; cursor: pointer; }
+    .anonymity strong { display: block; font-size: 12px; font-weight: 500; }
+    .anonymity small { display: block; font-size: 10px; color: var(--muted); margin-top: 5px; }
+    #anonymous { appearance: none; flex-shrink: 0; width: 34px; height: 20px; border-radius: 20px; background: #c9cbbf; margin: 0; cursor: pointer; position: relative; }
+    #anonymous::after { content: ""; width: 14px; height: 14px; background: white; position: absolute; top: 3px; left: 3px; border-radius: 50%; transition: transform .18s; }
+    #anonymous:checked { background: var(--accent); }
+    #anonymous:checked::after { transform: translateX(14px); }
+    .layouts { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+    .layout { color: #797c6e; background: #fffefb; border: 1px solid var(--line); border-radius: 8px; padding: 11px; font-size: 11px; }
+    .layout:hover { border-color: #a1ad90; }
+    .layout[aria-pressed="true"] { border-color: #647653; background: #eef1e7; color: #435335; box-shadow: inset 0 0 0 1px #647653; }
+    .layout-icon { width: 62px; height: 32px; margin: 0 auto 9px; position: relative; background: repeating-linear-gradient(0deg, transparent 0 5px, #a3ad9455 5px 7px, transparent 7px 9px) right center / 31px 24px no-repeat; }
+    .layout-icon::before { content: ""; position: absolute; left: 0; top: 0; width: 23px; height: 32px; background: #9daa8c; border-radius: 2px; }
+    .layout-icon.wash::before { width: 59px; opacity: .22; }
+    .layout-icon.fade::before { width: 48px; background: linear-gradient(90deg, #9daa8c, transparent); }
+    .layout-icon.round::before { width: 25px; height: 25px; border-radius: 50%; top: 4px; }
+    .display-options { margin-top: 20px; }
+    .palette { display: flex; gap: 10px; }
+    .swatch { width: 25px; height: 25px; border-radius: 50%; background: var(--color); border: 1px solid #0002; padding: 0; }
+    .swatch[aria-pressed="true"] { outline: 1px solid #687756; outline-offset: 3px; }
+    .two-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 19px; }
+    .two-fields select { padding: 9px 5px; }
+    input[type="range"] { width: 100%; accent-color: var(--accent); margin: 0; cursor: pointer; }
+    .small-note { font-size: 10px; color: var(--muted); line-height: 1.7; margin: 8px 0 0; }
+    main { min-width: 0; padding: 37px 40px 27px; display: flex; flex-direction: column; }
+    .intro { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
+    .eyebrow { font-size: 10px; color: #8a8c7d; letter-spacing: 2.5px; margin: 0 0 11px; }
+    .intro h2 { font-family: "Songti SC", "SimSun", serif; font-size: clamp(24px, 2.5vw, 34px); font-weight: 500; letter-spacing: 1px; }
+    .intro p:last-child { color: var(--muted); font-size: 12px; margin: 12px 0 0; line-height: 1.7; }
+    .badge { white-space: nowrap; color: #758066; border: 1px solid #d4d9ca; padding: 7px 11px; border-radius: 30px; font-size: 10px; margin-top: 7px; background: #f8f9f2; }
+    .preview-area { flex: 1; min-height: 400px; display: flex; align-items: center; justify-content: center; padding: 39px 0 31px; }
+    figure { width: 100%; margin: 0; }
+    .paper { width: 100%; max-width: 1100px; margin: auto; }
+    #output { width: 100%; height: auto; display: block; box-shadow: 0 15px 45px #36372a13, 0 1px 4px #36372a12; background: #f2ecdf; }
+    figcaption { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 19px auto 0; color: #898d7f; font-size: 10px; max-width: 1100px; }
+    .preview-dot { width: 5px; height: 5px; border-radius: 50%; background: #83946e; display: inline-block; margin-right: 6px; }
+    .export-bar { padding-top: 22px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .export-copy strong { display: block; font-size: 12px; font-weight: 500; }
+    .export-copy p { font-size: 10px; color: var(--muted); line-height: 1.6; margin: 7px 0 0; }
+    #download { background: #596849; border: 0; color: #fffef7; border-radius: 8px; padding: 14px 25px; white-space: nowrap; font-size: 13px; }
+    #download:hover { background: #465638; }
+    #status { min-height: 20px; line-height: 1.6; color: #886640; font-size: 12px; margin-top: 14px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    @media (min-width: 1100px) { aside { max-height: calc(100dvh - 83px - var(--tool-navigation-height, 0px)); overflow-y: auto; scrollbar-width: thin; scrollbar-color: #dbddd2 transparent; } main { height: calc(100dvh - 83px - var(--tool-navigation-height, 0px)); min-height: 660px; } }
+    @media (max-width: 1000px) { .app { grid-template-columns: 310px minmax(0, 1fr); } aside { padding: 25px 20px; } main { padding: 30px 25px; } .badge { display: none; } .export-bar { flex-wrap: wrap; } .preview-area { min-height: 350px; } }
+    @media (max-width: 700px) { header { padding: 0 20px; height: 74px; } .header-note { font-size: 10px; } .app { display: flex; flex-direction: column; } main { order: -1; padding: 25px 20px 18px; } .intro h2 { font-size: 25px; } .intro p:last-child { font-size: 11px; } .preview-area { min-height: 0; padding: 25px 0; } aside { border-right: 0; border-top: 1px solid var(--line); } .export-bar { gap: 12px; padding-top: 18px; } #download { padding: 12px 16px; } .export-copy p { max-width: 180px; } #status:empty { min-height: 0; margin-top: 0; } }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <header><div class="brand"><div class="brand-icon" aria-hidden="true">“</div><div><h1>群友金句</h1><div class="brand-sub">WORDS WORTH FRAMING</div></div></div><div class="header-note">本地生成 · 无水印</div></header>
+  <div class="app">
+    <aside aria-label="金句编辑器">
+      <section class="section">
+        <div class="section-heading"><h2>写下这句名言</h2><small>01 / CONTENT</small></div>
+        <div class="field"><div class="field-label"><label for="quote">金句内容</label><span id="count">0 / 1200</span></div><textarea id="quote" maxlength="1200" placeholder="总有一句群聊，值得被认真排版。">不要因为群里没人说话，
+就怀疑自己最后一句话的水平。</textarea></div>
+        <div class="field"><div class="field-label"><span style="color:inherit;font-size:12px">群友头像</span></div><button id="upload" type="button" aria-label="上传或更换群友头像，也可拖入图片"><canvas id="avatar-preview" width="108" height="108" aria-hidden="true"></canvas><span class="upload-copy"><strong>上传 / 更换头像 ↗</strong><span id="avatar-name">示例头像 · 也可拖入图片</span></span></button><input id="avatar-file" type="file" accept="image/*" hidden></div>
+        <div class="field"><div class="field-label"><label for="author">群友 ID</label><span>最多 60 字</span></div><input id="author" type="text" maxlength="60" value="一位路过的群友" placeholder="这句名言出自谁？" autocomplete="off"></div>
+        <label class="anonymity" for="anonymous"><span><strong>匿名发表</strong><small>超强马赛克，隐藏原始署名</small></span><input id="anonymous" type="checkbox" role="switch"></label>
+      </section>
+      <section class="section">
+        <div class="section-heading"><h2>选一种名言气质</h2><small>02 / LAYOUT</small></div>
+        <div class="layouts" role="group" aria-label="排版样式">
+          <button class="layout" data-layout="classic" aria-pressed="true"><div class="layout-icon" aria-hidden="true"></div>经典分栏</button>
+          <button class="layout" data-layout="wash" aria-pressed="false"><div class="layout-icon wash" aria-hidden="true"></div>淡影留白</button>
+          <button class="layout" data-layout="fade" aria-pressed="false"><div class="layout-icon fade" aria-hidden="true"></div>向右渐隐</button>
+          <button class="layout" data-layout="round" aria-pressed="false"><div class="layout-icon round" aria-hidden="true"></div>圆像小传</button>
+        </div>
+        <div class="display-options">
+          <div class="field-label"><label>画面配色</label><span id="theme-name">旧书米白</span></div>
+          <div class="palette" role="group" aria-label="画面配色">
+            <button class="swatch" data-theme="paper" style="--color:#f2ecdf" aria-label="旧书米白" title="旧书米白" aria-pressed="true"></button>
+            <button class="swatch" data-theme="ink" style="--color:#252a28" aria-label="深夜墨绿" title="深夜墨绿" aria-pressed="false"></button>
+            <button class="swatch" data-theme="white" style="--color:#ffffff" aria-label="纯白手稿" title="纯白手稿" aria-pressed="false"></button>
+            <button class="swatch" data-theme="rose" style="--color:#eddfda" aria-label="落日浅陶" title="落日浅陶" aria-pressed="false"></button>
+          </div>
+          <div class="two-fields">
+            <div class="field"><div class="field-label"><label for="ratio">图片比例</label></div><select id="ratio"><option value="wide">横版 16 : 9</option><option value="photo">横版 4 : 3</option><option value="square">方形 1 : 1</option></select></div>
+            <div class="field"><div class="field-label"><label for="font">文字风格</label></div><select id="font"><option value="serif">经典宋体</option><option value="sans">简洁黑体</option><option value="kai">手写楷体</option></select></div>
+          </div>
+          <div class="field-label"><label for="font-size">金句字号</label><span id="size-label">54 px</span></div><input id="font-size" type="range" min="32" max="100" value="54" step="2"><p class="small-note">长金句自动缩小字号；换行会保留。图片与字体均在本地处理。</p>
+        </div>
+      </section>
+    </aside>
+    <main>
+      <div class="intro"><div><p class="eyebrow">THE GROUP CHAT COLLECTION</p><h2>群聊里，也有思想家。</h2><p>一句金句，一张头像，一个值得被记住的名字。</p></div><span class="badge">名言，不必出自名人</span></div>
+      <div class="preview-area"><figure><div class="paper" id="paper"><canvas id="output" width="1600" height="900" aria-label="金句图片实时预览"></canvas></div><figcaption><span><i class="preview-dot"></i>实时预览 <span id="preview-mode">/ 经典分栏</span></span><span id="resolution">1600 × 900 · PNG</span></figcaption></figure></div>
+      <div class="export-bar"><div class="export-copy"><strong>让这句话，拥有一张正式的肖像。</strong><p>导出只包含头像、金句和 ID，无其他文字或水印。</p></div><button id="download">下载金句图片 ↓</button></div>
+      <div id="status" role="status" aria-live="polite"></div>
+    </main>
+  </div>
+  <script>
+    'use strict';
+    const $ = id => document.getElementById(id);
+    const output = $('output');
+    const ctx = output.getContext('2d');
+    const ANONYMOUS = '不愿意透露姓名的群友';
+    const themes = {
+      paper: { name: '旧书米白', bg: '#f2ecdf', text: '#35392f', id: '#646858' },
+      ink: { name: '深夜墨绿', bg: '#252a28', text: '#eeeddf', id: '#bfc5b5' },
+      white: { name: '纯白手稿', bg: '#ffffff', text: '#252b30', id: '#697079' },
+      rose: { name: '落日浅陶', bg: '#eddfda', text: '#4a3635', id: '#86645b' }
+    };
+    const fonts = {
+      serif: '"Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "SimSun", serif',
+      sans: '"PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif',
+      kai: '"Kaiti SC", "KaiTi", "STKaiti", "Noto Serif CJK SC", serif'
+    };
+    const dimensions = { wide: [1600, 900], photo: [1440, 1080], square: [1200, 1200] };
+    const layoutNames = { classic: '经典分栏', wash: '淡影留白', fade: '向右渐隐', round: '圆像小传' };
+    const state = { layout: 'classic', theme: 'paper', avatar: null, avatarName: '示例头像', loading: false, exporting: false };
+    let scheduled = false, uploadVersion = 0;
+    let mosaicSource = null, mosaic = null;
+    const segmenter = typeof Intl.Segmenter === 'function' ? new Intl.Segmenter('zh', { granularity: 'grapheme' }) : null;
+    const graphemes = text => segmenter ? Array.from(segmenter.segment(text), item => item.segment) : Array.from(text);
+
+    function announce(message = '') { $('status').textContent = message; }
+
+    // 默认头像由本地几何图形绘制；不依赖外部图片、字体或网络。
+    function exampleAvatar() {
+      const c = document.createElement('canvas'); c.width = c.height = 600;
+      const g = c.getContext('2d');
+      g.fillStyle = '#bac4ac'; g.fillRect(0, 0, 600, 600);
+      g.fillStyle = '#dbe0c8'; g.beginPath(); g.arc(400, 180, 215, 0, Math.PI * 2); g.fill();
+      g.fillStyle = '#77896f'; g.beginPath(); g.moveTo(0, 360); g.lineTo(215, 210); g.lineTo(600, 480); g.lineTo(600, 600); g.lineTo(0, 600); g.fill();
+      g.fillStyle = '#444e43'; g.beginPath(); g.ellipse(304, 601, 204, 206, 0, 0, Math.PI * 2); g.fill();
+      g.fillStyle = '#ba9674'; g.fillRect(266, 353, 73, 93);
+      g.fillStyle = '#d5b694'; g.beginPath(); g.ellipse(300, 276, 98, 135, -.08, 0, Math.PI * 2); g.fill();
+      g.fillStyle = '#394237'; g.beginPath(); g.moveTo(202, 282); g.bezierCurveTo(145, 95, 422, 89, 408, 246); g.lineTo(370, 297); g.lineTo(354, 216); g.bezierCurveTo(297, 249, 267, 190, 215, 260); g.closePath(); g.fill();
+      g.strokeStyle = '#414a3e'; g.lineWidth = 8; g.strokeRect(226, 271, 62, 41); g.strokeRect(308, 271, 62, 41); g.beginPath(); g.moveTo(288, 284); g.lineTo(308, 284); g.stroke();
+      g.strokeStyle = '#986f55'; g.lineWidth = 4; g.beginPath(); g.moveTo(285, 350); g.quadraticCurveTo(305, 360, 325, 347); g.stroke();
+      return c;
+    }
+
+    function sourceSize(source) { return [source.naturalWidth || source.width, source.naturalHeight || source.height]; }
+    function cover(g, source, x, y, w, h) {
+      const [sw, sh] = sourceSize(source);
+      const scale = Math.max(w / sw, h / sh);
+      const cropW = w / scale, cropH = h / scale;
+      g.drawImage(source, (sw - cropW) / 2, (sh - cropH) / 2, cropW, cropH, x, y, w, h);
+    }
+
+    function getAvatar() {
+      if (!$('anonymous').checked) return state.avatar;
+      if (mosaicSource !== state.avatar) {
+        // 先缩到 5 × 5 色块，再放大；所有匿名样式共用这一已处理图像。
+        const tiny = document.createElement('canvas'); tiny.width = tiny.height = 5;
+        const t = tiny.getContext('2d');
+        t.fillStyle = '#b4b5a8'; t.fillRect(0, 0, 5, 5);
+        cover(t, state.avatar, 0, 0, 5, 5);
+        mosaic = document.createElement('canvas'); mosaic.width = mosaic.height = 600;
+        const m = mosaic.getContext('2d'); m.imageSmoothingEnabled = false;
+        m.drawImage(tiny, 0, 0, 600, 600);
+        mosaicSource = state.avatar;
+      }
+      return mosaic;
+    }
+
+    function previewAvatar() {
+      const canvas = $('avatar-preview'), g = canvas.getContext('2d');
+      g.clearRect(0, 0, canvas.width, canvas.height);
+      g.imageSmoothingEnabled = !$('anonymous').checked;
+      cover(g, getAvatar(), 0, 0, canvas.width, canvas.height);
+      $('avatar-name').textContent = $('anonymous').checked ? '匿名头像 · 5 × 5 超强马赛克' : `${state.avatarName} · 点击替换`;
+      $('avatar-name').title = $('anonymous').checked ? '匿名头像' : state.avatarName;
+    }
+
+    function schedule() {
+      if (scheduled) return;
+      scheduled = true;
+      requestAnimationFrame(() => { scheduled = false; render(); });
+    }
+
+    // 按完整字符（含 emoji）换行，保留用户输入的段落；标点尽量不放行首。
+    function wrapText(text, maxWidth) {
+      const result = [];
+      const closing = /^[，。！？、；：）》】」』,.!?;:)]$/u;
+      for (const paragraph of text.split('\n')) {
+        if (!paragraph) { result.push(''); continue; }
+        let line = '';
+        for (const char of graphemes(paragraph)) {
+          if (line && ctx.measureText(line + char).width > maxWidth) {
+            if (closing.test(char)) {
+              const chars = graphemes(line);
+              const last = chars.pop();
+              if (chars.length) { result.push(chars.join('')); line = last + char; }
+              else { result.push(line); line = char; }
+            } else { result.push(line); line = char; }
+          } else line += char;
+        }
+        result.push(line);
+      }
+      return result;
+    }
+
+    function fittedText(text, family, maxFont, maxWidth, maxHeight, lineRatio) {
+      function measure(size) {
+        ctx.font = `${size}px ${family}`;
+        const lines = wrapText(text, maxWidth);
+        return { size, lines, lineHeight: size * lineRatio };
+      }
+      function fits(result) {
+        return result.lines.length * result.lineHeight <= maxHeight && result.lines.every(line => ctx.measureText(line).width <= maxWidth);
+      }
+      let best = measure(Math.floor(maxFont));
+      if (fits(best)) return best;
+      let low = 1, high = Math.floor(maxFont) - 1;
+      best = measure(1);
+      // 极多显式换行也限制在文字区域内，避免与署名重叠。
+      if (!fits(best)) return measure(Math.min(1, maxHeight / (best.lines.length * lineRatio)) * .99);
+      while (low <= high) {
+        const middle = Math.floor((low + high) / 2);
+        const candidate = measure(middle);
+        if (fits(candidate)) { best = candidate; low = middle + 1; }
+        else high = middle - 1;
+      }
+      ctx.font = `${best.size}px ${family}`;
+      return best;
+    }
+
+    function render() {
+      const [w, h] = dimensions[$('ratio').value];
+      if (output.width !== w || output.height !== h) { output.width = w; output.height = h; }
+      const theme = themes[state.theme];
+      const quote = $('quote').value.replace(/\r\n?/g, '\n').trim();
+      const anonymous = $('anonymous').checked;
+      const author = anonymous ? ANONYMOUS : $('author').value.trim();
+      const portrait = getAvatar();
+      ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+      ctx.fillStyle = theme.bg; ctx.fillRect(0, 0, w, h);
+      ctx.imageSmoothingEnabled = !anonymous;
+      let textX = w * .42;
+      ctx.save();
+      if (state.layout === 'classic') {
+        cover(ctx, portrait, w * .065, h * .16, w * .285, h * .68);
+      } else if (state.layout === 'round') {
+        const diameter = w * .285;
+        const x = w * .065, y = (h - diameter) / 2;
+        ctx.beginPath(); ctx.arc(x + diameter / 2, y + diameter / 2, diameter / 2, 0, Math.PI * 2); ctx.clip();
+        cover(ctx, portrait, x, y, diameter, diameter);
+      } else {
+        const washed = state.layout === 'wash';
+        ctx.globalAlpha = washed ? .22 : 1;
+        cover(ctx, portrait, 0, 0, w * .65, h);
+        ctx.globalAlpha = 1;
+        const gradient = ctx.createLinearGradient(w * (washed ? .08 : .23), 0, w * .65, 0);
+        gradient.addColorStop(0, theme.bg + '00');
+        gradient.addColorStop(washed ? .7 : .74, theme.bg + 'ec');
+        gradient.addColorStop(1, theme.bg);
+        ctx.fillStyle = gradient; ctx.fillRect(0, 0, w * .65, h);
+        textX = w * .43;
+      }
+      ctx.restore();
+      const textWidth = w * .91 - textX;
+      const maxFont = Number($('font-size').value) * w / 1600;
+      const family = fonts[$('font').value];
+      const fitted = fittedText(quote, family, maxFont, textWidth, h * .61, 1.6);
+      const totalHeight = fitted.lines.length * fitted.lineHeight;
+      const firstY = h * .445 - totalHeight / 2 + fitted.lineHeight / 2;
+      ctx.font = `${fitted.size}px ${family}`; ctx.fillStyle = theme.text;
+      ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+      fitted.lines.forEach((line, index) => ctx.fillText(line, textX, firstY + index * fitted.lineHeight));
+      const signature = fittedText(author, fonts.sans, w * .0205, textWidth, h * .14, 1.5);
+      ctx.font = `${signature.size}px ${fonts.sans}`; ctx.fillStyle = theme.id; ctx.textAlign = 'right';
+      const lastY = h * .864;
+      signature.lines.forEach((line, index) => ctx.fillText(line, w * .91, lastY - (signature.lines.length - 1 - index) * signature.lineHeight));
+      $('count').textContent = `${$('quote').value.length} / 1200`;
+      $('size-label').textContent = `${Math.round(maxFont)} px${fitted.size < Math.floor(maxFont) ? ` → ${Number(fitted.size.toFixed(2))} px（自动）` : ''}`;
+      $('resolution').textContent = `${w} × ${h} · PNG`;
+      $('preview-mode').textContent = `/ ${layoutNames[state.layout]}${anonymous ? ' · 匿名模式' : ''}`;
+      output.setAttribute('aria-label', `金句预览：${quote}。署名：${author}`);
+      $('download').disabled = !quote || !author || state.loading || state.exporting;
+      // 方形预览限制高度，导出仍使用原始分辨率。
+      const maxHeight = window.innerWidth > 700 ? Math.max(330, window.innerHeight - 375) : 520;
+      $('paper').style.maxWidth = `${Math.min(1100, maxHeight * w / h)}px`;
+    }
+
+    for (const id of ['quote', 'author', 'font-size']) $(id).addEventListener('input', () => { announce(); schedule(); });
+    for (const id of ['ratio', 'font']) $(id).addEventListener('change', schedule);
+    $('anonymous').addEventListener('change', () => {
+      $('author').disabled = $('anonymous').checked;
+      previewAvatar(); schedule();
+      announce($('anonymous').checked ? '匿名模式已开启：预览和导出均使用强马赛克与匿名署名。' : '已恢复原头像和群友 ID。');
+    });
+    document.querySelectorAll('[data-layout]').forEach(button => button.addEventListener('click', () => {
+      state.layout = button.dataset.layout;
+      document.querySelectorAll('[data-layout]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      schedule();
+    }));
+    document.querySelectorAll('[data-theme]').forEach(button => button.addEventListener('click', () => {
+      state.theme = button.dataset.theme;
+      $('theme-name').textContent = themes[state.theme].name;
+      document.querySelectorAll('[data-theme]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      schedule();
+    }));
+
+    async function loadAvatar(file) {
+      if (!file) return;
+      const version = ++uploadVersion;
+      state.loading = true; render(); announce('正在读取头像…');
+      const url = URL.createObjectURL(file);
+      try {
+        if (file.type && !file.type.startsWith('image/')) throw new Error('请选择图片文件。');
+        const image = new Image();
+        await new Promise((resolve, reject) => {
+          image.onload = resolve;
+          image.onerror = () => reject(new Error('这张图片无法读取，请尝试 PNG、JPG 或 WebP 图片。'));
+          image.src = url;
+        });
+        if (!image.naturalWidth || !image.naturalHeight) throw new Error('图片尺寸无效。');
+        if (version !== uploadVersion) return;
+        // 先复制到本地画布，限制大图内存占用，也将动图固定为当前帧。
+        const normalized = document.createElement('canvas');
+        const scale = Math.min(1, 2400 / Math.max(image.naturalWidth, image.naturalHeight));
+        normalized.width = Math.max(1, Math.round(image.naturalWidth * scale));
+        normalized.height = Math.max(1, Math.round(image.naturalHeight * scale));
+        normalized.getContext('2d').drawImage(image, 0, 0, normalized.width, normalized.height);
+        normalized.getContext('2d').getImageData(0, 0, 1, 1);
+        state.avatar = normalized; state.avatarName = file.name;
+        mosaicSource = null; previewAvatar(); announce('头像已更新。');
+      } catch (error) {
+        if (version === uploadVersion) announce(error.name === 'SecurityError' ? '此图片无法安全导出，请改用 PNG 或 JPG 头像。' : error.message);
+      } finally {
+        URL.revokeObjectURL(url);
+        if (version === uploadVersion) { state.loading = false; schedule(); }
+      }
+    }
+    $('upload').addEventListener('click', () => $('avatar-file').click());
+    $('avatar-file').addEventListener('change', event => { loadAvatar(event.target.files[0]); event.target.value = ''; });
+    $('upload').addEventListener('dragover', event => { event.preventDefault(); $('upload').classList.add('dragover'); });
+    $('upload').addEventListener('dragleave', () => $('upload').classList.remove('dragover'));
+    $('upload').addEventListener('drop', event => {
+      event.preventDefault(); $('upload').classList.remove('dragover');
+      loadAvatar(event.dataTransfer.files[0]);
+    });
+    // 防止把图片拖到页面其他区域时浏览器直接跳转打开文件。
+    window.addEventListener('dragover', event => { if (Array.from(event.dataTransfer.types).includes('Files')) event.preventDefault(); });
+    window.addEventListener('drop', event => { if (Array.from(event.dataTransfer.types).includes('Files')) event.preventDefault(); });
+
+    $('download').addEventListener('click', async () => {
+      if (state.loading || state.exporting) return;
+      if (!$('quote').value.trim() || (!$('anonymous').checked && !$('author').value.trim())) { announce('请填写金句内容和群友 ID。'); return; }
+      state.exporting = true; $('download').textContent = '正在生成…';
+      try {
+        await document.fonts.ready;
+        render();
+        const anonymous = $('anonymous').checked;
+        const blob = await new Promise((resolve, reject) => output.toBlob(result => result ? resolve(result) : reject(new Error('图片生成失败，请重试。')), 'image/png'));
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url; link.download = `群友金句${anonymous ? '-匿名' : ''}-${Date.now()}.png`;
+        document.body.append(link); link.click(); link.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 60000);
+        announce('PNG 图片已生成，请在浏览器的下载记录中查看。');
+      } catch (error) { announce(`导出失败：${error.message}`); }
+      finally { state.exporting = false; $('download').textContent = '下载金句图片 ↓'; schedule(); }
+    });
+    state.avatar = exampleAvatar();
+    previewAvatar(); render();
+    window.addEventListener('resize', schedule);
+    document.fonts.ready.then(schedule);
+  </script>
+</body>
+</html>
