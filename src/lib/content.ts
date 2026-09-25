@@ -1,6 +1,8 @@
 import { load as parseYaml } from 'js-yaml';
 import { z } from 'astro/zod';
 import { hasPicture } from './images';
+import { statSync } from 'node:fs';
+import { resolve } from 'node:path';
 
 import siteRaw from '../data/site.yaml?raw';
 import worksRaw from '../data/works.yaml?raw';
@@ -9,6 +11,7 @@ import quotesRaw from '../data/quotes.yaml?raw';
 import activitiesRaw from '../data/activities.yaml?raw';
 import recommendationsRaw from '../data/recommendations.yaml?raw';
 import contributorsRaw from '../data/contributors.yaml?raw';
+import resourcesRaw from '../data/resources.yaml?raw';
 
 // 图片路径：相对 Pictures/，构建时检查文件是否存在。
 const picture = z.string().superRefine((path, ctx) => {
@@ -113,6 +116,26 @@ const translations = z.array(
 
 const quotes = z.array(z.object({ text: text, author: text }));
 
+const toolFile = text.regex(/^[a-z0-9][a-z0-9-]*\.html$/, '请填写小写英文、数字或连字符组成的 HTML 文件名，例如 quotes.html')
+	.refine((file) => statSync(resolve('public/resources/tools', file), { throwIfNoEntry: false })?.isFile() ?? false, {
+		message: '找不到对应工具，请先将 HTML 文件放入 public/resources/tools/',
+	});
+const resources = z.object({
+	tools: z.object({
+		title: text,
+		en: text,
+		intro: text,
+		items: z.array(z.object({ file: toolFile, title: text, description: text, tags: z.array(text).default([]) }))
+			.superRefine((items, ctx) => {
+				const seen = new Set<string>();
+				items.forEach((item, i) => {
+					if (seen.has(item.file)) ctx.addIssue({ code: 'custom', path: [i, 'file'], message: '同一个工具不能重复添加' });
+					seen.add(item.file);
+				});
+			}),
+	}),
+});
+
 // YAML 会把 2026-05-03 解析成 Date；写成字符串也接受。
 const date = z.union([z.date(), z.string()]).transform((v, ctx) => {
 	const d = v instanceof Date ? v : new Date(v);
@@ -198,6 +221,7 @@ export const activitiesData = load('activities.yaml', activitiesRaw, activities)
 );
 export const recommendationsData = load('recommendations.yaml', recommendationsRaw, recommendations);
 export const contributorsData = load('contributors.yaml', contributorsRaw, contributors);
+export const resourcesData = load('resources.yaml', resourcesRaw, resources);
 
 export type Section = z.output<typeof site>['sections'][number];
 

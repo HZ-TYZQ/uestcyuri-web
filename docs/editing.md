@@ -11,6 +11,7 @@
 | 群友汉化 | `src/data/translations.yaml` |
 | 群友金句 | `src/data/quotes.yaml` |
 | 群友活动 | `src/data/activities.yaml` |
+| 资源整理的小工具列表 | `src/data/resources.yaml` |
 | 百合推荐（漫画、小说、游戏） | `src/data/recommendations.yaml` |
 | 网页贡献者、素材提供头像轮播 | `src/data/contributors.yaml` |
 | 配色、字体 | `src/styles/global.css` 开头的 `:root` |
@@ -52,7 +53,28 @@
 
 各栏目页按内容自然垂直滚动，通过顶部主导航切换栏目。页面不设置页内目录，也不为末节跳转补足视口高度。
 
-**资源整理**：目前没有资源条目，只显示空状态；文案在 `site.yaml` 的 `resources.emptyTitle` 和 `resources.emptyNote` 中修改。
+**添加小工具**：把单文件 HTML 放进 `public/resources/tools/`，文件名使用小写英文、数字和连字符，例如 `my-tool.html`。它会直接发布为 `/resources/tools/my-tool.html`，可以单独打开、刷新或分享，不需要先访问资源页。
+
+在 `src/data/resources.yaml` 的 `tools.items` 末尾添加：
+
+```yaml
+- file: my-tool.html
+  title: 工具名称
+  description: 简短说明工具能做什么。
+  tags: [标签一, 标签二]
+```
+
+列表顺序与 YAML 一致；`tools.title`、`tools.en`、`tools.intro` 控制“小工具”栏目的标题和导语。工具文件原样发布，保持各自的样式和脚本；新增或更新时直接替换对应 HTML 即可。构建时会校验文件是否存在、文件名是否重复。金句工具现位于 `public/resources/tools/quotes.html`，网址为 `/resources/tools/quotes.html`。
+
+**工具页的返回入口**：每个 HTML 的 `<head>` 中加入下面这一行，自动在页面顶部显示共用的“返回资源整理”导航条：
+
+```html
+<script src="../tool-navigation.js" defer></script>
+```
+
+导航条使用工具现有的 `--accent`、`--line`、`--muted` 等配色变量，内部样式通过 Shadow DOM 隔离，不影响工具的按钮、标题或布局。返回目标固定为 `/resources/#resources`，直接访问工具网址也能返回。若工具按视口高度布局，可在高度计算里减去 `var(--tool-navigation-height, 0px)`；普通文档布局无需调整。共用脚本位于 `public/resources/tool-navigation.js`，后续统一修改这里即可。
+
+工具列表为空（`items: []`）时显示空状态；空状态文案仍在 `site.yaml` 的 `resources.emptyTitle` 和 `resources.emptyNote` 中修改。
 
 **新增创作类型**：已有的插画、原创角色和图片形式文字作品继续改 `works.yaml`；如果后续要展示可玩的游戏或小说正文，可添加专用数据文件与组件，在 `src/lib/content.ts` 注册板块 id 和校验，再在 `src/pages/[page].astro` 注册组件，最后加入 `pages` 中“群友创作”的 `sections`。无需改动其他页面。
 

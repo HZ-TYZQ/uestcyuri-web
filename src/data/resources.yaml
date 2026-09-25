@@ -1,0 +1,11 @@
+# 单 HTML 工具放在 public/resources/tools/，file 填文件名，对应网址 /resources/tools/<file>。
+# 新增工具只需放入文件并追加一项；排序与这里一致。
+tools:
+  title: 小工具
+  en: Little tools
+  intro: 一些顺手的小工具，把群里的灵感变成可以分享的东西。
+  items:
+    - file: quotes.html
+      title: 群友金句生成器
+      description: 给群聊里的名言配上头像和署名，挑选版式与配色，生成一张可以分享的金句图片。
+      tags: [图片生成, 本地处理, PNG 导出]

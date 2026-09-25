@@ -1,12 +1,31 @@
 ---
-import { siteData, type Section } from '../lib/content';
+import SectionHead from './SectionHead.astro';
+import { siteData, resourcesData, type Section } from '../lib/content';
 interface Props { section: Section; num: string }
-const { section } = Astro.props;
+const { section, num } = Astro.props;
+const { tools } = resourcesData;
 ---
 <div class="wrap">
-	<section class="resource-empty" id={section.id} aria-labelledby={`${section.id}-title`}>
-		<span class="latin" aria-hidden="true">To be continued.</span>
-		<h2 id={`${section.id}-title`}>{siteData.resources.emptyTitle}</h2>
-		<p>{siteData.resources.emptyNote}</p>
-	</section>
+	{tools.items.length > 0 ? (
+		<section class="section" id={section.id} aria-labelledby={`${section.id}-title`}>
+			<SectionHead section={{ ...section, title: tools.title, en: tools.en, tagline: tools.intro }} num={num} />
+			<div class="resource-tools">
+				{tools.items.map((tool, i) => (
+					<a class="resource-tool" href={`/resources/tools/${tool.file}`}>
+						<span class="tool-index latin" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+						<h3>{tool.title}</h3>
+						<p>{tool.description}</p>
+						<div class="tool-tags">{tool.tags.map((tag) => <span class="tag">{tag}</span>)}</div>
+						<span class="tool-open">打开工具 <span aria-hidden="true">↗</span></span>
+					</a>
+				))}
+			</div>
+		</section>
+	) : (
+		<section class="resource-empty" id={section.id} aria-labelledby={`${section.id}-title`}>
+			<span class="latin" aria-hidden="true">To be continued.</span>
+			<h2 id={`${section.id}-title`}>{siteData.resources.emptyTitle}</h2>
+			<p>{siteData.resources.emptyNote}</p>
+		</section>
+	)}
 </div>
