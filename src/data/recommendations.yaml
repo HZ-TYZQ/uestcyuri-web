@@ -101,6 +101,14 @@ groups:
             type: 轻小说 / 漫画
             cover: manga_cover/青梅竹马在裙下喵喵叫.jpg
             blurb: 疏远的青梅竹马突然长出猫耳，开始像猫一样黏着我。
+          - title: 彼时蓝星
+            type: 漫画
+            cover: manga_cover/彼时蓝星.jpg
+            blurb: 海边小城里，平凡的女高中生被隔壁班神秘的女孩吸引，慢慢摸索自己的心意。
+          - title: 你我的双人间
+            type: 漫画 · 四格
+            cover: manga_cover/你我的双人间.jpg
+            blurb: 从高中到工作，爱操心的樱子和悠哉的香澄，一直分享着同一间屋子的日常。
 
   - title: 游戏
     en: Games
