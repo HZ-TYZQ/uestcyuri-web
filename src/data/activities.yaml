@@ -1,8 +1,16 @@
 # 群友活动：每场一项，页面按日期自动倒序排列（最新的在前）。
 #
 # date     写成 2026-05-03 的格式
-# shots    截图，放在 Pictures/activities/<活动>/ 下；第一张是大图，其余是缩略图
+# shots    图片（截图或照片都行），放在 Pictures/activities/<活动>/ 下；第一张是大图，其余是缩略图
 # details  左边是标签，右边是内容，想加几行加几行
+
+- title: 线下K歌
+  date: 2026-09-26
+  intro: 群友们线下聚在 KTV，轮流点歌、合唱，唱了一下午。合照里每个人的脸都用自己的群头像挡住了，活像「灵位」；正中间还 P 上了群管的头像——《荒野乱斗》的斯派克，被 AI 娘化成了红发少女。
+  details:
+    - { label: 形式, value: 线下 }
+  shots:
+    - activities/karaoke/K歌.jpeg
 
 - title: 你画我猜 · 百合题库
   date: 2026-05-03
