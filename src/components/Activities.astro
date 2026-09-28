@@ -14,7 +14,8 @@ const list = await Promise.all(
 		const shots = await Promise.all(
 			a.shots.map(async (s, i) => {
 				const img = pic(s);
-				return { img, full: await fullSize(img), note: `${i + 1} / ${a.shots.length}`, caption: `${a.title} · ${i + 1} / ${a.shots.length}` };
+				const n = a.shots.length > 1 ? `${i + 1} / ${a.shots.length}` : '';
+				return { img, full: await fullSize(img), note: n, caption: n ? `${a.title} · ${n}` : a.title };
 			}),
 		);
 		return {
@@ -37,14 +38,14 @@ const list = await Promise.all(
 				<article class="activity">
 					<div>
 						<button class="shot main" type="button" data-gallery={a.gallery} data-caption={a.title} data-note={main.note} data-full={main.full} aria-label={`查看大图：${main.caption}`}>
-							<Image src={main.img} alt={`${a.title} 截图 1`} widths={[800, 1400]} sizes="(max-width: 1024px) 100vw, 680px" />
-							{a.shots.length > 1 && <span class="shot-count">{a.shots.length} 张截图</span>}
+							<Image src={main.img} alt={`${a.title} 图片 1`} widths={[800, 1400]} sizes="(max-width: 1024px) 100vw, 680px" />
+							{a.shots.length > 1 && <span class="shot-count">{a.shots.length} 张图片</span>}
 						</button>
 						{rest.length > 0 && (
 							<div class="thumbs">
 								{rest.map((s, i) => (
 									<button class="shot" type="button" data-gallery={a.gallery} data-caption={a.title} data-note={s.note} data-full={s.full} aria-label={`查看大图：${s.caption}`}>
-										<Image src={s.img} alt={`${a.title} 截图 ${i + 2}`} width={320} />
+										<Image src={s.img} alt={`${a.title} 图片 ${i + 2}`} width={320} />
 									</button>
 								))}
 							</div>
@@ -56,7 +57,7 @@ const list = await Promise.all(
 						<p>{a.intro}</p>
 						<dl>
 							{a.details.map((d) => <><dt>{d.label}</dt><dd>{d.value}</dd></>)}
-							<dt>截图</dt><dd>共 {a.shots.length} 张 · 点开可看大图</dd>
+							<dt>图片</dt><dd>{a.shots.length > 1 ? `共 ${a.shots.length} 张 · 点开可看大图` : '点开可看大图'}</dd>
 						</dl>
 					</div>
 				</article>

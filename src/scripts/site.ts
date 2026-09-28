@@ -61,7 +61,11 @@ const show = (i: number) => {
 	const b = group[idx];
 	lbImg.src = b.dataset.full ?? '';
 	lbImg.alt = $<HTMLImageElement>('img', b)?.alt ?? '';
-	$('.lb-count', lb)!.textContent = `${idx + 1} / ${group.length}`;
+	// 只有一张时不显示计数和翻页
+	const single = group.length < 2;
+	$('.lb-count', lb)!.textContent = single ? '' : `${idx + 1} / ${group.length}`;
+	$('.lb-prev', lb)!.hidden = single;
+	$('.lb-next', lb)!.hidden = single;
 	$('.lb-title', lb)!.textContent = b.dataset.caption ?? '';
 	$('.lb-note', lb)!.textContent = b.dataset.note ?? '';
 	lbImg.style.animation = 'none';
