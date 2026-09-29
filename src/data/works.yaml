@@ -14,7 +14,7 @@
 - name: Aurora
   avatar: head/Portrait(Aurora).jpg
   works:
-    - { image: works/Aurora/OC5.png,           type: oc }
+    - { image: works/Aurora/OC5.png,           type: oc, note: 摸鱼 }
     - { image: works/Aurora/OC79_Birthday.jpg, type: oc, note: 生日贺图 }
     - { image: works/Aurora/OC79_1.jpg,        type: oc }
     - { image: works/Aurora/OC1_2.jpg,         type: oc }
