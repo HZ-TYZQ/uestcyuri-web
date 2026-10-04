@@ -4,6 +4,17 @@
 # shots    图片（截图或照片都行），放在 Pictures/activities/<活动>/ 下；第一张是大图，其余是缩略图
 # details  左边是标签，右边是内容，想加几行加几行
 
+- title: 涂鸦躲猫猫
+  date: 2026-10-01
+  intro: 群友们开着语音玩涂鸦躲猫猫，在 Yuri Art Gallery 里顺便逛了场百合画展，拿着涂鸦枪找人的同时，也忍不住停下来看看画。换到其他地图，又留下了枪手奶龙，以及躺在棋盘格地板上、被大家围观的两只企鹅（群友，左一）。
+  details:
+    - { label: 形式, value: 线上 · 语音 + 涂鸦躲猫猫 }
+  shots:
+    - activities/doodle-hide-and-seek/yuri-art-gallery-1.png
+    - activities/doodle-hide-and-seek/yuri-art-gallery-2.png
+    - activities/doodle-hide-and-seek/nailong.png
+    - activities/doodle-hide-and-seek/penguins.png
+
 - title: 线下K歌
   date: 2026-09-26
   intro: 群友们线下聚在 KTV，轮流点歌、合唱，唱了一下午。合照里每个人的脸都用自己的群头像挡住了，活像「灵位」；正中间还 P 上了群管的头像——《荒野乱斗》的斯派克，被 AI 娘化成了红发少女。
