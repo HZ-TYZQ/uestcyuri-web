@@ -13,6 +13,7 @@ roles:
     names:
       - HZ-TYZQ
       - { org: Anthropic, name: Claude }
+      - { org: OpenAI, name: Codex }
 
   - role: 内容整理
     en: Curation

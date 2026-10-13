@@ -102,7 +102,7 @@ npm run astro -- dev stop
 | `Pictures/`                        | 已确认公开的图片                                                       |
 | `public/`                          | 原样发布的文件：`robots.txt`、`favicon.svg`                            |
 | `.github/pull_request_template.md` | 提 PR 时自动带出的说明模板和检查清单                                   |
-| `docs/`                            | 维护说明、许可、资料整理、已知问题                                     |
+| `docs/`                            | 维护说明、许可、资料整理、后续计划与历史归档                           |
 | `demo_claude/`                     | 静态设计示例，直接双击打开                                             |
 
 ### 文档
@@ -116,7 +116,8 @@ npm run astro -- dev stop
 | [`docs/yuri_artworks.md`](docs/yuri_artworks.md)                 | 推荐作品的完整资料和核实记录                                 |
 | [`docs/translation_works.md`](docs/translation_works.md)         | 群友汉化记录                                                 |
 | [`docs/group_quotes.md`](docs/group_quotes.md)                   | 金句征集与同意记录                                           |
-| [`docs/known_issues.md`](docs/known_issues.md)                   | 已知但暂时不修的问题                                         |
+| [`docs/legacy/known_issues.md`](docs/legacy/known_issues.md)     | 已解决问题与验证记录                                         |
+| [`docs/Future_plans/quotes_avatar.md`](docs/Future_plans/quotes_avatar.md) | 金句显示头像的后续计划                              |
 
 ## 许可
 
@@ -133,7 +134,7 @@ MIT 许可**只覆盖源码**。群友的画可以署名后原样转发，但不
 
 ## 贡献者
 
-- **开发与设计**：HZ-TYZQ & Anthropic Claude
+- **开发与设计**：HZ-TYZQ & Anthropic Claude & OpenAI Codex
 - **内容整理**：HZ-TYZQ & Anthropic Claude & OpenAI ChatGPT
 - **素材提供**：Aurora、冬之雪、柴猫猫、古明地道战、HZ-TYZQ
 - **网页维护**：HZ-TYZQ、柚子

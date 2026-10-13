@@ -170,9 +170,10 @@ npm run deploy       # 构建并上线
 | 看到的情况 | 原因和解决办法 |
 |---|---|
 | 构建报 `src/data/xxx.yaml 有问题` | 按报错里的位置去找，例如「第1项 → works → 第2项 → image」 |
+| 构建报 `不认识的字段` | 检查报错位置的字段名是否拼错、是否为页面支持的字段；花括号 `{ }` 里的值如果含英文逗号，要用双引号包起来或改用中文逗号 |
 | 构建报 `不是合法的 YAML` | 通常是缩进不对、用了 Tab，或者内容里有英文冒号 `: ` 却没加引号 |
 | 构建报 `找不到图片` | 检查路径和文件名是否一致，包括大小写和扩展名（`.jpg` 和 `.JPG` 算两个不同的名字）；图片是不是放进了 `Pictures/` |
-| 改了 YAML，页面上没变化 | 刷新页面；检查字段名有没有拼错；花括号 `{ }` 里有没有英文逗号。这两种错误构建时不会报，见 [known_issues.md](known_issues.md) |
+| 改了 YAML，页面上没变化 | 查看开发服务器日志或运行 `npm run build`，按提示修正数据后刷新页面；线上页面还要确认 PR 已合并且自动构建成功 |
 | 预览服务器起不来，提示端口被占用 | 运行 `npm run astro -- dev status` 看看是不是已经开着；不需要的话用 `npm run astro -- dev stop` 关掉 |
 | PR 里的 `Workers Builds` 检查失败 | 点开检查看构建日志，报错和本地 `npm run build` 的一样，按上面几行排查 |
 | `npm run deploy` 提示没有登录 | 先运行 `npx wrangler login`；没有 Cloudflare 权限的话，找维护者部署 |
@@ -193,7 +194,7 @@ npm run deploy       # 构建并上线
 | 有人提出时 | 撤下作品或金句：删掉 YAML 里的条目和 `Pictures/` 里的图片，合并进 `main` 后自动重新部署 |
 | 听说有新的 AI 爬虫时 | 加进 `public/robots.txt` |
 | 大约半年一次 | 升级依赖：运行 `npm update`，然后 `npm run build` 和 `npx astro check` 都要通过，再看一眼页面 |
-| 有空时 | 看看 [known_issues.md](known_issues.md) 里的问题要不要修 |
+| 有空时 | 整理新问题和后续计划；已解决问题的历史记录见 [legacy/known_issues.md](legacy/known_issues.md) |
 
 ### 撤下内容时要注意
 
