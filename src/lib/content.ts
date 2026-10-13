@@ -19,20 +19,20 @@ const picture = z.string().superRefine((path, ctx) => {
 });
 
 const text = z.string({ error: '这里需要填写文字' }).min(1, { error: '不能为空' });
-const link = z.object({ label: text, href: text });
+const link = z.strictObject({ label: text, href: text });
 // 作品台词引用：text 为中文译文，from 为出处作品名（不带书名号）
-const cite = z.object({ text, from: text });
+const cite = z.strictObject({ text, from: text });
 
 const sectionIds = ['works', 'translations', 'quotes', 'activities', 'recommend', 'resources', 'about'] as const;
 
-const site = z.object({
+const site = z.strictObject({
 	name: text,
 	subtitle: text,
 	groupName: text,
 	description: text,
 	logo: picture,
 	repo: z.url(),
-	hero: z.object({
+	hero: z.strictObject({
 		eyebrow: text,
 		title: z.array(text).min(1),
 		intro: text,
@@ -45,8 +45,8 @@ const site = z.object({
 		vertical: text,
 		caption: text,
 	}),
-	strip: z.object({ left: text, right: text }),
-	pages: z.array(z.object({
+	strip: z.strictObject({ left: text, right: text }),
+	pages: z.array(z.strictObject({
 		id: text.regex(/^[a-z][a-z0-9-]*$/, '网址只能使用小写字母、数字和连字符'),
 		title: text,
 		en: text,
@@ -55,7 +55,7 @@ const site = z.object({
 		sections: z.array(z.enum(sectionIds)).min(1),
 	})).min(1),
 	sections: z.array(
-		z.object({
+		z.strictObject({
 			id: z.enum(sectionIds),
 			title: text,
 			tagline: text.optional(),
@@ -63,9 +63,9 @@ const site = z.object({
 			more: text.optional(),
 		}),
 	),
-	resources: z.object({ emptyTitle: text, emptyNote: text }),
-	about: z.object({ title: z.array(text).min(1), body: text, note: text.optional() }),
-	footer: z.object({ copyright: text, signoff: text, signoffFrom: text.optional() }),
+	resources: z.strictObject({ emptyTitle: text, emptyNote: text }),
+	about: z.strictObject({ title: z.array(text).min(1), body: text, note: text.optional() }),
+	footer: z.strictObject({ copyright: text, signoff: text, signoffFrom: text.optional() }),
 	creditsQuote: cite.optional(),
 }).superRefine((data, ctx) => {
 	const pageIds = new Set<string>();
@@ -88,13 +88,13 @@ const site = z.object({
 export const workTypes = { illust: '插画', oc: '原创角色', text: '文字' } as const;
 
 const works = z.array(
-	z.object({
+	z.strictObject({
 		name: text,
 		avatar: picture,
 		license: text.default('CC BY-NC-ND 4.0 · 禁止 AI 训练'),
 		works: z
 			.array(
-				z.object({
+				z.strictObject({
 					image: picture,
 					type: z.enum(Object.keys(workTypes) as [keyof typeof workTypes], { error: `type 只能是 ${Object.keys(workTypes).join(' / ')}` }),
 					note: text.optional(),
@@ -105,7 +105,7 @@ const works = z.array(
 );
 
 const translations = z.array(
-	z.object({
+	z.strictObject({
 		name: text,
 		avatar: picture.optional(),
 		platform: text,
@@ -114,18 +114,18 @@ const translations = z.array(
 	}),
 );
 
-const quotes = z.array(z.object({ text: text, author: text }));
+const quotes = z.array(z.strictObject({ text: text, author: text }));
 
 const toolFile = text.regex(/^[a-z0-9][a-z0-9-]*\.html$/, '请填写小写英文、数字或连字符组成的 HTML 文件名，例如 quotes.html')
 	.refine((file) => statSync(resolve('public/resources/tools', file), { throwIfNoEntry: false })?.isFile() ?? false, {
 		message: '找不到对应工具，请先将 HTML 文件放入 public/resources/tools/',
 	});
-const resources = z.object({
-	tools: z.object({
+const resources = z.strictObject({
+	tools: z.strictObject({
 		title: text,
 		en: text,
 		intro: text,
-		items: z.array(z.object({ file: toolFile, title: text, description: text, tags: z.array(text).default([]) }))
+		items: z.array(z.strictObject({ file: toolFile, title: text, description: text, tags: z.array(text).default([]) }))
 			.superRefine((items, ctx) => {
 				const seen = new Set<string>();
 				items.forEach((item, i) => {
@@ -147,16 +147,16 @@ const date = z.union([z.date(), z.string()]).transform((v, ctx) => {
 });
 
 const activities = z.array(
-	z.object({
+	z.strictObject({
 		title: text,
 		date,
 		intro: text,
-		details: z.array(z.object({ label: text, value: text })).default([]),
+		details: z.array(z.strictObject({ label: text, value: text })).default([]),
 		shots: z.array(picture).min(1),
 	}),
 );
 
-const book = z.object({
+const book = z.strictObject({
 	title: text,
 	type: text,
 	cover: z.union([picture, z.array(picture).min(1)]).optional(),
@@ -166,30 +166,30 @@ const book = z.object({
 	tags: z.array(text).default([]),
 });
 
-const recommendations = z.object({
+const recommendations = z.strictObject({
 	groups: z.array(
-		z.object({
+		z.strictObject({
 			title: text,
 			en: text,
 			wide: z.boolean().default(false),
-			shelves: z.array(z.object({ title: text, note: text.optional(), items: z.array(book).min(1) })),
+			shelves: z.array(z.strictObject({ title: text, note: text.optional(), items: z.array(book).min(1) })),
 		}),
 	),
 });
 
-const name = z.union([text, z.object({ org: text.optional(), name: text })]).transform((v) =>
+const name = z.union([text, z.strictObject({ org: text.optional(), name: text })]).transform((v) =>
 	typeof v === 'string' ? { name: v, org: undefined } : v,
 );
 
-const contributors = z.object({
-	roles: z.array(z.object({ role: text, en: text, note: text.optional(), names: z.array(name).min(1) })),
+const contributors = z.strictObject({
+	roles: z.array(z.strictObject({ role: text, en: text, note: text.optional(), names: z.array(name).min(1) })),
 	reels: z.array(
-		z.object({
+		z.strictObject({
 			role: text,
 			en: text,
 			note: text.optional(),
 			caption: text.optional(),
-			people: z.array(z.object({ name: text, avatar: picture })).min(1),
+			people: z.array(z.strictObject({ name: text, avatar: picture })).min(1),
 		}),
 	),
 });
@@ -206,7 +206,11 @@ function load<T extends z.ZodType>(file: string, raw: string, schema: T): z.outp
 		// 路径写成人能看懂的样子：数组下标从 1 开始，例如「第1项 → works → 第2项 → image」
 		const where = (path: PropertyKey[]) =>
 			path.map((k) => (typeof k === 'number' ? `第${k + 1}项` : String(k))).join(' → ') || '(整个文件)';
-		const lines = result.error.issues.map((i) => `  - ${where(i.path)}：${i.message}`);
+		const lines = result.error.issues.flatMap((i) =>
+			i.code === 'unrecognized_keys'
+				? i.keys.map((key) => `  - ${where([...i.path, key])}：不认识的字段（检查字段名或花括号里的英文逗号）`)
+				: [`  - ${where(i.path)}：${i.message}`],
+		);
 		throw new Error(`src/data/${file} 有问题：\n${lines.join('\n')}`);
 	}
 	return result.data;
