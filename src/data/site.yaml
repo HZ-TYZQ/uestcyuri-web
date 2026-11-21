@@ -9,20 +9,20 @@ logo: logo/yuristc.png
 repo: https://github.com/HZ-TYZQ/uestcyuri-web
 
 hero:
-  eyebrow: FOR ANYONE WHO LOVES HER STORIES
-  title: [喜欢百合的你，, 欢迎来看看]         # 每项一行，最后自动加粉色句号
-  intro: 我们是电子科大一群喜欢百合的人。这里摆着大家的画、译作和书单，随便看看，希望有一件你也喜欢。
-  primary: { label: 先看看大家的作品, href: "/creations/" }
-  secondary: { label: 给我推荐一部, href: "/recommendations/" }
+  eyebrow: UESTC · YURI ACG GROUP
+  title: [点都点开了，, 逛一圈再走]         # 每项一行，最后自动加粉色句号
+  intro: 电子科大一群爱看百合的群友搭出来的小站！大家画的图、做的汉化、玩过的局，还有一整个架子的私藏书单都在下面，先挑个感兴趣的地方逛起来吧！
+  primary: { label: 看群友作品, href: "/creations/" }
+  secondary: { label: 挑部百合看, href: "/recommendations/" }
   image: works/Aurora/OC3.jpg
   imageAlt: Aurora 的原创角色插画：两个女孩比心
   imageAuthor: Aurora
   imageLabel: 原创角色
-  vertical: 画下的 · 译过的 · 推荐的
-  caption: 进门第一眼，是群友的画。
+  vertical: 画图 · 汉化 · 推荐
+  caption: 头图是 Aurora 画的，是不是超可爱！
 
 strip:
-  left: 电子科技大学百合 ACG 交流群 · 写给同好的展示页
+  left: 电子科技大学百合 ACG 交流群 · 作品与日常展示
   right: Come for the art, stay for the yuri
 
 # 栏目按这里的顺序显示在导航与首页，id 对应 /id/ 网址。
@@ -31,7 +31,7 @@ pages:
   - id: creations
     title: 群友创作
     en: Creations
-    intro: 画下的、写下的、译下的，把喜欢变成自己的作品。
+    intro: 群里画师们的图和汉化组的成果全在这边！以后有小说或游戏也会继续往里塞！
     quote:
       text: 我们，早已站在舞台之上。
       from: 少女☆歌剧 Revue Starlight 剧场版
@@ -39,22 +39,22 @@ pages:
   - id: activities
     title: 群友日常
     en: Daily life
-    intro: 说过的话，一起玩过的时光，都在这里留下记录。
+    intro: 群聊里刷出来的神奇名言，外加线上开黑和线下聚会的欢乐现场。
     sections: [quotes, activities]
   - id: recommendations
     title: 百合推荐
     en: Reading list
-    intro: 从漫画、小说到游戏，翻开下一段她与她的故事。
+    intro: 不知道看啥玩啥？漫画、小说、游戏按架子排好队了，直接来挑！
     sections: [recommend]
   - id: resources
     title: 资源整理
     en: Resources
-    intro: 收藏工具、资料和链接，留给同样喜欢的你。
+    intro: 群友脑洞一开搓出来的小工具，点开网页就能直接上手！
     sections: [resources]
   - id: about
     title: 关于我们
     en: About us
-    intro: 因为同一种喜欢，才有了这里。
+    intro: 这个小站是怎么诞生的，以及背后一起折腾的群友和 AI。
     sections: [about]
 
 # 板块 id 不要改（页面靠它找到对应的组件）；标题和导语可以修改。
@@ -73,8 +73,8 @@ resources:
 
 about:
   title: [致，同样喜爱百合的你。]
-  body: 这里是电子科技大学百合 ACG 交流群的展示页。群友们把喜欢画成了画、写成了字、译成了中文；如果你刚好也喜欢，这一页就是写给你的。
-  note: 本站只做展示。
+  body: 这里是电子科技大学百合 ACG 交流群的展示页！平时大家在群里画画、做汉化、约游戏、互相安利喜欢的百合作品，好东西全沉在聊天记录里太可惜了，干脆搭个小站全部摆出来。地方不大，但只要能让你顺手挖到一两部戳中萌点的作品，我们就超开心了！
+  note: 友情提示：本站纯展示不招新，不放群号也不放二维码哦。
 
 footer:
   copyright: 群友原创图片版权归各作者所有，采用 CC BY-NC-ND 4.0，禁止用于 AI 训练；推荐作品封面版权归原出版方，仅用于介绍。

@@ -14,6 +14,7 @@ roles:
       - HZ-TYZQ
       - { org: Anthropic, name: Claude }
       - { org: OpenAI, name: Codex }
+      - { org: Google, name: Gemini }
 
   - role: 内容整理
     en: Curation
